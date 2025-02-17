@@ -38,7 +38,7 @@ export default function Heilkunde() {
   };
 
   return (
-    <main className="pt-20 pb-12">
+    <main>
       <HeroSection
         backgroundImage={UnivasHero.src}
         title="I Help women do this really cool thing in this super interesting way"

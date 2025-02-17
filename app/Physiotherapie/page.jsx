@@ -5,7 +5,6 @@ import HeroSection from "../components/HeroComponent/page";
 import PhysiotherapieImage from "../../asset/images/IMG_2950.png";
 import ProductCard from "../components/ProductCards/page";
 import ArticleSection from "../components/ArticleSection/page";
-import NewsCard from "../components/NewCard/page";
 
 const cardsData = [
   {
