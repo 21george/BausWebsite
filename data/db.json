@@ -1,0 +1,84 @@
+{
+  "workdetails": [
+    {
+      "id": 1,
+      "image": "../images/Massage.png",
+      "title": "Physiotherapie",
+      "description": "Sie haben Rückenschmerzen? ...",
+      "details": "Sie erwartet in der Therapie ...",
+      "buttonText": "Erfahre mehr"
+    },
+    {
+      "id": 2,
+      "image": "asset/images/IMG_3361.png",
+      "title": "Yoga",
+      "description": "Bei meinen Yogaklassen ...",
+      "details": "Hier in der Praxis finden Sie ...",
+      "cost": "Preise nach Preisstaffel ...",
+      "buttonText": "Erfahre mehr"
+    },
+    {
+      "id": 3,
+      "image": "asset/images/womenyoga.png",
+      "title": "Heilkunde für Frauen",
+      "description": "Sie leiden unter einer Belastungsinkontinenz ...",
+      "details": "Einen großen Teil meiner Spezialisierung ...",
+      "buttonText": "Erfahre mehr"
+    }
+  ],
+  "about": {
+    "description": "Ein herzliches Hallo und willkommen ...",
+    "images": [
+      { "src": "https://placekeanu.com/200/300" },
+      { "src": "https://placekeanu.com/684/350/" },
+      { "src": "https://placekeanu.com/250/350/y" },
+      { "src": "https://placekitten.com/g/200/300" },
+      { "src": "https://placekeanu.com/684/350/y" }
+    ]
+  },
+  "videos": [
+    {
+      "id": 1,
+      "title": "Collaborative Teamwork",
+      "thumbnailUrl": "https://www.w3schools.com/html/mov_bbb.mp4",
+      "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4"
+    },
+    {
+      "id": 2,
+      "title": "Innovative Solutions",
+      "thumbnailUrl": "https://www.w3schools.com/html/mov_bbb.mp4",
+      "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4"
+    },
+    {
+      "id": 3,
+      "title": "Creative Brainstorming",
+      "thumbnailUrl": "https://www.w3schools.com/html/mov_bbb.mp4",
+      "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4"
+    }
+  ],
+    "articles": [
+      {
+        "id": 1,
+        "content": [
+          "Sie erwartet in der Therapie im ersten Schritt der Befund Ihrer Beschwerden und die genaue Erfassung Ihres Zustandes.",
+          "Hierbei achte ich persönlich nicht nur auf die mechanische Komponente und die Bewegungsapparat bezogene Struktur sondern auch auf die Regenerationsfähigkeit des Körpers, den Ausgleich zwischen körperlicher Belastung und Belastbarkeit, Nebenerkrankungen und weiterer Kontextfaktoren.",
+          "Sie erwartet keine eindimensionale Therapie. Denn diese Art zu denken erlaubt mir nur an einer Schraube zu drehen. Dies führt meist zu Frustration des Patienten und des Therapeuten. Daher umgehe ich diesen Schritt, indem ich mir Zeit nehme und für Sie eine entsprechende Therapie wähle. Des weiteren wird Eigenverantwortungsbewusstsein und ins „Tun“ kommen im Bezug der Selbsthilfe in meiner Praxis groß geschrieben. Die Intention meiner Arbeit ist Ihnen viele Möglichkeiten an die Hand zu geben, damit sie eigenwirksam werden können."
+        ]
+      }
+    ],
+    "cardsData":[
+       {
+    "id": 1,
+    "title": "Yorga",
+    "description": "Trendy and stylish clothing.",
+    "videoSrc": "/videos/video1.mp4"
+  },
+  {
+    "id": 2,
+    "title": "Begginer Yorga class",
+    "email": "summer@fashion.com",
+    "videoSrc": "/videos/video2.mp4"
+  }
+    ]
+  
+}
