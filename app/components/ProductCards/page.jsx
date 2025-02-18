@@ -1,7 +1,7 @@
 import React from "react";
 
 const ProductCard = ({ title, videoSrc }) => (
-  <div className="product-card w-[300px] rounded-md shadow-xl h-96  bottom-14  overflow-hidden z-[100] relative cursor-pointer snap-start shrink-0 py-8 px-6 flex flex-col justify-center gap-4 duration-300 group">
+  <div className="product-card w-[500px] rounded-md shadow-xl h-96  bottom-14  overflow-hidden z-[100] relative cursor-pointer snap-start shrink-0 py-8 px-6 flex flex-col justify-center gap-4 duration-300 group">
     <video
       controls
       preload="none"
@@ -20,5 +20,3 @@ const ProductCard = ({ title, videoSrc }) => (
 );
 
 export default ProductCard;
-
-
