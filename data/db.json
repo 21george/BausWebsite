@@ -29,11 +29,9 @@
   "about": {
     "description": "Ein herzliches Hallo und willkommen ...",
     "images": [
-      { "src": "https://placekeanu.com/200/300" },
       { "src": "https://placekeanu.com/684/350/" },
-      { "src": "https://placekeanu.com/250/350/y" },
-      { "src": "https://placekitten.com/g/200/300" },
-      { "src": "https://placekeanu.com/684/350/y" }
+      { "src": "images/IMG_6280.jpg" }
+
     ]
   },
   "videos": [

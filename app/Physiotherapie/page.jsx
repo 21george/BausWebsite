@@ -1,10 +1,9 @@
 "use client";
 
-import { Suspense } from "react";
 import HeroSection from "../components/HeroComponent/page";
 import PhysiotherapieImage from "../../asset/images/IMG_2950.png";
-import ProductCard from "../components/ProductCards/page";
 import ArticleSection from "../components/ArticleSection/page";
+import PromoCards from "../components/ProductCards/page";
 
 const cardsData = [
   {
@@ -31,18 +30,9 @@ export default function Physiotherapie() {
         containerStyles="mb-8"
       />
       <ArticleSection />
-
-      <div className="flex flex-wrap gap-4 p-4 justify-center">
-        {cardsData.map((card) => (
-          <Suspense fallback={<p>Laoding...video</p>}>
-            <ProductCard
-              key={card.id}
-              title={card.title}
-              videoSrc={card.videoSrc}
-            />
-          </Suspense>
-        ))}
-      </div>
+        <PromoCards/>
+     
+      
     </>
   );
 }

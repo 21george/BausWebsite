@@ -9,9 +9,9 @@ import Yogawindow from "./../asset/images/IMG_3001.jpg";
 import VisitRoom from "./../asset/images/IMG_4955.jpg";
 import Terapybed from "./../asset/images/IMG_2949.jpg";
 import Terapybed2 from "./../asset/images/IMG_2931.jpg";
-import DynamicSection from "./Feature.tsx/page";
 import Ratingpage from "./components/Rating/page";
 import ÜberMich from "./components/Ubermich/page";
+import DynamicSection from "./Deatails/page";
 
 export default function Home() {
   return (

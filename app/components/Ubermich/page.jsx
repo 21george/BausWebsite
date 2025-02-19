@@ -21,10 +21,10 @@ export default function ÜberMich() {
   }, []);
 
   return (
-    <div className="relative overflow-hidden mt-20 mb-11 w-full h-a">
+    <div className="relative mt-20 mb-11 w-full h-a">
       <div className="pt-16 pb-80 sm:pt-24 sm:pb-40 lg:pt-40 lg:pb-48">
         <div className="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
-         {/* Description Section */}
+          {/* Description Section */}
           <div className="sm:max-w-lg">
             <h1 className="text-4xl tracking-tight text-gray-900 sm:text-6xl">
               Ubermich
