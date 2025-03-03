@@ -1,6 +1,6 @@
 "use client";
 import UnivasHero from "../../asset/images/beginnen-met-yoga_1600x.webp";
-import HeroSection from "../components/HeroComponent/page";
+import { HeroSection } from "../components/HeroComponent/page";
 
 export default function Heilkunde() {
   const leftSectionContent = {
@@ -116,11 +116,11 @@ function DynamicSections({ left, right, gridItems }) {
       </section>
 
       {/* Grid Section */}
-      <section className="flex flex-col items-center mt-20 mb-11 text-center">
+      <section className="flex flex-col items-center mt-20 mb-11 text-center px-4 sm:px-6 lg:px-8">
         <h2 className="text-2xl text-gray-800 mt-14 mb-14">
           {gridItems.title}
         </h2>
-        <div className="grid grid-cols-3 divide-x justify-center w-full sm:grid-cols-2 lg:grid-cols-3 gap-3 divide-y-0 divide-slate-300">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 w-full divide-y-0 lg:divide-x lg:divide-y-0 divide-slate-300">
           {[gridItems.points, gridItems.points1, gridItems.points2].map(
             (group, index) => (
               <div key={index} className="px-4 py-6 text-center">

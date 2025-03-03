@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
-import HeroSection from "../components/HeroComponent/page";
 import ServiceImage from "../../asset/images/IMG_4955.jpg";
+import { HeroSection } from "../components/HeroComponent/page";
 
 const contactInfo = {
   kontaktSection: [

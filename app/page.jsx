@@ -1,5 +1,4 @@
 import React from "react";
-import HeroSection from "./components/HeroComponent/page";
 import UniversalFoto from "./../asset/images/R.jpg";
 import Moltivation from "./Motivation/page";
 import Gallery from "./components/GalleryComponent/page";
@@ -12,15 +11,16 @@ import Terapybed2 from "./../asset/images/IMG_2931.jpg";
 import Ratingpage from "./components/Rating/page";
 import ÜberMich from "./components/Ubermich/page";
 import DynamicSection from "./Deatails/page";
+import { HeroSection } from "./components/HeroComponent/page";
 
 export default function Home() {
   return (
     <main className="dark:bg-gray-100 font-[family-name:var(--font-geist-sans)]">
       <div>
         <HeroSection
-          backgroundImage={UniversalFoto.src}
+          backgroundImage="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop"
           title="Nikolina Baus"
-          discritption="Holistische Physiotherapie auf dem neusten Stand der Wissenschaft"
+          subtitle="Holistische Physiotherapie auf dem neusten Stand der Wissenschaft"
         />
       </div>
       <div>

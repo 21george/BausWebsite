@@ -1,73 +1,139 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import axios from "axios";
 
-export default function ÜberMich() {
-  const [aboutData, setAboutData] = useState({
-    description: "",
-    images: [],
-  });
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { AnimateIn } from "./animate-in";
 
-  useEffect(() => {
-    // Fetch data from the JSON server
-    axios
-      .get("http://localhost:3001/about")
-      .then((response) => {
-        setAboutData(response.data);
-      })
-      .catch((error) => {
-        console.error("There was an error fetching the data!", error);
-      });
-  }, []);
+// Default data as fallback
+const defaultAboutData = {
+  title: "Urber Mich",
+  description:
+    "Ein herzliches Hallo und willkommen auf meiner Webseite.\nIch, Nikolina Baus bin staatlich geprüfte Physiotherapeutin und neben meinen weiteren Zusatzqualifikationen in der Physiotherapie interessiere ich mich auch für die Medizin.\n\nDas lernen rund um den menschlichen Körper bereitet mir unheimlich viel Freude, genauso wie Menschen eine Stütze zu sein damit sie ihre Ziele erreichen.\nMit jeder Herausforderung, die meine Patienten mitbringen wächst stetig mein Wissen und lässt mich mit meinem Patienten wachsen - denn jeder Körper ist einzigartig.\nMein Interesse an den unterschiedlichsten Bereichen in der Physiotherapie hat mich von einer psychosomatischen Klinik zu der BG Unfallklinik Murnau sowie zu einer Gynäkologischen Praxis in Karlsfeld und außerdem noch zum bayrischen Gewichtheber Verband geführt.\nMittlerweile habe ich meine zwei Hauptspezialisierungen gefunden - die physiotherapeutische Gynäkologie im Zusammenhang mit der Urologie und Proktologie und zur Trainingstherapie.\nUm für mich einen Ausgleich zu finden beschloss ich vor 2 Jahren eine Ausbildung zur physiotherapeutischen Yogalehrerin zu absolvieren - diese habe ich zwischenzeitlich erfolgreich abgeschlossen und versuche seither diese Ausgeglichenheit in meinem Kurs an jeden einzelnen Teilnehmer weiterzugeben.\n\n\nIch freue mich auf Ihren Besuch.\n\n\nHerzlichst,\n\nIhre Nikolina Baus",
+  mission: {
+    title: "Our Mission",
+    description:
+      "To empower individuals with personalized therapeutic solutions that enhance their quality of life and physical well-being.",
+  },
+  vision: {
+    title: "Our Vision",
+    description:
+      "To create a world where everyone has access to expert physiotherapy care and the knowledge to maintain optimal physical health.",
+  },
+  stats: [
+    {
+      value: "2000+",
+      label: "Patients Treated",
+    },
+    {
+      value: "15+",
+      label: "Expert Therapists",
+    },
+    {
+      value: "25+",
+      label: "Treatment Types",
+    },
+  ],
+  images: [
+    {
+      url: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop",
+      alt: "Team collaborating in modern therapy space",
+    },
+    {
+      url: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2070&auto=format&fit=crop",
+      alt: "Modern physiotherapy equipment",
+    },
+    {
+      url: "https://images.unsplash.com/photo-1552581234-26160f608093?q=80&w=2070&auto=format&fit=crop",
+      alt: "Physiotherapy session in progress",
+    },
+  ],
+};
+
+// async function getAboutData() {
+//   try {
+//     // Ensure we're using the correct base URL
+//     const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"
+//     const res = await fetch(`${baseUrl}/api/about`, {
+//       method: "GET",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       next: { revalidate: 3600 },
+//     })
+
+//     if (!res.ok) {
+//       console.error("Failed to fetch about data:", await res.text())
+//       return defaultAboutData
+//     }
+
+//     const data = await res.json()
+//     return data
+//   } catch (error) {
+//     console.error("Error fetching about data:", error)
+//     return defaultAboutData
+//   }
+// }
+
+export default async function ÜberMich() {
+  // const data = await getAboutData();
 
   return (
-    <div className="relative mt-20 mb-11 w-full h-a">
-      <div className="pt-16 pb-80 sm:pt-24 sm:pb-40 lg:pt-40 lg:pb-48">
-        <div className="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
-          {/* Description Section */}
-          <div className="sm:max-w-lg">
-            <h1 className="text-4xl tracking-tight text-gray-900 sm:text-6xl">
-              Ubermich
-            </h1>
-            <p className="mt-4 text-sl text-gray-400">
-              {aboutData.description}
-            </p>
+    <section
+      id="about"
+      className="w-full py-12 md:py-24 lg:py-32 flex justify-center"
+    >
+      <div className="container px-4 md:px-6">
+        <div className="grid gap-8 lg:grid-cols-2 items-center">
+          {/* Content */}
+          <div className="flex flex-col gap-4">
+            <AnimateIn animation="slide-up">
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+                {defaultAboutData.title}
+              </h2>
+            </AnimateIn>
+            <AnimateIn animation="slide-up" delay={0.1}>
+              <p className="text-muted-foreground md:text-lg">
+                {defaultAboutData.description}
+              </p>
+            </AnimateIn>
           </div>
-
-          <div className="mt-10">
-            <div
-              aria-hidden="true"
-              className="pointer-events-none lg:absolute# lg:inset-y-0 lg:mx-auto lg:w-full lg:max-w-7xl"
-            >
-              <div className="absolute transform sm:left-1/2 sm:top-0 sm:translate-x-8 lg:left-1/2 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-8">
-                <div className="flex items-center space-x-6 lg:space-x-8">
-                  {[0, 1, 2].map((colIndex) => (
-                    <div
-                      key={colIndex}
-                      className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8"
-                    >
-                      {aboutData.images
-                        .slice(colIndex * 2, colIndex * 2 + 2)
-                        .map((image, index) => (
-                          <div
-                            key={index}
-                            className="h-64 w-44 overflow-hidden rounded-lg"
-                          >
-                            <img
-                              src={image.src}
-                              alt={`Image ${index + 1}`}
-                              className="h-full w-full object-cover object-center"
-                            />
-                          </div>
-                        ))}
-                    </div>
-                  ))}
+          {/* Images Grid */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="grid grid-cols-2 gap-4"
+          >
+            <div className="space-y-4">
+              {defaultAboutData.images.slice(0, 2).map((image, index) => (
+                <div key={index} className="overflow-hidden rounded-lg">
+                  <Image
+                    src={image.url || "/placeholder.svg"}
+                    width={300}
+                    height={index === 0 ? 400 : 300}
+                    alt={image.alt}
+                    className={`h-[${index === 0 ? "200px" : "250px"}] sm:h-[${
+                      index === 0 ? "300px" : "250px"
+                    }] w-full object-cover transition-transform hover:scale-105`}
+                  />
                 </div>
+              ))}
+            </div>
+            <div className="mt-8">
+              <div className="overflow-hidden rounded-lg">
+                <Image
+                  src={defaultAboutData.images[2].url || "/placeholder.svg"}
+                  width={300}
+                  height={500}
+                  alt={defaultAboutData.images[2].alt}
+                  className="h-[400px] sm:h-[400px] w-full object-cover transition-transform hover:scale-105"
+                />
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

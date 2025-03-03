@@ -7,10 +7,6 @@ import Link from "next/link";
 
 export default function Footerpage() {
   const [footerLinks] = useState({
-    Anfahrt: [
-      "Parkplätze finden Sie in meiner Einfahrt, gerne können Sie auch am Gartenzaun vor der Praxis parken.",
-      "Die Praxis ist außerdem 600m von der U-Bahn Station Forstenrieder Allee entfernt",
-    ],
     Adresse: ["Forstenrieder Allee 140F, 81476 München"],
     Telefon: ["089 510 894 77", "0151 29 10 77 71"],
     EMail: ["info@baus-physiotherapie.de"],
@@ -68,7 +64,7 @@ export default function Footerpage() {
       </div>
       <div className="py-6 text-center text-sm text-gray-600">
         <p>© 2023 Nikolina Baus. All rights reserved.</p>
-        <Link href="/impressum" className="text-blue-800  text-lg">
+        <Link href="/impressum" className="text-blue-800 text-lg">
           Impressum
         </Link>
       </div>

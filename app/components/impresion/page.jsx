@@ -1,6 +1,6 @@
 import React from "react";
-import HeroSection from "../HeroComponent/page";
 import UniversalFoto from "../../../asset/images/R.jpg";
+import { HeroSection } from "../HeroComponent/page";
 
 export default function Impresionpage() {
   return (
@@ -21,7 +21,10 @@ export default function Impresionpage() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-4">Kontakt</h2>
           <p className="text-lg">
-            <a href="mailto:info@baus-physiotherapie.de" className="text-blue-500 underline">
+            <a
+              href="mailto:info@baus-physiotherapie.de"
+              className="text-blue-500 underline"
+            >
               info@baus-physiotherapie.de
             </a>
           </p>
