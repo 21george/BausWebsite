@@ -5,6 +5,7 @@ import HeilkundeGrid from "../components/HeilkundeComponents/HeilkundeGrid";
 import HeilkundeSection from "../components/HeilkundeComponents/HeilkundeSection";
 import { HeroSection } from "../components/HeroComponent/page";
 import { getHeilkundeInfo } from "../actions/HeilkundeAction/GetHeilkunde";
+import { motion } from "framer-motion";
 
 export default function Heilkunde() {
   return (
@@ -50,6 +51,13 @@ function DynamicSections() {
 
   return (
     <>
+       <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="text-center space-y-4"
+      >
+        
       {/* Hero Section Content */}
       <div className="flex flex-col gap-8 px-4 sm:px-6 lg:px-8 mt-20 mb-16">
         {/* Left Section */}
@@ -74,13 +82,13 @@ function DynamicSections() {
                   viewBox="0 0 24 24"
                   xmlns="http://www.w3.org/2000/svg"
                   aria-label="Checkmark Icon"
-                >
+                  >
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth="2"
                     d="M5 13l4 4L19 7"
-                  ></path>
+                    ></path>
                 </svg>
                 <span className="ml-3">{item.features}</span>
               </li>
@@ -93,6 +101,7 @@ function DynamicSections() {
         {/* Grid Section */}
         <HeilkundeGrid />
       </div>
+            </motion.div>
     </>
   );
 }

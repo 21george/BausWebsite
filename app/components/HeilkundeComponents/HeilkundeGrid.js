@@ -1,5 +1,7 @@
 import { getHeilkundeInfo } from "../../actions/HeilkundeAction/GetHeilkunde";
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+
 
 const HeilkundeGrid = () => {
     const [data, setData] = useState(null);
@@ -27,7 +29,13 @@ const HeilkundeGrid = () => {
 
     return (
         <section className="flex flex-col items-center mt-2 mb-11 text-center px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl text-gray-800 mt-4 mb-14">
+          <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8 }}
+                        className="text-center space-y-4"
+        >
+        <h2 className="text-2xl text-gray-800 mt-4 mb-14">
                 {data[0].Note_description}
             </h2>
              <div className="grid md:grid-cols-2 gap-8 mt-1">
@@ -47,6 +55,7 @@ const HeilkundeGrid = () => {
           </p>
         </div>
       </div>
+        </motion.div>   
         </section>
     )
 }

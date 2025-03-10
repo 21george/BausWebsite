@@ -4,6 +4,7 @@ import ServiceImage from "../../asset/images/IMG_4955.jpg";
 import { HeroSection } from "../components/HeroComponent/page";
 import { submitcontact } from "../actions/contactaction/SubmitContact";
 import { getContact } from "../actions/contactaction/GetContact";
+import { motion } from "framer-motion";
 
 const contactInfo = {
   kontaktSection: [
@@ -121,10 +122,17 @@ export default function Kontakt() {
       />
 
       <section className="flex flex-col items-center justify-center px-6 pt-28 pb-28 text-gray-900">
+          
+         <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="text-center space-y-4"
+        >
         <div className="space-y-8 pt-12 pb-36 flex flex-col">
           {contacts.map((contact, index) => (
             <div key={index}>
-              <p className="text-3xl mt-2 text-gray-900 flex justify-center">
+              <p className="text-xl mt-2 text-gray-800 flex justify-center">
                 {contact.description}
               </p>
               <p className="text-3xl text-gray-900 mt-1">{contact.details}</p>
@@ -252,6 +260,8 @@ export default function Kontakt() {
             </form>
           </div>
         </div>
+            </motion.div>
+
       </section>
     </>
   );
