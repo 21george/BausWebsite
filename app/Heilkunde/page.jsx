@@ -1,42 +1,12 @@
 "use client";
+import { useEffect, useState } from "react";
 import UnivasHero from "../../asset/images/beginnen-met-yoga_1600x.webp";
+import HeilkundeGrid from "../components/HeilkundeComponents/HeilkundeGrid";
+import HeilkundeSection from "../components/HeilkundeComponents/HeilkundeSection";
 import { HeroSection } from "../components/HeroComponent/page";
+import { getHeilkundeInfo } from "../actions/HeilkundeAction/GetHeilkunde";
 
 export default function Heilkunde() {
-  const leftSectionContent = {
-    title: "Einen großen Teil meiner Spezialisierung",
-    title2: "in der Physiotherapie widme ich Frauen",
-  };
-
-  const rightSectionContent = {
-    title: "Außerdem begleiten wir bei",
-    features: [
-      "Schwangerschaftsrückbildung in der Einzeltherapie.",
-      "Beckenboden Vorbereitung vor der Geburt",
-      "Rectusdiastase",
-    ],
-  };
-
-  const gridItems = {
-    title: "Wir behandeln in der Praxis folgende Beschwerden",
-    points: [
-      "Schmerzen beim Geschlechtsverkehr",
-      "Senkungsgefühl / Druck im Becken",
-      "Schmerzen an Vaginalnarben, Dammriss-/ Dammschnittnarben und Kaiserschnittnarben",
-    ],
-    points1: [
-      "Schmerzen rund um die Periode",
-      "Urin- oder Stuhlverlust während Belastung",
-      "Schwierigkeiten beim selbstbestimmten Harnlassen oder Stuhllassen",
-      "Schwierigkeiten Urin in der Blase zu speichern",
-    ],
-    points2: [
-      "Unkontrolliertem Urinverlust",
-      "Unkontrolliertem Stuhlverlust",
-      "Schmerzen nach Analfissuren",
-    ],
-  };
-
   return (
     <main>
       <HeroSection
@@ -44,36 +14,58 @@ export default function Heilkunde() {
         title="I Help women do this really cool thing in this super interesting way"
         description=""
       />
-      <DynamicSections
-        left={leftSectionContent}
-        right={rightSectionContent}
-        gridItems={gridItems}
-      />
+      <DynamicSections />
     </main>
   );
 }
 
-function DynamicSections({ left, right, gridItems }) {
+function DynamicSections() {
+  const [rightSectionContent, setRightSectionContent] = useState({ title: "", features: [], featursTittle: [] });
+  const [data, setData] = useState([]);
+  const [error, setError] = useState(null);
+  const [sectionContent, setSectionContent] = useState("");
+  const [featursTittle, setFeatursTittle] = useState("");
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const result = await getHeilkundeInfo();
+        if (result.success) {
+          setData(result.data);
+          setSectionContent(result.data.SectionContent); // Set section content from database
+          setFeatursTittle(result.data.featursTittle); // Set featursTittle from database
+        } else {
+          setError(result.error);
+        }
+      } catch (err) {
+        setError('An unexpected error occurred');
+      }
+    }
+    fetchData();
+  }, []);
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
   return (
     <>
       {/* Hero Section Content */}
-      <div className="flex flex-col lg:flex-row gap-8 px-4 sm:px-6 lg:px-8 mt-20 mb-16">
+      <div className="flex flex-col gap-8 px-4 sm:px-6 lg:px-8 mt-20 mb-16">
         {/* Left Section */}
-        <section className="lg:mt-20 leading-loose lg:ml-28 text-center lg:text-left mt-12">
+        <section className="leading-loose text-center mt-12">
           <h2 className="text-xl sm:text-2xl lg:text-3xl font-sans text-gray-900">
-            {left.title}
-            <br />
-            {left.title2}
+            {data.featursTittle} {/* Display featursTittle from database */}
           </h2>
         </section>
 
         {/* Right Section */}
-        <section className="mt-8 max-w-xl mx-auto px-2 sm:px-6 flex-row-reverse">
+        <section className="mt-8 max-w-xl mx-auto px-2 sm:px-6">
           <h2 className="text-xl sm:text-3xl font-serif text-gray-900">
-            {right.title}
+            {rightSectionContent.title}
           </h2>
-          <ul className="mt-6 space-y-4 text-lg text-gray-600">
-            {right.features.map((feature, index) => (
+          <ul className="mt-6 space-y-4 text-lg text-gray-800">
+            {data.map((item, index) => (
               <li key={index} className="flex items-start">
                 <svg
                   className="flex-shrink-0 w-6 h-6 text-green-500"
@@ -90,54 +82,17 @@ function DynamicSections({ left, right, gridItems }) {
                     d="M5 13l4 4L19 7"
                   ></path>
                 </svg>
-                <span className="ml-3">{feature}</span>
+                <span className="ml-3">{item.features}</span>
               </li>
             ))}
           </ul>
         </section>
+
+        {/* Informational Paragraph */}
+        <HeilkundeSection />
+        {/* Grid Section */}
+        <HeilkundeGrid />
       </div>
-
-      {/* Informational Paragraph */}
-      <section className="flex flex-col h-full w-full items-center mt-20 mb-11 text-center">
-        <p className="dark:text-gray-600 text-base md:text-base lg:text-lg mb-4 ">
-          Im Besonderen behandle ich Frauen mit gynäkologischen, urologischen,
-          proktologischen Beschwerden und betreue Sie vor, während und nach der
-          Schwangerschaft.
-        </p>
-        <p className="dark:text-gray-600 text-base md:text-base lg:text-lg mb-4">
-          Bei den vorgenannten Themen strebe ich offene Kommunikation an, da mir
-          mein Beitrag in die Richtung der Gesellschaftlichen Enttabuisierung
-          enorm wichtig ist.
-        </p>
-        <p className="dark:text-gray-600 text-base md:text-base lg:text-lg mb-4">
-          Dennoch erkenne ich zugleich sensible und intime Inhalte und gehe mit
-          diesen behutsam um.
-        </p>
-      </section>
-
-      {/* Grid Section */}
-      <section className="flex flex-col items-center mt-20 mb-11 text-center px-4 sm:px-6 lg:px-8">
-        <h2 className="text-2xl text-gray-800 mt-14 mb-14">
-          {gridItems.title}
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 w-full divide-y-0 lg:divide-x lg:divide-y-0 divide-slate-300">
-          {[gridItems.points, gridItems.points1, gridItems.points2].map(
-            (group, index) => (
-              <div key={index} className="px-4 py-6 text-center">
-                <ul className="space-y-1 text-gray-600">
-                  {group.map((point, idx) => (
-                    <li key={idx} className="flex items-center justify-center">
-                      <span className="dark:text-gray-600 text-base md:text-base lg:text-lg">
-                        {point}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )
-          )}
-        </div>
-      </section>
     </>
   );
 }

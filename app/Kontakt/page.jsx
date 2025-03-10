@@ -1,7 +1,9 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ServiceImage from "../../asset/images/IMG_4955.jpg";
 import { HeroSection } from "../components/HeroComponent/page";
+import { submitcontact } from "../actions/contactaction/SubmitContact";
+import { getContact } from "../actions/contactaction/GetContact";
 
 const contactInfo = {
   kontaktSection: [
@@ -29,17 +31,12 @@ const contactInfo = {
 };
 
 export default function Kontakt() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    message: "",
-    datenschutz: false,
-  });
-
+  const [formData, setFormData] = useState({ fullname: "", email: "", telefone: "", message: "", datenschutz: false, date: "", });
   const [errors, setErrors] = useState({});
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [contacts, setContacts] = useState([]);
+  const [error, setError] = useState(null);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -52,18 +49,18 @@ export default function Kontakt() {
   const validateForm = () => {
     const newErrors = {};
 
-    if (!formData.name.trim())
-      newErrors.name = "Bitte geben Sie Ihren Namen ein.";
+    if (!formData.fullname.trim())
+      newErrors.fullname = "Bitte geben Sie Ihren Namen ein.";
     if (
       !formData.email.trim() ||
       !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)
     ) {
       newErrors.email = "Bitte geben Sie eine gültige Email-Adresse ein.";
     }
-    if (!formData.phone.trim())
-      newErrors.phone = "Bitte geben Sie Ihre Telefonnummer ein.";
-    if (!formData.dateOfBirth.trim())
-      newErrors.dateOfBirth = "Bitte geben sie ihre dateOf Birth";
+    if (!formData.telefone.trim())
+      newErrors.telefone = "Bitte geben Sie Ihre Telefonnummer ein.";
+    if (!formData.date.trim())
+      newErrors.date = "Bitte geben sie ihre dateOf Birth";
     if (!formData.message.trim())
       newErrors.message = "Bitte geben Sie eine Nachricht ein.";
     if (!formData.datenschutz)
@@ -73,43 +70,64 @@ export default function Kontakt() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
       setLoading(true);
-      setTimeout(() => {
+      try {
+        const result = await submitcontact(formData);
+        if (result.success) {
+          setFormSubmitted(true);
+          setFormData({
+            fullname: "",
+            email: "",
+            telefone: "",
+            message: "",
+            datenschutz: false,
+            date: "",
+          });
+        } else {
+          console.error(result.error);
+        }
+      } catch (error) {
+        console.error("Error submitting form:", error);
+      } finally {
         setLoading(false);
-        setFormSubmitted(true);
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          message: "",
-          datenschutz: false,
-        });
-      }, 1500);
+      }
     }
   };
+
+  useEffect(() => {
+    const fetchContacts = async () => {
+      const result = await getContact();
+      if (result.success) {
+        setContacts(result.data);
+      } else {
+        setError(result.error);
+      }
+    };
+
+    fetchContacts();
+  }, []);
 
   return (
     <>
       <HeroSection
         backgroundImage={ServiceImage.src}
-        title="Kontakt"
+        title={contacts.length > 0 ? contacts[0].contact_tittle : "Kontakt"}
         titleStyles="text-lg font-bold"
         containerStyles="mb-8"
-        description={contactInfo.kontaktSection[0].description}
+        description={contacts.length > 0 ? contacts[0].discription : ""}
       />
 
       <section className="flex flex-col items-center justify-center px-6 pt-28 pb-28 text-gray-900">
         <div className="space-y-8 pt-12 pb-36 flex flex-col">
-          {contactInfo.kontaktSection.map((item, index) => (
+          {contacts.map((contact, index) => (
             <div key={index}>
-              {/* <p className="text-3xl font-semibold justify-center flex">{item.title}</p> */}
               <p className="text-3xl mt-2 text-gray-900 flex justify-center">
-                {item.description}
+                {contact.description}
               </p>
-              <p className="text-3xl  text-gray-900 mt-1">{item.details}</p>
+              <p className="text-3xl text-gray-900 mt-1">{contact.details}</p>
             </div>
           ))}
         </div>
@@ -144,14 +162,14 @@ export default function Kontakt() {
               <div>
                 <input
                   type="text"
-                  name="name"
+                  name="fullname"
                   placeholder="Ihr Name"
-                  value={formData.name}
+                  value={formData.fullname}
                   onChange={handleChange}
                   className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-yellow-950 focus:outline-none"
                 />
-                {errors.name && (
-                  <p className="text-sm text-red-500">{errors.name}</p>
+                {errors.fullname && (
+                  <p className="text-sm text-red-500">{errors.fullname}</p>
                 )}
               </div>
               <div>
@@ -170,27 +188,27 @@ export default function Kontakt() {
               <div>
                 <input
                   type="tel"
-                  name="phone"
+                  name="telefone"
                   placeholder="Telefon"
-                  value={formData.phone}
+                  value={formData.telefone}
                   onChange={handleChange}
                   className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-yellow-950 focus:outline-none"
                 />
-                {errors.phone && (
-                  <p className="text-sm text-red-500">{errors.phone}</p>
+                {errors.telefone && (
+                  <p className="text-sm text-red-500">{errors.telefone}</p>
                 )}
               </div>
               <div>
                 <input
                   type="date"
-                  name="date of Birth"
+                  name="date"
                   placeholder="Birth"
-                  value={formData.dateOfBirth}
+                  value={formData.date}
                   onChange={handleChange}
                   className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-yellow-950 focus:outline-none"
                 />
-                {errors.dateOfBirth && (
-                  <p className="text-sm text-red-500">{errors.dateOfBirth}</p>
+                {errors.date && (
+                  <p className="text-sm text-red-500">{errors.date}</p>
                 )}
               </div>
               <div>

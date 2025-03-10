@@ -1,8 +1,9 @@
+"use client";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 async function getDialoBlog() {
-  const res = await fetch("http://localhost:4000/workdetails", {
+  const res = await fetch("http://localhost:3001/workdetails", {
     next: { revalidate: 60 },
   });
 
@@ -14,8 +15,17 @@ async function getDialoBlog() {
   return res.json();
 }
 
-export default async function DeatailsList() {
-  const datadetails = await getDialoBlog();
+export default function DeatailsList() {
+  const [datadetails, setDatadetails] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const data = await getDialoBlog();
+      setDatadetails(data);
+    }
+
+    fetchData();
+  }, []);
 
   return (
     <div className="p-6 space-y-6">

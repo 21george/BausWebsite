@@ -1,8 +1,9 @@
+"use client"
 import HeroSection from '@/app/components/HeroComponent/page';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 async function getDialoBlog(id) {
-    const res = await fetch(`http://localhost:4000/workdetails/${id}`, {
+    const res = await fetch(`http://localhost:3001/workdetails/${id}`, {
         next: { revalidate: 60 },
     });
 
@@ -14,11 +15,33 @@ async function getDialoBlog(id) {
     return res.json();
 }
 
-export default async function FeatureDetails({ params }) {
-    const detailsBlog = await getDialoBlog(params.id);
+export default function FeatureDetails({ params }) {
+    const [detailsBlog, setDetailsBlog] = useState(null);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                const data = await getDialoBlog(params.id);
+                if (data) {
+                    setDetailsBlog(data);
+                } else {
+                    setError("Details not found.");
+                }
+            } catch (err) {
+                setError("An error occurred while fetching details.");
+            }
+        }
+
+        fetchData();
+    }, [params.id]);
+
+    if (error) {
+        return <div>{error}</div>;
+    }
 
     if (!detailsBlog) {
-        return <div>Error: Unable to fetch details.</div>;
+        return <div>Loading...</div>;
     }
 
     return (
