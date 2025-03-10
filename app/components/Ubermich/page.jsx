@@ -1,8 +1,10 @@
-"use client";
+"use client"
 
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { AnimateIn } from "./animate-in";
+import { getAboutme } from "../../actions/aboutme/Getaboutme";
+import { useEffect, useState } from "react";
 
 // Default data as fallback
 const defaultAboutData = {
@@ -49,33 +51,29 @@ const defaultAboutData = {
   ],
 };
 
-// async function getAboutData() {
-//   try {
-//     // Ensure we're using the correct base URL
-//     const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"
-//     const res = await fetch(`${baseUrl}/api/about`, {
-//       method: "GET",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//       next: { revalidate: 3600 },
-//     })
+export default function ÜberMich() {
+    const [data, setData] = useState(null);
+    const [error, setError] = useState(null);
 
-//     if (!res.ok) {
-//       console.error("Failed to fetch about data:", await res.text())
-//       return defaultAboutData
-//     }
+    useEffect(() => {
+        async function fetchData() {
+            const result = await getAboutme();
+            if (result.success) {
+                setData(result.data);
+            } else {
+                setError(result.error);
+            }
+        }
+        fetchData();
+    }, []);
 
-//     const data = await res.json()
-//     return data
-//   } catch (error) {
-//     console.error("Error fetching about data:", error)
-//     return defaultAboutData
-//   }
-// }
+    if (error) {
+        return <div>Error: {error}</div>;
+    }
 
-export default async function ÜberMich() {
-  // const data = await getAboutData();
+    if (!data) {
+        return <div>Loading...</div>;
+    } 
 
   return (
     <section
@@ -88,12 +86,12 @@ export default async function ÜberMich() {
           <div className="flex flex-col gap-4">
             <AnimateIn animation="slide-up">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                {defaultAboutData.title}
+                {data[0].P_tittle}
               </h2>
             </AnimateIn>
             <AnimateIn animation="slide-up" delay={0.1}>
               <p className="text-muted-foreground md:text-lg">
-                {defaultAboutData.description}
+                {data[0].personal_deatails}
               </p>
             </AnimateIn>
           </div>
