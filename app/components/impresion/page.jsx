@@ -2,11 +2,13 @@ import React from "react";
 import UniversalFoto from "../../../asset/images/R.jpg";
 import { HeroSection } from "../HeroComponent/page";
 
+
 export default function Impresionpage() {
   return (
     <div>
       <HeroSection backgroundImage={UniversalFoto.src} />
       <div className="max-w-7xl mx-auto px-4 sm:px-6  pb-24 lg:px-8 py-16 rounded-lg">
+       
         <h1 className="text-3xl font-bold text-center mb-8">Impressum</h1>
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-4">Angaben gemäß § 5 TMG</h2>
@@ -24,7 +26,7 @@ export default function Impresionpage() {
             <a
               href="mailto:info@baus-physiotherapie.de"
               className="text-blue-500 underline"
-            >
+              >
               info@baus-physiotherapie.de
             </a>
           </p>
@@ -97,7 +99,7 @@ export default function Impresionpage() {
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-500 underline"
-            >
+              >
               https://ec.europa.eu/consumers/odr/
             </a>
             .
@@ -124,7 +126,7 @@ export default function Impresionpage() {
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-500 underline"
-            >
+              >
               https://www.e-recht24.de
             </a>
           </p>

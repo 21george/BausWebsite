@@ -71,33 +71,39 @@ export default function Kontakt() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (validateForm()) {
-      setLoading(true);
-      try {
-        const result = await submitcontact(formData);
-        if (result.success) {
-          setFormSubmitted(true);
-          setFormData({
-            fullname: "",
-            email: "",
-            telefone: "",
-            message: "",
-            datenschutz: false,
-            date: "",
-          });
-        } else {
-          console.error(result.error);
-        }
-      } catch (error) {
-        console.error("Error submitting form:", error);
-      } finally {
-        setLoading(false);
-      }
-    }
-  };
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  if (validateForm()) {
+    setLoading(true);
+    try {
+      const result = await submitcontact(formData);
+      if (result.success) {
+        const emailResponse = await fetch('/api/sendEmail', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
 
+        const emailResult = await emailResponse.json();
+        if (emailResult.success) {
+          setFormSubmitted(true);
+          setFormData({ fullname: "", email: "", telefone: "", message: "", datenschutz: false, date: "",});
+        } else {
+          console.error(emailResult.error);
+        }
+      } else {
+        console.error(result.error);
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    } finally {
+      setLoading(false);
+    }
+  }
+};
+  
   useEffect(() => {
     const fetchContacts = async () => {
       const result = await getContact();
