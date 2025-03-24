@@ -17,15 +17,21 @@ async function getDialoBlog() {
 
 export default function DeatailsList() {
   const [datadetails, setDatadetails] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchData() {
       const data = await getDialoBlog();
       setDatadetails(data);
+      setLoading(false);
     }
 
     fetchData();
   }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="p-6 space-y-6">

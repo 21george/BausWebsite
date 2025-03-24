@@ -39,18 +39,15 @@ export default function Footerpage() {
             <span className="text-2xl font-semibold">Nikolina Baus</span>
           </a>
         </div>
-        <div className="grid grid-cols-2 text-sm gap-x-6 gap-y-8 lg:w-2/3 sm:grid-cols-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 text-sm gap-x-6 gap-y-8 lg:w-2/3 lg:grid-cols-4">
           {Object.entries(footerLinks).map(([section, links]) => (
             <div key={section} className="space-y-3">
               <h3 className="text-lg font-semibold">
                 {section.charAt(0).toUpperCase() + section.slice(1)}
               </h3>
-              <ul className="space-y-2">
+              <ul className="fa-ul">
                 {links.map((link, idx) => (
-                  <li
-                    key={idx}
-                    className="text-gray-600 flex items-center space-x-2 text-base"
-                  >
+                  <li key={idx} className="text-gray-600 flex items-center space-x-2 text-base mb-3">
                     {section === "Adresse" && <FaMapMarkerAlt />}
                     {section === "Telefon" && <FaPhone />}
                     {section === "EMail" && <FaEnvelope />}

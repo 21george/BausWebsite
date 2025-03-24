@@ -5,36 +5,11 @@ import { motion } from "framer-motion";
 import { AnimateIn } from "./animate-in";
 import { getAboutme } from "../../actions/aboutme/Getaboutme";
 import { useEffect, useState } from "react";
+import DrawerButton from "../drowcomp/page";
 
 // Default data as fallback
 const defaultAboutData = {
-  title: "Urber Mich",
-  description:
-    "Ein herzliches Hallo und willkommen auf meiner Webseite.\nIch, Nikolina Baus bin staatlich geprüfte Physiotherapeutin und neben meinen weiteren Zusatzqualifikationen in der Physiotherapie interessiere ich mich auch für die Medizin.\n\nDas lernen rund um den menschlichen Körper bereitet mir unheimlich viel Freude, genauso wie Menschen eine Stütze zu sein damit sie ihre Ziele erreichen.\nMit jeder Herausforderung, die meine Patienten mitbringen wächst stetig mein Wissen und lässt mich mit meinem Patienten wachsen - denn jeder Körper ist einzigartig.\nMein Interesse an den unterschiedlichsten Bereichen in der Physiotherapie hat mich von einer psychosomatischen Klinik zu der BG Unfallklinik Murnau sowie zu einer Gynäkologischen Praxis in Karlsfeld und außerdem noch zum bayrischen Gewichtheber Verband geführt.\nMittlerweile habe ich meine zwei Hauptspezialisierungen gefunden - die physiotherapeutische Gynäkologie im Zusammenhang mit der Urologie und Proktologie und zur Trainingstherapie.\nUm für mich einen Ausgleich zu finden beschloss ich vor 2 Jahren eine Ausbildung zur physiotherapeutischen Yogalehrerin zu absolvieren - diese habe ich zwischenzeitlich erfolgreich abgeschlossen und versuche seither diese Ausgeglichenheit in meinem Kurs an jeden einzelnen Teilnehmer weiterzugeben.\n\n\nIch freue mich auf Ihren Besuch.\n\n\nHerzlichst,\n\nIhre Nikolina Baus",
-  mission: {
-    title: "Our Mission",
-    description:
-      "To empower individuals with personalized therapeutic solutions that enhance their quality of life and physical well-being.",
-  },
-  vision: {
-    title: "Our Vision",
-    description:
-      "To create a world where everyone has access to expert physiotherapy care and the knowledge to maintain optimal physical health.",
-  },
-  stats: [
-    {
-      value: "2000+",
-      label: "Patients Treated",
-    },
-    {
-      value: "15+",
-      label: "Expert Therapists",
-    },
-    {
-      value: "25+",
-      label: "Treatment Types",
-    },
-  ],
+ 
   images: [
     {
       url: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop",
@@ -91,8 +66,9 @@ export default function ÜberMich() {
             </AnimateIn>
             <AnimateIn animation="slide-up" delay={0.1}>
               <p className="text-muted-foreground md:text-lg">
-                {data[0].personal_deatails}
+                {data[0].short_text}
               </p>
+          <DrawerButton className="self-start bg-amber-950 w-40 h-11 rounded-sm text-yellow-50"/>
             </AnimateIn>
           </div>
           {/* Images Grid */}

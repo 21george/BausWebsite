@@ -3,8 +3,7 @@ import { useState } from "react";
 const cardsData = [
   {
     title: "Yoga",
-    description:
-      "Combine the power of Data Science, Machine Learning and Deep Learning to create powerful AI for Real-World applications.",
+    description: "",
     meta: ["Playlist", "14 videos", "FullHD", "2:23:04"],
     img: "https://images.unsplash.com/photo-1599447421416-3414500d18a5?q=80&w=2070&auto=format&fit=crop",
     video: "https://www.w3schools.com/html/mov_bbb.mp4",
@@ -48,7 +47,7 @@ export default function PromoCards() {
         {cardsData.map((card, index) => (
           <div
             key={index}
-            className={`relative flex flex-col justify-end w-1/3 h-[472px] gap-2 cursor-pointer overflow-hidden transition-all duration-500 ${
+            className={`relative flex flex-col justify-end w-1/2 h-[272px] gap-2 cursor-pointer overflow-hidden transition-all duration-500 ${
               currentCard === index ? "w-2/3" : "opacity-90"
             }`}
             onMouseEnter={() => setCurrentCard(index)}
@@ -68,17 +67,11 @@ export default function PromoCards() {
                 ))}
               </h2>
               {currentCard === index && (
-                <p className="mt-2 text-lg text-gray-400 transition-opacity z-10 duration-300">
+                <p className="mt-1 text-sl  transition-opacity z-10 duration-300">
                   {card.description}
                 </p>
               )}
-              <ul className="flex text-sm text-gray-400 mt-2">
-                {card.meta.map((item, i) => (
-                  <li key={i} className="mr-2">
-                    {item} {i < card.meta.length - 1 && "•"}
-                  </li>
-                ))}
-              </ul>
+            
             </div>
           </div>
         ))}

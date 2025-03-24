@@ -41,8 +41,12 @@ export default function Physiotherapie() {
         titleStyles="text-lg font-bold"
         containerStyles="mb-8"
       />
+      <div className="conatiner mx-auto mt-12 mb-8">
       <ArticleSection />
-      <PromoCards />
+      </div>
+      <div className="flex flex-col items-center text-white md-12">
+        <PromoCards/>
+      </div>
     </>
   );
 }
