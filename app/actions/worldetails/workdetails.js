@@ -3,19 +3,33 @@ import { createClient } from "../../../utils/superbase/server";
 
 export async function getWorkdetailsById(id) {
     const supabase = await createClient();
-    try {
-        const { data, error } = await supabase
+ try {
+        // First get work details
+        const { data: workDetail, error: workError } = await supabase
             .from("workdetails")
             .select("*")
             .eq("id", id)
-            .single(); // Using single() instead of checking data.length
+            .single();
         
-        if (error) throw error;
-        if (!data) {
+        if (workError) throw workError;
+        if (!workDetail) {
             return { success: false, error: "Work detail not found", status: 404 };
         }
+
+        // Then get Heilkunde info (you might want to filter this)
+        const { data: heilkundeData, error: heilkundeError } = await supabase
+            .from("HeilkundeInfos")
+            .select("*");
         
-        return { success: true, data };
+        if (heilkundeError) throw heilkundeError;
+
+        // Combine the data
+        const combinedData = {
+            ...workDetail,
+            HeilkundeInfos: heilkundeData
+        };
+
+        return { success: true, data: combinedData };
     } catch (error) {
         return { 
             success: false, 

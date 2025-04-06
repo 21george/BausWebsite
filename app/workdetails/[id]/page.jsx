@@ -207,7 +207,6 @@ export default function WorkDetailPage() {
               </ul>
             </section>
           )}
-
           {/* External Link Button */}
           {detail.externalUrl && (
             <motion.div 
@@ -250,7 +249,7 @@ export default function WorkDetailPage() {
           <p className="text-sm text-gray-500 md:text-4xl   mb-2">
               {detail.cost}
             </p>
-          </div>
+          </div> 
         </motion.div>
       </div>
     </motion.div>

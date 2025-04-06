@@ -59,7 +59,7 @@ export default function Physiotherapie() {
           containerStyles="mb-8 md:mb-12"
         />
         
-        <div className="container mx-auto mt-8 md:mt-12 mb-6 md:mb-10 px-4 sm:px-6">
+        <div className="container mx-auto mt-8 md:mt-10 mb-6 md:mb-10 px-4 sm:px-6">
           <ArticleSection 
             articles={articles} 
             onReadMore={handleReadMore} 
@@ -71,7 +71,7 @@ export default function Physiotherapie() {
           role="img"
           aria-label="Motivational walk depiction"
         >
-          <div className="flex flex-col w-full max-w-2xl md:max-w-3xl lg:max-w-4xl overflow-hidden rounded-lg">
+          <div className="flex flex-col w-full  mt-1 max-w-2xl md:max-w-3xl lg:max-w-4xl overflow-hidden rounded-lg">
             <Image
               src={WomenWorld.src}
               alt="A woman practicing yoga"
