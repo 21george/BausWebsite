@@ -1,11 +1,10 @@
 {
   "name": "bauspraxis",
-  "license" : "MIT" ,
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "npm run build",
     "start": "next start",
     "lint": "next lint"
   },
