@@ -18,7 +18,7 @@ export default function Home() {
     <main className="dark:bg-gray-100 font-[family-name:var(--font-geist-sans)]">
       <div>
         <HeroSection
-          backgroundImage="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop"
+          backgroundImage={UniversalFoto.src}
           title="Nikolina Baus"
           subtitle="Holistische Physiotherapie auf dem neusten Stand der Wissenschaft"
         />

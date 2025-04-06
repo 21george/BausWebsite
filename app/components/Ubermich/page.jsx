@@ -1,5 +1,4 @@
-"use client"
-
+"use client";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { AnimateIn } from "./animate-in";
@@ -7,106 +6,95 @@ import { getAboutme } from "../../actions/aboutme/Getaboutme";
 import { useEffect, useState } from "react";
 import DrawerButton from "../drowcomp/page";
 
-// Default data as fallback
+// Local images from public folder
 const defaultAboutData = {
- 
   images: [
     {
-      url: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop",
-      alt: "Team collaborating in modern therapy space",
+      url: "/Images/IMG_3385.png",
+      alt: "Image 1",
     },
     {
-      url: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2070&auto=format&fit=crop",
-      alt: "Modern physiotherapy equipment",
-    },
-    {
-      url: "https://images.unsplash.com/photo-1552581234-26160f608093?q=80&w=2070&auto=format&fit=crop",
-      alt: "Physiotherapy session in progress",
-    },
+      url: "/Images/IMG_1485.jpg",
+      alt: "Image 2",
+    }
   ],
 };
 
 export default function ÜberMich() {
-    const [data, setData] = useState(null);
-    const [error, setError] = useState(null);
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
 
-    useEffect(() => {
-        async function fetchData() {
-            const result = await getAboutme();
-            if (result.success) {
-                setData(result.data);
-            } else {
-                setError(result.error);
-            }
-        }
-        fetchData();
-    }, []);
-
-    if (error) {
-        return <div>Error: {error}</div>;
+  useEffect(() => {
+    async function fetchData() {
+      const result = await getAboutme();
+      if (result.success) {
+        setData(result.data);
+      } else {
+        setError(result.error);
+      }
     }
+    fetchData();
+  }, []);
 
-    if (!data) {
-        return <div>Loading...</div>;
-    } 
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  if (!data) {
+    return <div></div>;
+  }
+
+  const localImages = data[0]?.images || defaultAboutData.images; 
 
   return (
-    <section
-      id="about"
-      className="w-full py-12 md:py-24 lg:py-32 flex justify-center"
-    >
-      <div className="container px-4 md:px-6">
-        <div className="grid gap-8 lg:grid-cols-2 items-center">
-          {/* Content */}
-          <div className="flex flex-col gap-4">
-            <AnimateIn animation="slide-up">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+    <section className="py-12 md:py-20 lg:py-40 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[2000px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-20">
+        {/* Content */}
+        <div className="space-y-6 md:space-y-8 ml-12 lg:space-y-12 text-center lg:text-left order-2 lg:order-1">
+          <AnimateIn animation="slide-up">
+            <div className="space-y-2 md:space-y-4">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-wide">
                 {data[0].P_tittle}
               </h2>
-            </AnimateIn>
-            <AnimateIn animation="slide-up" delay={0.1}>
-              <p className="text-muted-foreground md:text-lg">
-                {data[0].short_text}
-              </p>
-          <DrawerButton className="self-start bg-amber-950 w-40 h-11 rounded-sm text-yellow-50"/>
-            </AnimateIn>
-          </div>
-          {/* Images Grid */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="grid grid-cols-2 gap-4"
-          >
-            <div className="space-y-4">
-              {defaultAboutData.images.slice(0, 2).map((image, index) => (
-                <div key={index} className="overflow-hidden rounded-lg">
-                  <Image
-                    src={image.url || "/placeholder.svg"}
-                    width={300}
-                    height={index === 0 ? 400 : 300}
-                    alt={image.alt}
-                    className={`h-[${index === 0 ? "200px" : "250px"}] sm:h-[${
-                      index === 0 ? "300px" : "250px"
-                    }] w-full object-cover transition-transform hover:scale-105`}
-                  />
-                </div>
-              ))}
             </div>
-            <div className="mt-8">
-              <div className="overflow-hidden rounded-lg">
-                <Image
-                  src={defaultAboutData.images[2].url || "/placeholder.svg"}
-                  width={300}
-                  height={500}
-                  alt={defaultAboutData.images[2].alt}
-                  className="h-[400px] sm:h-[400px] w-full object-cover transition-transform hover:scale-105"
-                />
-              </div>
+          </AnimateIn>
+          <AnimateIn animation="slide-up" delay={0.1}>
+            <p className="text-gray leading-relaxed lg:mr-14 text-sm sm:text-base md:text-lg mb-6 sm:mb-8 max-w-2xl mx-auto lg:mx-0">
+              {data[0].short_text}
+            </p>
+            <div className="flex justify-center lg:justify-start">
+              <DrawerButton className="group text-xs sm:text-sm tracking-[0.2em] hover:text-white/50 transition-colors flex items-center gap-4 sm:gap-6 mt-6 sm:mt-8">
+                VIEW MORE
+                <span className="h-[1px] w-8 sm:w-12 bg-current transform transition-transform group-hover:translate-x-2 sm:group-hover:translate-x-4"></span>
+              </DrawerButton>
             </div>
-          </motion.div>
+          </AnimateIn>
         </div>
+        
+        {/* Images Grid */}
+        <motion.div 
+          initial={{ opacity: 0 }} 
+          whileInView={{ opacity: 1 }} 
+          viewport={{ once: true }} 
+          transition={{ duration: 0.5 }} 
+          className="grid grid-cols-2 gap-4 sm:gap-6 order-1 lg:order-2"
+        >
+          {localImages.slice(0, 2).map((image, index) => (
+            <div 
+              key={index} 
+              className={`w-full aspect-[3/4] overflow-hidden ${index === 1 ? 'mt-8 sm:mt-12 lg:mt-20' : ''}`}
+            >
+              <Image 
+                src={image.url} 
+                width={600} 
+                height={800} 
+                alt={image.alt}
+                className="w-full h-full object-cover hover:scale-[1.02] transition-transform duration-700"
+                priority={index === 0} 
+              />
+            </div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );

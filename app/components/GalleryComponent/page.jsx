@@ -24,7 +24,7 @@ const Gallery = ({ title, description, images, moreLink }) => {
                 src={image.src}
                 alt={image.alt}
                 loading="lazy"
-                className="inset-0 h-full w-full object-cover transition duration-200 "
+                className="inset-0 h-full w-full object-cover hover:scale-[1.02] transition-transform duration-700 "
               />
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-t  via-transparent to-transparent opacity-50"></div>
               <span className="ml-4 mb-3 inline-block text-sm text-white md:ml-5 md:text-lg">

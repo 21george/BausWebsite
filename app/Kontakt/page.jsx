@@ -21,12 +21,11 @@ const contactInfo = {
     {
       heading: "Rufen Sie uns an",
       content: "015-29107771",
-      // additionalInfo: "MO – DO (8UHR – 19UHR)\nFR (8UHR – 16UHR)",
+      additionalInfo: "MO – DO (8UHR – 19UHR)\nFR (8UHR – 16UHR)",
     },
     {
       heading: "Schreiben Sie uns eine Mail",
-      content: "info@physiokitchen.de",
-      // additionalInfo: "24/7/365",
+      content: "info@baus-physiotherapie.de",
     },
   ],
 };
@@ -71,38 +70,38 @@ export default function Kontakt() {
     return Object.keys(newErrors).length === 0;
   };
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  if (validateForm()) {
-    setLoading(true);
-    try {
-      const result = await submitcontact(formData);
-      if (result.success) {
-        const emailResponse = await fetch('/api/sendEmail', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(formData),
-        });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (validateForm()) {
+      setLoading(true);
+      try {
+        const result = await submitcontact(formData);
+        if (result.success) {
+          const emailResponse = await fetch('/api/sendEmail', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+          });
 
-        const emailResult = await emailResponse.json();
-        if (emailResult.success) {
-          setFormSubmitted(true);
-          setFormData({ fullname: "", email: "", telefone: "", message: "", datenschutz: false, date: "",});
+          const emailResult = await emailResponse.json();
+          if (emailResult.success) {
+            setFormSubmitted(true);
+            setFormData({ fullname: "", email: "", telefone: "", message: "", datenschutz: false, date: "",});
+          } else {
+            console.error(emailResult.error);
+          }
         } else {
-          console.error(emailResult.error);
+          console.error(result.error);
         }
-      } else {
-        console.error(result.error);
+      } catch (error) {
+        console.error("Error submitting form:", error);
+      } finally {
+        setLoading(false);
       }
-    } catch (error) {
-      console.error("Error submitting form:", error);
-    } finally {
-      setLoading(false);
     }
-  }
-};
+  };
   
   useEffect(() => {
     const fetchContacts = async () => {
@@ -169,9 +168,10 @@ const handleSubmit = async (e) => {
             </h3>
             <form className="space-y-4" onSubmit={handleSubmit}>
               {formSubmitted && (
-                <p className="text-green-600">
-                  Ihre Nachricht wurde erfolgreich gesendet!
-                </p>
+                <div className="p-4 mb-4 text-green-700 bg-green-100 rounded-lg">
+                  <p className="font-bold">Vielen Dank für Ihre Kontaktaufnahme!</p>
+                  <p>Wir haben Ihre Nachricht erhalten und werden uns bald bei Ihnen melden.</p>
+                </div>
               )}
               <div>
                 <input

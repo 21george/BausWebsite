@@ -1,4 +1,4 @@
-"use client";
+
 import React from "react";
 import WalkFoto from "../../asset/images/WayRoom.png";
 import { motion } from "framer-motion";
@@ -7,12 +7,7 @@ export default function Moltivation() {
   return (
     <div className="p-5 mx-auto sm:p-10 md:p-16 dark:bg-gray-100">
       <div className="flex flex-col max-w-3xl mx-auto overflow-hidden rounded">
-        <motion.dev
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center space-y-4"
-        >
+       
           <img
             src={WalkFoto.src}
             alt="A motivational walk depiction"
@@ -28,7 +23,7 @@ export default function Moltivation() {
               <h2 className="text-2xl">Der Alchemist</h2>
             </div>
           </div>
-        </motion.dev>
+      
       </div>
     </div>
   );

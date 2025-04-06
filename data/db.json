@@ -2,7 +2,7 @@
   "workdetails": [
     {
       "id": 1,
-      "image": "../images/Massage.png",
+      "image": "/images/Massage.png",
       "title": "Physiotherapie",
       "description": "Sie haben Rückenschmerzen? Sie haben sich im Training verletzt? Oder Sie haben andere Beschwerden?Hierbei unterstzütze ich Sie gerne bis wir einen gemeinsamen Weg finden, um Ihre Beschwerden langfristig zu lindern.",
       "details": "Sie erwartet in der Therapie ...",
@@ -10,7 +10,7 @@
     },
     {
       "id": 2,
-      "image": "asset/images/IMG_3361.png",
+      "image": "/images/IMG_3361.png",
       "title": "Yoga",
       "description": "Hier in der Praxis finden Sie am Mittwoch & Freitag PhysioFlowYoga by Alexandra Hägler.",
       "details": "Hier in der Praxis finden Sie ...",

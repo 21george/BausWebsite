@@ -10,8 +10,8 @@ export default function Navigationber() {
   const links = [
     { id: 1, link: "/", name: "Startseite" },
     { id: 2, link: "Physiotherapie", name: "Physiotherapie" },
-    { id: 3, link: "Kontakt", name: "Kontaks" },
     { id: 4, link: "Heilkunde", name: "Heilkunde für Frauen" },
+    { id: 3, link: "Kontakt", name: "Kontaks" },
   ];
 
   return (

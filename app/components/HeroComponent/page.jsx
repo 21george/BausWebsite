@@ -18,12 +18,13 @@ export function HeroSection({
     >
       {/* Background Image */}
       <Image
-        src={backgroundImage || "/placeholder.svg"}
+        src={backgroundImage || "/placeholder.svg" || "/placholder.png"}
         alt={imageAlt}
         fill
         priority
-        className="object-cover object-center"
+        className="object-cover object-center brightness-80"
         quality={100}
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
       />
 
       {/* Dark Overlay */}
