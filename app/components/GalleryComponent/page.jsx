@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import Image from "next/image"; // Recommended over native img tag
+import Image from "next/image"; 
 
 export default function Gallery({ title, description, images = [] }) {
   return (
