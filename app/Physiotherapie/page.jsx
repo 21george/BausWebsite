@@ -5,7 +5,7 @@ import PhysiotherapieImage from "../../asset/images/IMG_2931.jpg";
 import WomenWorld from "../../asset/images/Massag.png";
 import { getPhysiotherapieD } from "../actions/Physiotherapie/GetPhysiotherapie";
 import ArticleSection from "../components/ArticleSection/page";
-import { HeroSection } from "../components/HeroComponent/page";
+import { HeroSection } from "../components/HeroComponent/HeroSection";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
