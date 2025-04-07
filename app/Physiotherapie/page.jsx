@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import PhysiotherapieImage from "../../asset/images/IMG_2931.jpg";
+import PhysiotherapieImage from "../../asset/images/IMG_2931.png";
 import WomenWorld from "../../asset/images/Massag.png";
 import { getPhysiotherapieD } from "../actions/Physiotherapie/GetPhysiotherapie";
 import ArticleSection from "../components/ArticleSection/page";
