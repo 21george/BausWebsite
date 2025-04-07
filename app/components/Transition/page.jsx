@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion";
 
-export default function Transition({ children }) {
+export default function Transition(props) {
+  const { children } = props;
   return (
     <motion.div
       initial={{ y: 20, opacity: 0 }}
