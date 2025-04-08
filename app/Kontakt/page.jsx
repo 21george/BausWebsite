@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import ServiceImage from "../../asset/images/IMG_4955.jpg";
-import { HeroSection } from "../components/HeroComponent/page";
+import { HeroSection } from "../components/HeroComponent/HeroSection";
 import { submitcontact } from "../actions/contactaction/SubmitContact";
 import { getContact } from "../actions/contactaction/GetContact";
 import { motion } from "framer-motion";
