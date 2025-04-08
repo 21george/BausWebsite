@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import UnivasHero from "../../asset/images/image0.jpeg";
 import HeilkundeGrid from "../components/HeilkundeComponents/HeilkundeGrid";
 import HeilkundeSection from "../components/HeilkundeComponents/HeilkundeSection";
-import { HeroSection } from "../components/HeroComponent/HeroSection";
+import { HeroSection } from "../components/HeroComponent/page";
 import { getHeilkundeInfo } from "../actions/HeilkundeAction/GetHeilkunde";
 import WomenWorld from "../../asset/images/womenyoga.png";
 import { motion } from "framer-motion";

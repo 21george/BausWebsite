@@ -6,7 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { FiArrowLeft, FiExternalLink } from "react-icons/fi";
 import { motion } from "framer-motion";
-import { HeroSection } from "../../components/HeroComponent/HeroSection";
+import { HeroSection } from "../../components/HeroComponent/page";
 
 import defaultImage1 from "../../../asset/images/Massag.png";
 import defaultImage2 from "../../../asset/images/IMG_3385.png";

@@ -1,6 +1,6 @@
 import React from "react";
 import UniversalFoto from "../../../asset/images/R.jpg";
-import { HeroSection } from "../HeroComponent/HeroSection";
+import { HeroSection } from "../HeroComponent/page";
 
 export default function Impresionpage() {
   return (
