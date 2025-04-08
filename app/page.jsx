@@ -11,7 +11,7 @@ import Terapybed2 from "./../asset/images/IMG_2931.png";
 import Ratingpage from "./components/Rating/page";
 import ÜberMich from "./components/Ubermich/page";
 import DynamicSection from "./Deatails/page";
-import { HeroSection } from "./components/HeroComponent/page";
+import { HeroSection } from "./components/HeroComponent/HeroSection";
 
 export default function Home() {
   return (
