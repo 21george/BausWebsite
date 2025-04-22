@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { AnimateIn } from "./animate-in";
 import { getAboutme } from "../../actions/aboutme/Getaboutme";
 import { useEffect, useState } from "react";
 import DrawerButton from "../drowcomp/page";
@@ -51,14 +50,22 @@ export default function ÜberMich() {
       <div className="max-w-[2000px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-20">
         {/* Content */}
         <div className="space-y-6 md:space-y-8 ml-12 lg:space-y-12 text-center lg:text-left order-2 lg:order-1">
-          <AnimateIn animation="slide-up">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
             <div className="space-y-2 md:space-y-4">
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-wide">
                 {data[0].P_tittle}
               </h2>
             </div>
-          </AnimateIn>
-          <AnimateIn animation="slide-up" delay={0.1}>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
             <p className="text-gray leading-relaxed lg:mr-14 text-sm sm:text-base md:text-lg mb-6 sm:mb-8 max-w-2xl mx-auto lg:mx-0">
               {data[0].short_text}
             </p>
@@ -68,9 +75,9 @@ export default function ÜberMich() {
                 <span className="h-[1px] w-8 sm:w-12 bg-current transform transition-transform group-hover:translate-x-2 sm:group-hover:translate-x-4"></span>
               </DrawerButton>
             </div>
-          </AnimateIn>
+          </motion.div>
         </div>
-        
+
         {/* Images Grid */}
         <motion.div 
           initial={{ opacity: 0 }} 
