@@ -118,7 +118,7 @@ export default function DetailsList({ id }) {
               <Image
                 src={workImages[details.id]}
                 alt={details.title || "Work detail image"}
-                className="inset-0 h-full w-full object-cover hover:opacity-90 transition-opacity"
+                className="inset-0 w-full md:w-[800px] h-auto max-h-[400px]  object-cover hover:opacity-90 transition-opacity"
                 priority={index < 3}
               />
             ) : (
