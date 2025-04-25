@@ -4,7 +4,7 @@ import { HeroSection } from "../HeroComponent/HeroSection";
 
 export default function Impresionpage() {
   return (
-    <>
+    <main className="flex flex-col w-full h-auto">
       <HeroSection
         backgroundImage={UniversalFoto.src}
         aria-label="Impressum header image"
@@ -15,11 +15,11 @@ export default function Impresionpage() {
         <section className="mb-12" aria-labelledby="legal-details">
           <h2
             id="legal-details"
-            className="text-xl sm:text-2xl font-semibold mb-6"
+            className="text-lg sm:text-xl md:text-2xl font-semibold mb-6"
           >
             Angaben gemäß § 5 TMG
           </h2>
-          <address className="text-base sm:text-lg not-italic">
+          <address className="text-sm sm:text-base md:text-lg not-italic">
             Nikolina Baus
             <br />
             Forstenrieder Allee 140F
@@ -31,11 +31,11 @@ export default function Impresionpage() {
         <section className="mb-12" aria-labelledby="contact-info">
           <h2
             id="contact-info"
-            className="text-xl sm:text-2xl font-semibold mb-6"
+            className="text-lg sm:text-xl md:text-2xl font-semibold mb-6"
           >
             Kontakt
           </h2>
-          <p className="text-base sm:text-lg">
+          <p className="text-sm sm:text-base md:text-lg">
             <a
               href="mailto:info@baus-physiotherapie.de"
               className="text-blue-600 hover:text-blue-800 underline transition-colors"
@@ -48,11 +48,11 @@ export default function Impresionpage() {
         <section className="mb-12" aria-labelledby="content-liability">
           <h2
             id="content-liability"
-            className="text-xl sm:text-2xl font-semibold mb-6"
+            className="text-lg sm:text-xl md:text-2xl font-semibold mb-6"
           >
             Haftung für Inhalte
           </h2>
-          <div className="space-y-4 text-base sm:text-lg">
+          <div className="space-y-4 text-sm sm:text-base md:text-lg">
             <p>
               Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene
               Inhalte auf diesen Seiten nach den allgemeinen Gesetzen
@@ -75,11 +75,11 @@ export default function Impresionpage() {
         <section className="mb-12" aria-labelledby="link-liability">
           <h2
             id="link-liability"
-            className="text-xl sm:text-2xl font-semibold mb-6"
+            className="text-lg sm:text-xl md:text-2xl font-semibold mb-6"
           >
             Haftung für Links
           </h2>
-          <div className="space-y-4 text-base sm:text-lg">
+          <div className="space-y-4 text-sm sm:text-base md:text-lg">
             <p>
               Unser Angebot enthält Links zu externen Websites Dritter, auf
               deren Inhalte wir keinen Einfluss haben. Deshalb können wir für
@@ -99,76 +99,8 @@ export default function Impresionpage() {
           </div>
         </section>
 
-        <section className="mb-12" aria-labelledby="copyright-info">
-          <h2
-            id="copyright-info"
-            className="text-xl sm:text-2xl font-semibold mb-6"
-          >
-            Urheberrecht
-          </h2>
-          <div className="space-y-4 text-base sm:text-lg">
-            <p>
-              Die durch die Seitenbetreiber erstellten Inhalte und Werke auf
-              diesen Seiten unterliegen dem deutschen Urheberrecht. Die
-              Vervielfältigung, Bearbeitung, Verbreitung und jede Art der
-              Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der
-              schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.
-              Downloads und Kopien dieser Seite sind nur für den privaten, nicht
-              kommerziellen Gebrauch gestattet.
-            </p>
-            <p>
-              Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt
-              wurden, werden die Urheberrechte Dritter beachtet. Insbesondere
-              werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie
-              trotzdem auf eine Urheberrechtsverletzung aufmerksam werden,
-              bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von
-              Rechtsverletzungen werden wir derartige Inhalte umgehend
-              entfernen.
-            </p>
-          </div>
-        </section>
-
-        <section className="mb-12" aria-labelledby="dispute-resolution">
-          <h2
-            id="dispute-resolution"
-            className="text-xl sm:text-2xl font-semibold mb-6"
-          >
-            EU-Streitschlichtung
-          </h2>
-          <div className="space-y-4 text-base sm:text-lg">
-            <p>
-              Die Europäische Kommission stellt eine Plattform zur
-              Online-Streitbeilegung (OS) bereit:{" "}
-              <a
-                href="https://ec.europa.eu/consumers/odr/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-600 hover:text-blue-800 underline transition-colors"
-              >
-                https://ec.europa.eu/consumers/odr/
-              </a>
-              .
-            </p>
-            <p>Unsere E-Mail-Adresse finden Sie oben im Impressum.</p>
-          </div>
-        </section>
-
-        <section className="mb-12" aria-labelledby="consumer-dispute">
-          <h2
-            id="consumer-dispute"
-            className="text-xl sm:text-2xl font-semibold mb-6"
-          >
-            Verbraucherstreitbeilegung/Universalschlichtungsstelle
-          </h2>
-          <p className="text-base sm:text-lg">
-            Wir sind nicht bereit oder verpflichtet, an
-            Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle
-            teilzunehmen.
-          </p>
-        </section>
-
         <footer className="mt-12 pt-6 border-t border-gray-200">
-          <p className="text-base sm:text-lg">
+          <p className="text-sm sm:text-base md:text-lg">
             <strong>Quelle:</strong>{" "}
             <a
               href="https://www.e-recht24.de"
@@ -181,6 +113,6 @@ export default function Impresionpage() {
           </p>
         </footer>
       </article>
-    </>
+    </main>
   );
 }
