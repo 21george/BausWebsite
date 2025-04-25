@@ -47,11 +47,41 @@ export default function Footerpage() {
               </h3>
               <ul className="fa-ul">
                 {links.map((link, idx) => (
-                  <li key={idx} className="text-gray-600 flex items-center space-x-2 text-base mb-3">
-                    {section === "Adresse" && <FaMapMarkerAlt />}
-                    {section === "Telefon" && <FaPhone />}
-                    {section === "EMail" && <FaEnvelope />}
-                    <span>{link}</span>
+                  <li
+                    key={idx}
+                    className="text-gray-600 flex items-center space-x-2 text-base mb-3"
+                  >
+                    {section === "Adresse" && (
+                      <>
+                        <FaMapMarkerAlt />
+                        <a
+                          href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                            link
+                          )}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="hover:underline"
+                        >
+                          {link}
+                        </a>
+                      </>
+                    )}
+                    {section === "Telefon" && (
+                      <>
+                        <FaPhone />
+                        <a href={`tel:${link}`} className="hover:underline">
+                          {link}
+                        </a>
+                      </>
+                    )}
+                    {section === "EMail" && (
+                      <>
+                        <FaEnvelope />
+                        <a href={`mailto:${link}`} className="hover:underline">
+                          {link}
+                        </a>
+                      </>
+                    )}
                   </li>
                 ))}
               </ul>

@@ -23,8 +23,8 @@ export default function DetailsList({ id }) {
       try {
         setLoading(true);
         setError(null);
-        
-        const result = id 
+
+        const result = id
           ? await getWorkdetailsById(id)
           : await getAllWorkdetails();
 
@@ -70,8 +70,16 @@ export default function DetailsList({ id }) {
         <div className="bg-red-50 border-l-4 border-red-500 p-4">
           <div className="flex">
             <div className="flex-shrink-0">
-              <svg className="h-5 w-5 text-red-500" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+              <svg
+                className="h-5 w-5 text-red-500"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                  clipRule="evenodd"
+                />
               </svg>
             </div>
             <div className="ml-3">
@@ -89,13 +97,23 @@ export default function DetailsList({ id }) {
         <div className="bg-blue-50 border-l-4 border-blue-500 p-4">
           <div className="flex">
             <div className="flex-shrink-0">
-              <svg className="h-5 w-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2h-1V9z" clipRule="evenodd" />
+              <svg
+                className="h-5 w-5 text-blue-500"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2h-1V9z"
+                  clipRule="evenodd"
+                />
               </svg>
             </div>
             <div className="ml-3">
               <p className="text-sm text-blue-700">
-                {id ? "No work detail found with that ID" : "No work details available"}
+                {id
+                  ? "No work detail found with that ID"
+                  : "No work details available"}
               </p>
             </div>
           </div>
@@ -109,11 +127,14 @@ export default function DetailsList({ id }) {
       {datadetails.map((details, index) => (
         <div
           key={details.id}
-          className={`flex flex-col overflow-hidden rounded-md shadow-sm h-auto lg:h-96 ${
+          className={`flex flex-col overflow-hidden w-auto h-auto lg:h-96 ${
             index % 2 !== 0 ? "lg:flex-row-reverse" : "lg:flex-row"
           }`}
         >
-          <Link href={`/detailslist/${details.id}`} className="block h-full lg:w-1/2">
+          <Link
+            href={`/detailslist/${details.id}`}
+            className="block h-full lg:w-1/2"
+          >
             {workImages[details.id] ? (
               <Image
                 src={workImages[details.id]}
@@ -122,14 +143,16 @@ export default function DetailsList({ id }) {
                 priority={index < 3}
               />
             ) : (
-              <div className="h-full w-full bg-gray-200 flex items-center justify-center">
+              <div className="h-full w-full bg-gray-100 flex items-center justify-center">
                 <span className="text-gray-500">No Image Available</span>
               </div>
             )}
           </Link>
 
-          <div className="flex flex-col justify-center flex-1 p-6 dark:bg-gray-50 lg:w-1/2">
-            <h3 className="text-3xl font-bold">{details.title || "Untitled Work"}</h3>
+          <div className="flex flex-col justify-center flex-1 p-12 dark:bg-gray-50 lg:w-1/2">
+            <h3 className="text-3xl font-bold">
+              {details.title || "Untitled Work"}
+            </h3>
             <p className="my-6 dark:text-gray-600 line-clamp-3">
               {details.description || "No description available"}
             </p>
@@ -143,9 +166,9 @@ export default function DetailsList({ id }) {
                 </button>
               </Link>
               {details.externalUrl && (
-                <a 
-                  href={details.externalUrl} 
-                  target="_blank" 
+                <a
+                  href={details.externalUrl}
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center border border-amber-950 w-40 h-11 rounded-sm text-amber-950 hover:bg-amber-50 transition-colors"
                 >

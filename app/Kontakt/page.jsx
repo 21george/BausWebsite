@@ -11,7 +11,7 @@ const contactInfo = {
     {
       title: "Kontakt",
       description:
-        "Sie möchten gerne einen Termin vereinbaren oder haben eine Frage an mich? ",
+        "Sie möchten gerne einen Termin vereinbaren oder haben eine Frage an mich?",
       details:
         "Füllen Sie das Kontaktformular aus, und ich melde mich zum nächstmöglichen Zeitpunkt bei Ihnen.",
       subtext: "Wir freuen uns über Ihre Nachricht",
@@ -21,7 +21,7 @@ const contactInfo = {
     {
       heading: "Rufen Sie uns an",
       content: "015-29107771",
-      additionalInfo: "MO – DO (8UHR – 19UHR)\nFR (8UHR – 16UHR)",
+      additionalInfo: "",
     },
     {
       heading: "Schreiben Sie uns eine Mail",
@@ -31,7 +31,14 @@ const contactInfo = {
 };
 
 export default function Kontakt() {
-  const [formData, setFormData] = useState({ fullname: "", email: "", telefone: "", message: "", datenschutz: false, date: "", });
+  const [formData, setFormData] = useState({
+    fullname: "",
+    email: "",
+    telefone: "",
+    message: "",
+    datenschutz: false,
+    date: "",
+  });
   const [errors, setErrors] = useState({});
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -77,10 +84,10 @@ export default function Kontakt() {
       try {
         const result = await submitcontact(formData);
         if (result.success) {
-          const emailResponse = await fetch('/api/sendEmail', {
-            method: 'POST',
+          const emailResponse = await fetch("/api/sendEmail", {
+            method: "POST",
             headers: {
-              'Content-Type': 'application/json',
+              "Content-Type": "application/json",
             },
             body: JSON.stringify(formData),
           });
@@ -88,7 +95,14 @@ export default function Kontakt() {
           const emailResult = await emailResponse.json();
           if (emailResult.success) {
             setFormSubmitted(true);
-            setFormData({ fullname: "", email: "", telefone: "", message: "", datenschutz: false, date: "",});
+            setFormData({
+              fullname: "",
+              email: "",
+              telefone: "",
+              message: "",
+              datenschutz: false,
+              date: "",
+            });
           } else {
             console.error(emailResult.error);
           }
@@ -102,7 +116,7 @@ export default function Kontakt() {
       }
     }
   };
-  
+
   useEffect(() => {
     const fetchContacts = async () => {
       const result = await getContact();
@@ -127,147 +141,168 @@ export default function Kontakt() {
       />
 
       <section className="flex flex-col items-center justify-center px-6 pt-28 pb-28 text-gray-900">
-          
-         <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                className="text-center space-y-4"
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-center space-y-4"
         >
-        <div className="space-y-8 pt-12 pb-36 flex flex-col">
-          {contacts.map((contact, index) => (
-            <div key={index}>
-              <p className="text-xl mt-2 text-gray-800 flex justify-center">
-                {contact.description}
-              </p>
-              <p className="text-3xl text-gray-900 mt-1">{contact.details}</p>
-            </div>
-          ))}
-        </div>
-        <div className="w-full max-w-7xl grid grid-cols-1 gap-6 p-8 shadow-lg border border-gray-200 pb-12 pt-12 rounded-lg md:grid-cols-2 bg-white">
-          <div className="space-y-8 pt-12 pb-12">
-            {contactInfo.details.map((item, index) => (
+          <div className="space-y-8 pt-12 pb-36 flex flex-col">
+            {contacts.map((contact, index) => (
               <div key={index}>
-                <p className="text-lg font-semibold">{item.heading}</p>
-                <p className="text-2xl font-bold text-green-600">
-                  {item.content}
+                <p className="text-x mt-2 text-gray-800 w-auto flex justify-center">
+                  {contact.description}
                 </p>
-                <p className="text-sm mt-2 text-gray-600">
-                  {item.additionalInfo}
-                </p>
-                {index < contactInfo.details.length - 1 && (
-                  <hr className="my-4" />
-                )}
+                <br />
+                <p className="text-3xl text-gray-900 mt-1">{contact.details}</p>
               </div>
             ))}
           </div>
-
-          <div>
-            <h3 className="text-xl font-bold pb-12 pt-12 mb-4">
-              Schreiben Sie uns eine Nachricht.
-            </h3>
-            <form className="space-y-4" onSubmit={handleSubmit}>
-              {formSubmitted && (
-                <div className="p-4 mb-4 text-green-700 bg-green-100 rounded-lg">
-                  <p className="font-bold">Vielen Dank für Ihre Kontaktaufnahme!</p>
-                  <p>Wir haben Ihre Nachricht erhalten und werden uns bald bei Ihnen melden.</p>
+          <div className="w-full max-w-7xl grid grid-cols-1 gap-6 p-8 shadow-lg border border-gray-200 pb-12 pt-12 rounded-lg md:grid-cols-2 bg-white">
+            <div className="space-y-8 pt-12 pb-12">
+              {contactInfo.details.map((item, index) => (
+                <div key={index}>
+                  <p className="text-lg font-semibold">{item.heading}</p>
+                  {item.heading.includes("Mail") ? (
+                    <a
+                      href={`mailto:${item.content}`}
+                      className="text-2xl font-bold text-yellow-900 hover:underline"
+                    >
+                      {item.content}
+                    </a>
+                  ) : item.heading.includes("Rufen") ? (
+                    <a
+                      href={`tel:${item.content}`}
+                      className="text-2xl font-bold text-yellow-900 hover:underline"
+                    >
+                      {item.content}
+                    </a>
+                  ) : (
+                    <p className="text-2xl font-bold text-yellow-900">
+                      {item.content}
+                    </p>
+                  )}
+                  <p className="text-sm mt-2 text-gray-600">
+                    {item.additionalInfo}
+                  </p>
+                  {index < contactInfo.details.length - 1 && (
+                    <hr className="my-4" />
+                  )}
                 </div>
-              )}
-              <div>
-                <input
-                  type="text"
-                  name="fullname"
-                  placeholder="Ihr Name"
-                  value={formData.fullname}
-                  onChange={handleChange}
-                  className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-yellow-950 focus:outline-none"
-                />
-                {errors.fullname && (
-                  <p className="text-sm text-red-500">{errors.fullname}</p>
-                )}
-              </div>
-              <div>
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-yellow-950 focus:outline-none"
-                />
-                {errors.email && (
-                  <p className="text-sm text-red-500">{errors.email}</p>
-                )}
-              </div>
-              <div>
-                <input
-                  type="tel"
-                  name="telefone"
-                  placeholder="Telefon"
-                  value={formData.telefone}
-                  onChange={handleChange}
-                  className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-yellow-950 focus:outline-none"
-                />
-                {errors.telefone && (
-                  <p className="text-sm text-red-500">{errors.telefone}</p>
-                )}
-              </div>
-              <div>
-                <input
-                  type="date"
-                  name="date"
-                  placeholder="Birth"
-                  value={formData.date}
-                  onChange={handleChange}
-                  className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-yellow-950 focus:outline-none"
-                />
-                {errors.date && (
-                  <p className="text-sm text-red-500">{errors.date}</p>
-                )}
-              </div>
-              <div>
-                <textarea
-                  name="message"
-                  placeholder="Ihre Nachricht"
-                  rows={4}
-                  value={formData.message}
-                  onChange={handleChange}
-                  className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-yellow-950 focus:outline-none"
-                ></textarea>
-                {errors.message && (
-                  <p className="text-sm text-red-500">{errors.message}</p>
-                )}
-              </div>
-              <div className="flex items-center space-x-2">
-                <input
-                  type="checkbox"
-                  name="datenschutz"
-                  checked={formData.datenschutz}
-                  onChange={handleChange}
-                  id="datenschutz"
-                  className="h-4 w-4 border-gray-300 focus:ring-2 focus:ring-yellow-950"
-                />
-                <label htmlFor="datenschutz" className="text-sm">
-                  Ich habe die Datenschutzerklärung gelesen und akzeptiere sie.
-                </label>
-              </div>
-              {errors.datenschutz && (
-                <p className="text-sm text-red-500">{errors.datenschutz}</p>
-              )}
-              <button
-                type="submit"
-                className={`w-full text-white py-3 rounded-md font-semibold focus:outline-none focus:ring-2 ${
-                  loading ? "bg-gray-400" : "bg-amber-950 hover:bg-amber-700"
-                }`}
-                disabled={loading}
-              >
-                {loading ? "Wird gesendet..." : "ANFRAGE ABSENDEN"}
-              </button>
-            </form>
-          </div>
-        </div>
-            </motion.div>
+              ))}
+            </div>
 
+            <div>
+              <h3 className="text-xl font-bold pb-12 pt-12 mb-4">
+                Schreiben Sie uns eine Nachricht.
+              </h3>
+              <form className="space-y-4" onSubmit={handleSubmit}>
+                {formSubmitted && (
+                  <div className="p-4 mb-4 text-green-700 bg-green-100 rounded-lg">
+                    <p className="font-bold">
+                      Vielen Dank für Ihre Kontaktaufnahme!
+                    </p>
+                    <p>
+                      Wir haben Ihre Nachricht erhalten und werden uns bald bei
+                      Ihnen melden.
+                    </p>
+                  </div>
+                )}
+                <div>
+                  <input
+                    type="text"
+                    name="fullname"
+                    placeholder="Ihr Name"
+                    value={formData.fullname}
+                    onChange={handleChange}
+                    className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-yellow-950 focus:outline-none"
+                  />
+                  {errors.fullname && (
+                    <p className="text-sm text-red-500">{errors.fullname}</p>
+                  )}
+                </div>
+                <div>
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-yellow-950 focus:outline-none"
+                  />
+                  {errors.email && (
+                    <p className="text-sm text-red-500">{errors.email}</p>
+                  )}
+                </div>
+                <div>
+                  <input
+                    type="tel"
+                    name="telefone"
+                    placeholder="Telefon"
+                    value={formData.telefone}
+                    onChange={handleChange}
+                    className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-yellow-950 focus:outline-none"
+                  />
+                  {errors.telefone && (
+                    <p className="text-sm text-red-500">{errors.telefone}</p>
+                  )}
+                </div>
+                <div>
+                  <input
+                    type="date"
+                    name="date"
+                    placeholder="Birth"
+                    value={formData.date}
+                    onChange={handleChange}
+                    className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-yellow-950 focus:outline-none"
+                  />
+                  {errors.date && (
+                    <p className="text-sm text-red-500">{errors.date}</p>
+                  )}
+                </div>
+                <div>
+                  <textarea
+                    name="message"
+                    placeholder="Ihre Nachricht"
+                    rows={4}
+                    value={formData.message}
+                    onChange={handleChange}
+                    className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-yellow-950 focus:outline-none"
+                  ></textarea>
+                  {errors.message && (
+                    <p className="text-sm text-red-500">{errors.message}</p>
+                  )}
+                </div>
+                <div className="flex items-center space-x-2">
+                  <input
+                    type="checkbox"
+                    name="datenschutz"
+                    checked={formData.datenschutz}
+                    onChange={handleChange}
+                    id="datenschutz"
+                    className="h-4 w-4 border-gray-300 focus:ring-2 focus:ring-yellow-950"
+                  />
+                  <label htmlFor="datenschutz" className="text-sm">
+                    Ich habe die Datenschutzerklärung gelesen und akzeptiere
+                    sie.
+                  </label>
+                </div>
+                {errors.datenschutz && (
+                  <p className="text-sm text-red-500">{errors.datenschutz}</p>
+                )}
+                <button
+                  type="submit"
+                  className={`w-full text-white py-3 rounded-md font-semibold focus:outline-none focus:ring-2 ${
+                    loading ? "bg-gray-400" : "bg-amber-950 hover:bg-amber-700"
+                  }`}
+                  disabled={loading}
+                >
+                  {loading ? "Wird gesendet..." : "ANFRAGE ABSENDEN"}
+                </button>
+              </form>
+            </div>
+          </div>
+        </motion.div>
       </section>
     </>
   );
