@@ -41,10 +41,7 @@ const HeilkundeGrid = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
           {[data[0].points, data[0].points_1, data[0].points_2].map(
             (point, index) => (
-              <div
-                key={index}
-                className="bg-white p-4 sm:p-6 rounded-lg shadow-sm"
-              >
+              <div key={index} className="sm:p-6  ">
                 <div className="flex items-center gap-2">
                   <svg
                     className="w-5 h-5 text-green-500"
@@ -74,10 +71,7 @@ const HeilkundeGrid = () => {
             data[0].points1_2,
             data[0].points1_3,
           ].map((point, index) => (
-            <div
-              key={index}
-              className="bg-white p-4 sm:p-6 rounded-lg shadow-sm"
-            >
+            <div key={index} className="sm:p-6 ">
               <div className="flex items-center gap-2">
                 <svg
                   className="w-5 h-5 text-green-500"
