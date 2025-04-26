@@ -94,8 +94,6 @@ function DynamicSections() {
               />
             </div>
 
-            <HeilkundeGrid />
-
             <ul className="mt-6 space-y-4 text-gray-800">
               {data.map((item, index) =>
                 item.features ? (
@@ -176,6 +174,8 @@ function DynamicSections() {
                 ) : null
               )}
             </ul>
+
+            <HeilkundeGrid />
           </section>
         )}
       </div>
