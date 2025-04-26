@@ -76,7 +76,7 @@ function DynamicSections() {
       transition={{ duration: 0.8 }}
       className="text-center space-y-4"
     >
-      <div className="flex flex-col gap-6 md:gap-8 lg:gap-10 px-4 sm:px-6 lg:px-8 mt-12 md:mt-16 lg:mt-20 mb-12 md:mb-16 max-w-7xl mx-auto">
+      <div className="flex flex-col justify-center items-center gap-6 md:gap-8 lg:gap-10 px-4 sm:px-6 lg:px-8 mt-12 md:mt-16 lg:mt-20 mb-12 md:mb-16 max-w-7xl mx-auto">
         {data[0]?.featursTittle && (
           <section className="text-center">
             <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900">
