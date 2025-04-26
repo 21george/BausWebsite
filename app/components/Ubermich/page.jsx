@@ -13,7 +13,7 @@ const defaultAboutData = {
       alt: "Image 1",
     },
     {
-      url: "/Images/IMG_1485.jpg",
+      url: "/Images/IMG_3361.png",
       alt: "Image 2",
     },
   ],
