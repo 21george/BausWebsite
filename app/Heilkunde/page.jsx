@@ -5,7 +5,7 @@ import HeilkundeGrid from "../components/HeilkundeComponents/HeilkundeGrid";
 import HeilkundeSection from "../components/HeilkundeComponents/HeilkundeSection";
 import { HeroSection } from "../components/HeroComponent/HeroSection";
 import { getHeilkundeInfo } from "../actions/HeilkundeAction/GetHeilkunde";
-import WomenWorld from "../../asset/images/womenyoga.png";
+import WomenWorld from "../../asset/images/IMG_7534.png";
 import { motion } from "framer-motion";
 import Image from "next/image";
 

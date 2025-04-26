@@ -10,7 +10,7 @@ import { HeroSection } from "../../components/HeroComponent/HeroSection";
 
 import defaultImage1 from "../../../asset/images/Massag.png";
 import defaultImage2 from "../../../asset/images/IMG_3385.png";
-import defaultImage3 from "../../../asset/images/womenyoga.png";
+import defaultImage3 from "../../../asset/images/image0.jpeg";
 
 const defaultImages = {
   1: defaultImage1,
@@ -29,7 +29,7 @@ export default function WorkDetailPage() {
     async function loadDetail() {
       try {
         const result = await getWorkdetailsById(id);
-        
+
         if (result.success) {
           setDetail(result.data);
         } else {
@@ -41,7 +41,7 @@ export default function WorkDetailPage() {
         setLoading(false);
       }
     }
-    
+
     loadDetail();
   }, [id]);
 
@@ -70,15 +70,25 @@ export default function WorkDetailPage() {
           <div className="bg-red-50 border-l-4 border-red-500 p-4 rounded">
             <div className="flex items-center">
               <div className="flex-shrink-0">
-                <svg className="h-5 w-5 text-red-500" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                <svg
+                  className="h-5 w-5 text-red-500"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                    clipRule="evenodd"
+                  />
                 </svg>
               </div>
               <div className="ml-3">
-                <h3 className="text-lg font-medium text-red-800">Error loading work detail</h3>
+                <h3 className="text-lg font-medium text-red-800">
+                  Error loading work detail
+                </h3>
                 <p className="mt-2 text-sm text-red-700">{error}</p>
                 <button
-                  onClick={() => router.push('/workdetails')}
+                  onClick={() => router.push("/workdetails")}
                   className="mt-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-amber-600 hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500"
                 >
                   Back to Work Details
@@ -98,13 +108,25 @@ export default function WorkDetailPage() {
           <div className="bg-blue-50 border-l-4 border-blue-500 p-4 rounded">
             <div className="flex items-center">
               <div className="flex-shrink-0">
-                <svg className="h-5 w-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2h-1V9z" clipRule="evenodd" />
+                <svg
+                  className="h-5 w-5 text-blue-500"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2h-1V9z"
+                    clipRule="evenodd"
+                  />
                 </svg>
               </div>
               <div className="ml-3">
-                <h3 className="text-lg font-medium text-blue-800">No detail found</h3>
-                <p className="mt-2 text-sm text-blue-700">The requested work detail could not be found.</p>
+                <h3 className="text-lg font-medium text-blue-800">
+                  No detail found
+                </h3>
+                <p className="mt-2 text-sm text-blue-700">
+                  The requested work detail could not be found.
+                </p>
                 <button
                   //onClick={() => router.push('/workdetails')}
                   className="mt-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-amber-600 hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500"
@@ -137,21 +159,17 @@ export default function WorkDetailPage() {
 
       {/* Main Content Container */}
       <div className="flex flex-col gap-6 md:gap-8 lg:gap-10 px-4 sm:px-6 lg:px-8 mt-12 md:mt-16 lg:mt-20 mb-12 md:mb-16 max-w-7xl mx-auto">
-        
         {/* Back Button */}
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          onClick={() => router.push('/')}
+          onClick={() => router.push("/")}
           className="flex items-center justify-center w-fit mx-auto text-amber-600 hover:text-amber-800 transition-colors"
-        >
-          
-        </motion.button>
+        ></motion.button>
 
         {/* Content Section */}
         <section className="w-full max-w-4xl mx-auto px-2 sm:px-4">
           <header className="mb-8">
-           
             {detail.created_at && (
               <p className="text-sm text-gray-500">
                 Published on {new Date(detail.created_at).toLocaleDateString()}
@@ -162,9 +180,11 @@ export default function WorkDetailPage() {
           {/* Description */}
           <div className="prose max-w-none text-left text-gray-700 mb-8">
             {detail.details && (
-              <div 
+              <div
                 className="whitespace-pre-line"
-                dangerouslySetInnerHTML={{ __html: detail.details.replace(/\n/g, '<br />') }}
+                dangerouslySetInnerHTML={{
+                  __html: detail.details.replace(/\n/g, "<br />"),
+                }}
               />
             )}
           </div>
@@ -175,41 +195,42 @@ export default function WorkDetailPage() {
               <h2 className="text-xl sm:text-2xl md:text-3xl font-serif text-gray-900 mb-6">
                 Features
               </h2>
-              
+
               <ul className="mt-4 space-y-3 text-base text-gray-800 text-left">
-                {detail.features.split('\n').map((feature, index) => (
-                  feature.trim() && (
-                    <motion.li 
-                      key={index} 
-                      className="flex items-start"
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                    >
-                      <svg
-                        className="flex-shrink-0 w-5 h-5 text-green-500 mt-0.5"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
+                {detail.features.split("\n").map(
+                  (feature, index) =>
+                    feature.trim() && (
+                      <motion.li
+                        key={index}
+                        className="flex items-start"
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.1 }}
                       >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M5 13l4 4L19 7"
-                        />
-                      </svg>
-                      <span className="ml-3">{feature}</span>
-                    </motion.li>
-                  )
-                ))}
+                        <svg
+                          className="flex-shrink-0 w-5 h-5 text-green-500 mt-0.5"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M5 13l4 4L19 7"
+                          />
+                        </svg>
+                        <span className="ml-3">{feature}</span>
+                      </motion.li>
+                    )
+                )}
               </ul>
             </section>
           )}
           {/* External Link Button */}
           {detail.externalUrl && (
-            <motion.div 
+            <motion.div
               className="mt-12"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
@@ -228,7 +249,7 @@ export default function WorkDetailPage() {
         </section>
 
         {/* Additional Image */}
-        <motion.div 
+        <motion.div
           className="flex justify-center w-full mx-auto p-6"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -240,16 +261,15 @@ export default function WorkDetailPage() {
               alt={detail.title || "Work detail"}
               width={800}
               height={600}
-                           className="w-full md:w-[400px] h-auto max-h-[400px] object-cover mx-auto"
-
+              className="w-full md:w-[400px] h-auto max-h-[400px] object-cover mx-auto"
               priority
             />
           </div>
           <div className="mb-8">
-          <p className="text-sm text-gray-500 md:text-4xl   mb-2">
+            <p className="text-sm text-gray-500 md:text-4xl   mb-2">
               {detail.cost}
             </p>
-          </div> 
+          </div>
         </motion.div>
       </div>
     </motion.div>
