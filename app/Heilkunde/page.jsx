@@ -97,12 +97,12 @@ function DynamicSections() {
               </div>
 
               {/* List on the right */}
-              <ul className="w-full md:w-1/2 max-w-md space-y-4 text-gray-800 text-center md:text-left">
+              <ul className="w-full md:w-1/2 max-w-md space-y-2 text-gray-800 text-center md:text-left">
                 {data.map((item, index) =>
                   item.features ? (
                     <li
                       key={`${index}-feature`}
-                      className="flex items-center justify-center md:justify-start gap-2"
+                      className="flex items-center justify-center md:justify-start gap-1"
                     >
                       <svg
                         className="w-5 h-5 text-green-500"
@@ -128,7 +128,7 @@ function DynamicSections() {
                   item.features_1 ? (
                     <li
                       key={`${index}-feature1`}
-                      className="flex items-center justify-center md:justify-start gap-2"
+                      className="flex items-center justify-center md:justify-start gap-1"
                     >
                       <svg
                         className="w-5 h-5 text-green-500"
@@ -154,7 +154,7 @@ function DynamicSections() {
                   item.features_2 ? (
                     <li
                       key={`${index}-feature2`}
-                      className="flex items-center justify-center md:justify-start gap-2"
+                      className="flex items-center justify-center md:justify-start gap-1"
                     >
                       <svg
                         className="w-5 h-5 text-green-500"
