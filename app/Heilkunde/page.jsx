@@ -76,33 +76,33 @@ function DynamicSections() {
       transition={{ duration: 0.8 }}
       className="text-center space-y-4"
     >
-      <div className="flex flex-col justify-center ml-20 items-center gap-6 md:gap-8 lg:gap-10 px-4 sm:px-6 lg:px-8 mt-12 md:mt-16 lg:mt-20 mb-12 md:mb-16 max-w-7xl mx-auto">
+      <div className="flex flex-col justify-center items-center gap-6 md:gap-8 lg:gap-10 px-4 sm:px-6 lg:px-8 mt-12 md:mt-16 lg:mt-20 mb-12 md:mb-16 max-w-7xl mx-auto">
         {data[0]?.featursTittle && (
           <section className="text-center">
             <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900">
               {data[0].featursTittle}
             </h2>
             <HeilkundeSection />
-            <div className="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-10 mt-6">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10 mt-6">
               {/* Image on the left */}
-              <div className="flex-shrink-0 w-full md:w-1/2">
+              <div className="flex-shrink-0 w-full md:w-1/2 max-w-md">
                 <Image
                   src={WomenWorld.src}
                   alt="A woman practicing yoga"
                   width={800}
                   height={600}
-                  className="w-full h-auto max-h-[400px] object-cover"
+                  className="w-full h-auto max-h-[400px] object-cover mx-auto"
                   priority
                 />
               </div>
 
               {/* List on the right */}
-              <ul className="w-full md:w-1/2 mt-6 md:mt-0 space-y-4 text-gray-800">
+              <ul className="w-full md:w-1/2 max-w-md space-y-4 text-gray-800 text-center md:text-left">
                 {data.map((item, index) =>
                   item.features ? (
                     <li
                       key={`${index}-feature`}
-                      className="flex items-center justify-start gap-2"
+                      className="flex items-center justify-center md:justify-start gap-2"
                     >
                       <svg
                         className="w-5 h-5 text-green-500"
@@ -128,7 +128,7 @@ function DynamicSections() {
                   item.features_1 ? (
                     <li
                       key={`${index}-feature1`}
-                      className="flex items-center justify-start gap-2"
+                      className="flex items-center justify-center md:justify-start gap-2"
                     >
                       <svg
                         className="w-5 h-5 text-green-500"
@@ -154,7 +154,7 @@ function DynamicSections() {
                   item.features_2 ? (
                     <li
                       key={`${index}-feature2`}
-                      className="flex items-center justify-start gap-2"
+                      className="flex items-center justify-center md:justify-start gap-2"
                     >
                       <svg
                         className="w-5 h-5 text-green-500"
