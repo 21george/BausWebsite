@@ -50,7 +50,7 @@ export default function DetailsList({ id }) {
 
   if (loading) {
     return (
-      <div className="p-6 flex justify-center">
+      <div className="flex justify-center">
         <div className="animate-pulse flex space-x-4">
           <div className="flex-1 space-y-6 py-1">
             <div className="h-8 bg-gray-200 rounded"></div>
@@ -66,7 +66,7 @@ export default function DetailsList({ id }) {
 
   if (error) {
     return (
-      <div className="p-6">
+      <div className="flex justify-center">
         <div className="bg-red-50 border-l-4 border-red-500 p-4">
           <div className="flex">
             <div className="flex-shrink-0">
@@ -93,7 +93,7 @@ export default function DetailsList({ id }) {
 
   if (!datadetails.length) {
     return (
-      <div className="p-6">
+      <div className="flex justify-center">
         <div className="bg-blue-50 border-l-4 border-blue-500 p-4">
           <div className="flex">
             <div className="flex-shrink-0">
@@ -123,7 +123,7 @@ export default function DetailsList({ id }) {
   }
 
   return (
-    <div className="p-6 space-y-6">
+    <div className="lg:p-6 space-y-6">
       {datadetails.map((details, index) => (
         <div
           key={details.id}

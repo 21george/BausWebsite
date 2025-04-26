@@ -29,7 +29,7 @@ export default function WorkDetailPage() {
     async function loadDetail() {
       try {
         const result = await getWorkdetailsById(id);
-        
+
         if (result.success) {
           setDetail(result.data);
         } else {
@@ -43,7 +43,7 @@ export default function WorkDetailPage() {
         setLoading(false);
       }
     }
-    
+
     loadDetail();
   }, [id]);
 
@@ -72,15 +72,25 @@ export default function WorkDetailPage() {
           <div className="bg-red-50 border-l-4 border-red-500 p-4 rounded">
             <div className="flex items-center">
               <div className="flex-shrink-0">
-                <svg className="h-5 w-5 text-red-500" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                <svg
+                  className="h-5 w-5 text-red-500"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                    clipRule="evenodd"
+                  />
                 </svg>
               </div>
               <div className="ml-3">
-                <h3 className="text-lg font-medium text-red-800">Error loading work detail</h3>
+                <h3 className="text-lg font-medium text-red-800">
+                  Error loading work detail
+                </h3>
                 <p className="mt-2 text-sm text-red-700">{error}</p>
                 <button
-                  onClick={() => router.push('/workdetails')}
+                  onClick={() => router.push("/workdetails")}
                   className="mt-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-amber-600 hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500"
                 >
                   Back to Work Details
@@ -100,15 +110,27 @@ export default function WorkDetailPage() {
           <div className="bg-blue-50 border-l-4 border-blue-500 p-4 rounded">
             <div className="flex items-center">
               <div className="flex-shrink-0">
-                <svg className="h-5 w-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2h-1V9z" clipRule="evenodd" />
+                <svg
+                  className="h-5 w-5 text-blue-500"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2h-1V9z"
+                    clipRule="evenodd"
+                  />
                 </svg>
               </div>
               <div className="ml-3">
-                <h3 className="text-lg font-medium text-blue-800">No detail found</h3>
-                <p className="mt-2 text-sm text-blue-700">The requested work detail could not be found.</p>
+                <h3 className="text-lg font-medium text-blue-800">
+                  No detail found
+                </h3>
+                <p className="mt-2 text-sm text-blue-700">
+                  The requested work detail could not be found.
+                </p>
                 <button
-                  onClick={() => router.push('/workdetails')}
+                  onClick={() => router.push("/workdetails")}
                   className="mt-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-amber-600 hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500"
                 >
                   Back to Work Details
@@ -128,77 +150,81 @@ export default function WorkDetailPage() {
       transition={{ duration: 0.8 }}
       className="text-center space-y-4"
     >
-    <main className="ovlerflow-hidden">
+      <main className="ovlerflow-hidden">
         <HeroSection
           backgroundImage={defaultImages.src}
-        className="h-64 sm:h-80 md:h-96 lg:h-[500px] flex items-center justify-center"
-        title="Heilkunde für Frauen"
-        description=""
-        aria-label="Main hero section" />
-    <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto">
-        <div className="mb-6">
-          <Link 
-            href="/workdetails" 
-            className="inline-flex items-center text-amber-600 hover:text-amber-800 transition-colors"
-            >
-            <FiArrowLeft className="mr-2" />
-            Back to all work details
-          </Link>
-        </div>
-
-        <article className="bg-white shadow-lg rounded-lg overflow-hidden">
-          {/* Hero Image */}
-          <div className="relative h-64 md:h-96 w-full">
-            <Image
-              src={defaultImages[detail.id] || defaultImage1}
-              alt={detail.title || "Work detail"}
-              fill
-              className="object-cover"
-              priority
-              />
-          </div>
-
-          {/* Content */}
-          <div className="p-6 md:p-8">
-            <header className="mb-6">
-              <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
-                {detail.title}
-              </h1>
-              {detail.created_at && (
-                <p className="text-sm text-gray-500">
-                  Published on {new Date(detail.created_at).toLocaleDateString()}
-                </p>
-              )}
-            </header>
-
-            <div className="prose max-w-none text-gray-700 mb-8">
-              {detail.description && (
-                <div 
-                className="whitespace-pre-line"
-                dangerouslySetInnerHTML={{ __html: detail.description.replace(/\n/g, '<br />') }}
-                />
-              )}
+          className="h-64 sm:h-80 md:h-96 lg:h-[500px] flex items-center justify-center"
+          title="Heilkunde für Frauen"
+          description=""
+          aria-label="Main hero section"
+        />
+        <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto">
+            <div className="mb-6">
+              <Link
+                href="/workdetails"
+                className="inline-flex items-center text-amber-600 hover:text-amber-800 transition-colors"
+              >
+                <FiArrowLeft className="mr-2" />
+                Back to all work details
+              </Link>
             </div>
 
-            {detail.externalUrl && (
-              <div className="mt-8">
-                <a
-                  href={detail.externalUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-amber-600 hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 transition-colors"
-                  >
-                  Visit Project
-                  <FiExternalLink className="ml-2" />
-                </a>
+            <article className="bg-white shadow-lg rounded-lg overflow-hidden">
+              {/* Hero Image */}
+              <div className="relative h-64 md:h-96 w-full">
+                <Image
+                  src={defaultImages[detail.id] || defaultImage1}
+                  alt={detail.title || "Work detail"}
+                  fill
+                  className="object-cover"
+                  priority
+                />
               </div>
-            )}
+
+              {/* Content */}
+              <div className="md:p-8">
+                <header className="mb-6">
+                  <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+                    {detail.title}
+                  </h1>
+                  {detail.created_at && (
+                    <p className="text-sm text-gray-500">
+                      Published on{" "}
+                      {new Date(detail.created_at).toLocaleDateString()}
+                    </p>
+                  )}
+                </header>
+
+                <div className="prose max-w-none text-gray-700 mb-8">
+                  {detail.description && (
+                    <div
+                      className="whitespace-pre-line"
+                      dangerouslySetInnerHTML={{
+                        __html: detail.description.replace(/\n/g, "<br />"),
+                      }}
+                    />
+                  )}
+                </div>
+
+                {detail.externalUrl && (
+                  <div className="mt-8">
+                    <a
+                      href={detail.externalUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-amber-600 hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 transition-colors"
+                    >
+                      Visit Project
+                      <FiExternalLink className="ml-2" />
+                    </a>
+                  </div>
+                )}
+              </div>
+            </article>
           </div>
-        </article>
-      </div>
-    </div>
-    </main>
-            </motion.div>
+        </div>
+      </main>
+    </motion.div>
   );
 }
