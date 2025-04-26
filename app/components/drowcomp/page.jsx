@@ -1,42 +1,48 @@
-'use client';
-import { useEffect, useState } from 'react'
-import { Dialog, DialogBackdrop, DialogPanel, DialogTitle, TransitionChild } from '@headlessui/react'
-import { XMarkIcon } from '@heroicons/react/24/outline'
+"use client";
+import { useEffect, useState } from "react";
+import {
+  Dialog,
+  DialogBackdrop,
+  DialogPanel,
+  DialogTitle,
+  TransitionChild,
+} from "@headlessui/react";
+import { XMarkIcon } from "@heroicons/react/24/outline";
 import { getAboutme } from "../../../app/actions/aboutme/Getaboutme";
 import { motion } from "framer-motion";
-import meFoto from "../../../asset/images/IMG_0623.png"
+import meFoto from "../../../asset/images/IMG_0623.png";
 
 export default function DrawerButton() {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
 
   const onPress = () => {
-    setOpen(true)
-  }
-      useEffect(() => {
-          async function fetchData() {
-              const result = await getAboutme();
-              if (result.success) {
-                  setData(result.data);
-              } else {
-                  setError(result.error);
-              }
-          }
-          fetchData();
-      }, []);
-  
-      if (error) {
-          return <div>Error: {error}</div>;
+    setOpen(true);
+  };
+  useEffect(() => {
+    async function fetchData() {
+      const result = await getAboutme();
+      if (result.success) {
+        setData(result.data);
+      } else {
+        setError(result.error);
       }
-  
-      if (!data) {
-          return <div>Loading...</div>;
-      } 
+    }
+    fetchData();
+  }, []);
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  if (!data) {
+    return <div>Loading...</div>;
+  }
   return (
     <>
-      <button 
-        onClick={onPress}  
+      <button
+        onClick={onPress}
         className="btn btn-primary self-start bg-amber-950 w-40 h-11 rounded-sm text-yellow-50 hover:bg-amber-900 transition duration-300"
       >
         Read More
@@ -46,7 +52,7 @@ export default function DrawerButton() {
           transition
           className="fixed inset-0 bg-gray-500/75 transition-opacity duration-500 ease-in-out"
         />
-          
+
         <div className="fixed inset-0 overflow-hidden">
           <motion.div
             initial={{ opacity: 0 }}
@@ -80,14 +86,16 @@ export default function DrawerButton() {
                       </DialogTitle>
                     </div>
                     <div className="relative px-4 sm:px-6">
-                      <img 
-                        src={meFoto.src} 
-                        alt="Personal" 
-                         className="h-[400px] sm:h-[400px] w-full transition-transform object-center object-cover"
+                      <img
+                        src={meFoto.src}
+                        alt="Personal"
+                        className="h-[400px] sm:h-[400px] w-full transition-transform object-center object-cover"
                       />
                     </div>
                     <div className="relative mt-6 flex-1 px-4 sm:px-6 text-gray-700 leading-relaxed">
-                      {data[0].personal_deatails}
+                      <p className="my-6 dark:text-gray-600 line-clamp-3">
+                        {data[0].personal_deatails}
+                      </p>
                     </div>
                   </div>
                 </DialogPanel>
@@ -97,5 +105,5 @@ export default function DrawerButton() {
         </div>
       </Dialog>
     </>
-  )
+  );
 }
