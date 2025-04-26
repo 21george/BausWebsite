@@ -80,6 +80,23 @@ function DynamicSections() {
     >
       {/* Main Content Container */}
       <div className="flex flex-col gap-6 md:gap-8 lg:gap-10 px-4 sm:px-6 lg:px-8 mt-12 md:mt-16 lg:mt-20 mb-12 md:mb-16 max-w-7xl mx-auto">
+        {/* Heilkunde Section */}
+        <HeilkundeSection />
+
+        {/* Image Section */}
+        <div className="flex justify-center">
+          <Image
+            src={WomenWorld.src}
+            alt="A woman practicing yoga"
+            width={800}
+            height={600}
+            className="w-full md:w-[400px] h-auto max-h-[400px] object-cover mx-auto"
+            priority
+          />
+        </div>
+
+        {/* Grid Section */}
+        <HeilkundeGrid />
         {/* Features Title Section */}
         {data[0]?.featursTittle && (
           <section className="text-center">
@@ -105,30 +122,25 @@ function DynamicSections() {
                       />
                     </svg>
                     <span className="flex justify-center">{item.features}</span>
+                    <span className="flex justify-center">
+                      {item.features_1}
+                    </span>
+                    <span className="flex justify-center">
+                      {item.features_2}
+                    </span>
+                    <span className="flex justify-center">{item.points} </span>
+                    <span className="flex justify-center">
+                      {item.points_1}{" "}
+                    </span>
+                    <span className="flex justify-center">
+                      {item.points_2}{" "}
+                    </span>
                   </li>
                 ) : null
               )}
             </ul>
           </section>
         )}
-
-        {/* Heilkunde Section */}
-        <HeilkundeSection />
-
-        {/* Image Section */}
-        <div className="flex justify-center">
-          <Image
-            src={WomenWorld.src}
-            alt="A woman practicing yoga"
-            width={800}
-            height={600}
-            className="w-full md:w-[400px] h-auto max-h-[400px] object-cover mx-auto"
-            priority
-          />
-        </div>
-
-        {/* Grid Section */}
-        <HeilkundeGrid />
       </div>
     </motion.div>
   );
