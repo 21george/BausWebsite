@@ -83,97 +83,101 @@ function DynamicSections() {
               {data[0].featursTittle}
             </h2>
             <HeilkundeSection />
-            <div className="flex justify-center mt-6">
-              <Image
-                src={WomenWorld.src}
-                alt="A woman practicing yoga"
-                width={800}
-                height={600}
-                className="w-full sm:w-[400px] h-auto max-h-[400px] object-cover mx-auto"
-                priority
-              />
-            </div>
+            <div className="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-10 mt-6">
+              {/* Image on the left */}
+              <div className="flex-shrink-0 w-full md:w-1/2">
+                <Image
+                  src={WomenWorld.src}
+                  alt="A woman practicing yoga"
+                  width={800}
+                  height={600}
+                  className="w-full h-auto max-h-[400px] object-cover"
+                  priority
+                />
+              </div>
 
-            <ul className="mt-6 space-y-4 text-gray-800">
-              {data.map((item, index) =>
-                item.features ? (
-                  <li
-                    key={`${index}-feature`}
-                    className="flex items-center justify-start sm:justify-center gap-2"
-                  >
-                    <svg
-                      className="w-5 h-5 text-green-500"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
+              {/* List on the right */}
+              <ul className="w-full md:w-1/2 mt-6 md:mt-0 space-y-4 text-gray-800">
+                {data.map((item, index) =>
+                  item.features ? (
+                    <li
+                      key={`${index}-feature`}
+                      className="flex items-center justify-start gap-2"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span className="text-sm sm:text-base">
-                      {item.features}
-                    </span>
-                  </li>
-                ) : null
-              )}
-              {data.map((item, index) =>
-                item.features_1 ? (
-                  <li
-                    key={`${index}-feature1`}
-                    className="flex items-center justify-start sm:justify-center gap-2"
-                  >
-                    <svg
-                      className="w-5 h-5 text-green-500"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
+                      <svg
+                        className="w-5 h-5 text-green-500"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                      <span className="text-sm sm:text-base">
+                        {item.features}
+                      </span>
+                    </li>
+                  ) : null
+                )}
+                {data.map((item, index) =>
+                  item.features_1 ? (
+                    <li
+                      key={`${index}-feature1`}
+                      className="flex items-center justify-start gap-2"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span className="text-sm sm:text-base">
-                      {item.features_1}
-                    </span>
-                  </li>
-                ) : null
-              )}
-              {data.map((item, index) =>
-                item.features_2 ? (
-                  <li
-                    key={`${index}-feature2`}
-                    className="flex items-center justify-start sm:justify-center gap-2"
-                  >
-                    <svg
-                      className="w-5 h-5 text-green-500"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
+                      <svg
+                        className="w-5 h-5 text-green-500"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                      <span className="text-sm sm:text-base">
+                        {item.features_1}
+                      </span>
+                    </li>
+                  ) : null
+                )}
+                {data.map((item, index) =>
+                  item.features_2 ? (
+                    <li
+                      key={`${index}-feature2`}
+                      className="flex items-center justify-start gap-2"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span className="text-sm sm:text-base">
-                      {item.features_2}
-                    </span>
-                  </li>
-                ) : null
-              )}
-            </ul>
+                      <svg
+                        className="w-5 h-5 text-green-500"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                      <span className="text-sm sm:text-base">
+                        {item.features_2}
+                      </span>
+                    </li>
+                  ) : null
+                )}
+              </ul>
+            </div>
 
             <HeilkundeGrid />
           </section>
