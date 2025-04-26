@@ -81,10 +81,10 @@ function DynamicSections() {
       {/* Main Content Container */}
       <div className="flex flex-col gap-6 md:gap-8 lg:gap-10 px-4 sm:px-6 lg:px-8 mt-12 md:mt-16 lg:mt-20 mb-12 md:mb-16 max-w-7xl mx-auto">
         {/* Heilkunde Section */}
-        <HeilkundeSection />
+        {/* <HeilkundeSection /> */}
 
         {/* Image Section */}
-        <div className="flex justify-center">
+        {/* <div className="flex justify-center">
           <Image
             src={WomenWorld.src}
             alt="A woman practicing yoga"
@@ -93,16 +93,30 @@ function DynamicSections() {
             className="w-full md:w-[400px] h-auto max-h-[400px] object-cover mx-auto"
             priority
           />
-        </div>
+        </div> */}
 
         {/* Grid Section */}
-        <HeilkundeGrid />
+        {/* <HeilkundeGrid /> */}
         {/* Features Title Section */}
         {data[0]?.featursTittle && (
           <section className="text-center">
             <h2 className="text-2xl sm:text-2xl font-semibold text-gray-900">
               {data[0].featursTittle}
             </h2>
+            <HeilkundeSection />
+            <div className="flex justify-center">
+              <Image
+                src={WomenWorld.src}
+                alt="A woman practicing yoga"
+                width={800}
+                height={600}
+                className="w-full md:w-[400px] h-auto max-h-[400px] object-cover mx-auto"
+                priority
+              />
+            </div>
+
+            <HeilkundeGrid />
+
             <ul className="mt-6 space-y-4 text-gray-800">
               {data.map((item, index) =>
                 item.features ? (
