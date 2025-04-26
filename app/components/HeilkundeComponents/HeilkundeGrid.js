@@ -39,22 +39,87 @@ const HeilkundeGrid = () => {
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-          <div className="bg-white p-4 sm:p-6 rounded-lg shadow-sm">
-            <p className="text-gray-800 text-base sm:text-lg leading-relaxed">
-              {data[0].points}
-            </p>
-          </div>
+          {[data[0].points, data[0].points_1, data[0].points_2].map(
+            (point, index) => (
+              <div
+                key={index}
+                className="bg-white p-4 sm:p-6 rounded-lg shadow-sm"
+              >
+                <div className="flex items-center gap-2">
+                  <svg
+                    className="w-5 h-5 text-green-500"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  <p className="text-gray-800 text-base sm:text-lg leading-relaxed">
+                    {point}
+                  </p>
+                </div>
+              </div>
+            )
+          )}
 
-          <div className="bg-white p-4 sm:p-6 rounded-lg shadow-sm">
-            <p className="text-gray-800 text-base sm:text-lg leading-relaxed">
-              {data[0].points1}
-            </p>
-          </div>
+          {[
+            data[0].points1,
+            data[0].points1_1,
+            data[0].points1_2,
+            data[0].points1_3,
+          ].map((point, index) => (
+            <div
+              key={index}
+              className="bg-white p-4 sm:p-6 rounded-lg shadow-sm"
+            >
+              <div className="flex items-center gap-2">
+                <svg
+                  className="w-5 h-5 text-green-500"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+                <p className="text-gray-800 text-base sm:text-lg leading-relaxed">
+                  {point}
+                </p>
+              </div>
+            </div>
+          ))}
 
-          <div className=" p-4 sm:p-6  shadow-sm md:col-span-2">
-            <p className="text-gray-800 text-base sm:text-lg leading-relaxed">
-              {data[0].points2}
-            </p>
+          <div className="p-4 sm:p-6 shadow-sm md:col-span-2">
+            <div className="flex items-center gap-2">
+              <svg
+                className="w-5 h-5 text-green-500"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
+              <p className="text-gray-800 text-base sm:text-lg leading-relaxed">
+                {data[0].points2}
+              </p>
+            </div>
           </div>
         </div>
       </motion.div>
