@@ -128,13 +128,13 @@ function DynamicSections() {
                     <span className="flex justify-center">
                       {item.features_2}
                     </span>
-                    <span className="flex justify-center">{item.points} </span>
+                    {/* <span className="flex justify-center">{item.points} </span>
                     <span className="flex justify-center">
                       {item.points_1}{" "}
                     </span>
                     <span className="flex justify-center">
                       {item.points_2}{" "}
-                    </span>
+                    </span> */}
                   </li>
                 ) : null
               )}
