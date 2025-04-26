@@ -28,8 +28,6 @@ function DynamicSections() {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [sectionContent, setSectionContent] = useState("");
-  const [featursTittle, setFeatursTittle] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -78,39 +76,20 @@ function DynamicSections() {
       transition={{ duration: 0.8 }}
       className="text-center space-y-4"
     >
-      {/* Main Content Container */}
       <div className="flex flex-col gap-6 md:gap-8 lg:gap-10 px-4 sm:px-6 lg:px-8 mt-12 md:mt-16 lg:mt-20 mb-12 md:mb-16 max-w-7xl mx-auto">
-        {/* Heilkunde Section */}
-        {/* <HeilkundeSection /> */}
-
-        {/* Image Section */}
-        {/* <div className="flex justify-center">
-          <Image
-            src={WomenWorld.src}
-            alt="A woman practicing yoga"
-            width={800}
-            height={600}
-            className="w-full md:w-[400px] h-auto max-h-[400px] object-cover mx-auto"
-            priority
-          />
-        </div> */}
-
-        {/* Grid Section */}
-        {/* <HeilkundeGrid /> */}
-        {/* Features Title Section */}
         {data[0]?.featursTittle && (
           <section className="text-center">
-            <h2 className="text-2xl sm:text-2xl font-semibold text-gray-900">
+            <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900">
               {data[0].featursTittle}
             </h2>
             <HeilkundeSection />
-            <div className="flex justify-center">
+            <div className="flex justify-center mt-6">
               <Image
                 src={WomenWorld.src}
                 alt="A woman practicing yoga"
                 width={800}
                 height={600}
-                className="w-full md:w-[400px] h-auto max-h-[400px] object-cover mx-auto"
+                className="w-full sm:w-[400px] h-auto max-h-[400px] object-cover mx-auto"
                 priority
               />
             </div>
@@ -120,9 +99,12 @@ function DynamicSections() {
             <ul className="mt-6 space-y-4 text-gray-800">
               {data.map((item, index) =>
                 item.features ? (
-                  <li key={index} className="flex items-center justify-center">
+                  <li
+                    key={`${index}-feature`}
+                    className="flex items-center justify-start sm:justify-center gap-2"
+                  >
                     <svg
-                      className="w-5 h-5 text-green-500 mt-0.5"
+                      className="w-5 h-5 text-green-500"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -135,20 +117,61 @@ function DynamicSections() {
                         d="M5 13l4 4L19 7"
                       />
                     </svg>
-                    <span className="flex justify-center">{item.features}</span>
-                    <span className="flex justify-center">
+                    <span className="text-sm sm:text-base">
+                      {item.features}
+                    </span>
+                  </li>
+                ) : null
+              )}
+              {data.map((item, index) =>
+                item.features_1 ? (
+                  <li
+                    key={`${index}-feature1`}
+                    className="flex items-center justify-start sm:justify-center gap-2"
+                  >
+                    <svg
+                      className="w-5 h-5 text-green-500"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                    <span className="text-sm sm:text-base">
                       {item.features_1}
                     </span>
-                    <span className="flex justify-center">
+                  </li>
+                ) : null
+              )}
+              {data.map((item, index) =>
+                item.features_2 ? (
+                  <li
+                    key={`${index}-feature2`}
+                    className="flex items-center justify-start sm:justify-center gap-2"
+                  >
+                    <svg
+                      className="w-5 h-5 text-green-500"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                    <span className="text-sm sm:text-base">
                       {item.features_2}
                     </span>
-                    {/* <span className="flex justify-center">{item.points} </span>
-                    <span className="flex justify-center">
-                      {item.points_1}{" "}
-                    </span>
-                    <span className="flex justify-center">
-                      {item.points_2}{" "}
-                    </span> */}
                   </li>
                 ) : null
               )}
