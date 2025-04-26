@@ -99,6 +99,71 @@ export default function Impresionpage() {
           </div>
         </section>
 
+        {/* Urheberrecht */}
+        <section className="mb-12" aria-labelledby="link-liability">
+          <h2
+            id="link-liability"
+            className="text-lg sm:text-xl md:text-2xl font-semibold mb-6"
+          >
+            Urheberrecht
+          </h2>
+          <div className="space-y-4 text-sm sm:text-base md:text-lg">
+            <p>
+              Die durch die Seitenbetreiber erstellten Inhalte und Werke auf
+              diesen Seiten unterliegen dem deutschen Urheberrecht. Die
+              Vervielfältigung, Bearbeitung, Verbreitung und jede Art der
+              Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der
+              schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.
+              Downloads und Kopien dieser Seite sind nur für den privaten, nicht
+              kommerziellen Gebrauch gestattet. Soweit die Inhalte auf dieser
+              Seite nicht vom Betreiber erstellt wurden, werden die
+              Urheberrechte Dritter beachtet.
+            </p>
+            <p>
+              Insbesondere werden Inhalte Dritter als solche gekennzeichnet.
+              Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam
+              werden, bitten wir um einen entsprechenden Hinweis. Bei
+              Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte
+              umgehend entfernen.
+            </p>
+          </div>
+        </section>
+
+        {/* Eu-Streitsch */}
+        <section className="mb-12" aria-labelledby="link-liability">
+          <h2
+            id="link-liability"
+            className="text-lg sm:text-xl md:text-2xl font-semibold mb-6"
+          >
+            EU-Streitschlichtung
+          </h2>
+          <div className="space-y-4 text-sm sm:text-base md:text-lg">
+            <p>
+              Die Europäische Kommission stellt eine Plattform zur
+              Online-Streitbeilegung (OS) bereit:
+              https://ec.europa.eu/consumers/odr/. Unsere E-Mail-Adresse finden
+              Sie oben im Impressum.
+            </p>
+          </div>
+        </section>
+
+        {/* V */}
+        <section className="mb-12" aria-labelledby="link-liability">
+          <h2
+            id="link-liability"
+            className="text-lg sm:text-xl md:text-2xl font-semibold mb-6"
+          >
+            Verbraucherstreitbeilegung/Universalschlichtungsstelle
+          </h2>
+          <div className="space-y-4 text-sm sm:text-base md:text-lg">
+            <p>
+              Wir sind nicht bereit oder verpflichtet, an
+              Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle
+              teilzunehmen.
+            </p>
+          </div>
+        </section>
+
         <footer className="mt-12 pt-6 border-t border-gray-200">
           <p className="text-sm sm:text-base md:text-lg">
             <strong>Quelle:</strong>{" "}
