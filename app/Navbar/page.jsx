@@ -11,7 +11,7 @@ export default function Navigationber() {
     { id: 1, link: "/", name: "Startseite" },
     { id: 2, link: "Physiotherapie", name: "Physiotherapie" },
     { id: 4, link: "Heilkunde", name: "Heilkunde für Frauen" },
-    { id: 3, link: "Kontakt", name: "Kontaks" },
+    { id: 3, link: "Kontakt", name: "Kontak" },
   ];
 
   return (
