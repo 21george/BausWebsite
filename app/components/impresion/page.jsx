@@ -15,7 +15,7 @@ export default function Impresionpage() {
         <section className="mb-12" aria-labelledby="legal-details">
           <h2
             id="legal-details"
-            className="text-lg sm:text-xl md:text-2xl font-semibold mb-6 text-center sm:text-left"
+            className="text-sl sm:text-xl md:text-2xl font-semibold mb-6 text-center sm:text-left"
           >
             Angaben gemäß § 5 TMG
           </h2>
@@ -31,7 +31,7 @@ export default function Impresionpage() {
         <section className="mb-12" aria-labelledby="contact-info">
           <h2
             id="contact-info"
-            className="text-lg sm:text-xl md:text-2xl font-semibold mb-6 text-center sm:text-left"
+            className="text-sl sm:text-xl md:text-2xl font-semibold mb-6 text-center sm:text-left"
           >
             Kontakt
           </h2>
@@ -48,11 +48,11 @@ export default function Impresionpage() {
         <section className="mb-12" aria-labelledby="content-liability">
           <h2
             id="content-liability"
-            className="text-lg sm:text-xl md:text-2xl font-semibold mb-6 text-center sm:text-left"
+            className="text-sl sm:text-xl md:text-2xl font-semibold mb-6 text-center sm:text-left"
           >
             Haftung für Inhalte
           </h2>
-          <div className="space-y-4 text-sm sm:text-base md:text-lg text-justify">
+          <div className="space-y-4 text-sm sm:text-base md:text-lg ">
             <p>
               Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene
               Inhalte auf diesen Seiten nach den allgemeinen Gesetzen
@@ -79,7 +79,7 @@ export default function Impresionpage() {
           >
             Haftung für Links
           </h2>
-          <div className="space-y-4 text-sm sm:text-base md:text-lg text-justify">
+          <div className="space-y-6 text-sm sm:text-base md:text-lg leading-relaxed ">
             <p>
               Unser Angebot enthält Links zu externen Websites Dritter, auf
               deren Inhalte wir keinen Einfluss haben. Deshalb können wir für
@@ -106,7 +106,7 @@ export default function Impresionpage() {
           >
             Urheberrecht
           </h2>
-          <div className="space-y-4 text-sm sm:text-base md:text-lg text-justify">
+          <div className="space-y-6 text-sm sm:text-base md:text-lg leading-relaxed ">
             <p>
               Die durch die Seitenbetreiber erstellten Inhalte und Werke auf
               diesen Seiten unterliegen dem deutschen Urheberrecht. Die
@@ -128,14 +128,14 @@ export default function Impresionpage() {
           </div>
         </section>
 
-        <section className="mb-12" aria-labelledby="eu-dispute">
+        <section className="mb-12" aria-labelledby="legal-details">
           <h2
             id="eu-dispute"
-            className="text-lg sm:text-xl md:text-2xl font-semibold mb-6 text-center sm:text-left"
+            className="text-sl sm:text-xl md:text-2xl font-semibold mb-6 text-center sm:text-left"
           >
             EU-Streitschlichtung
           </h2>
-          <div className="space-y-4 text-sm sm:text-base md:text-lg text-justify">
+          <div className="space-y-4 text-sm sm:text-base md:text-lg ">
             <p>
               Die Europäische Kommission stellt eine Plattform zur
               Online-Streitbeilegung (OS) bereit:
@@ -152,14 +152,14 @@ export default function Impresionpage() {
           </div>
         </section>
 
-        <section className="mb-12" aria-labelledby="consumer-dispute">
-          <h2
+        <section className="mb-12" aria-labelledby="legal-details">
+          <h1
             id="consumer-dispute"
-            className="text-lg sm:text-xl md:text-2xl font-semibold mb-6 text-center sm:text-left"
+            className="text-sl sm:text-xm md:text-2xl font-semibold mb-6 text-center sm:text-left"
           >
             Verbraucherstreitbeilegung/Universalschlichtungsstelle
-          </h2>
-          <div className="space-y-4 text-sm sm:text-base md:text-lg text-justify">
+          </h1>
+          <div className="text-sm sm:text-base md:text-lg ">
             <p>
               Wir sind nicht bereit oder verpflichtet, an
               Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle

@@ -149,8 +149,8 @@ export default function DetailsList({ id }) {
             )}
           </Link>
 
-          <div className="flex flex-col justify-center flex-1 p-12 dark:bg-gray-50 lg:w-1/2">
-            <h3 className="text-3xl font-bold">
+          <div className="flex flex-col justify-center flex-1 lg:p-12 sm:w-full lg:w-1/2">
+            <h3 className="lg:text-3xl lg:font-bold  mt-5">
               {details.title || "Untitled Work"}
             </h3>
             <p className="my-6 dark:text-gray-600 line-clamp-3">
