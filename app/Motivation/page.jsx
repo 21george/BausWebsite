@@ -1,6 +1,6 @@
+"usw client";
 import React from "react";
 import WalkFoto from "../../asset/images/WayRoom.png";
-import { motion } from "framer-motion";
 
 export default function Moltivation() {
   return (
