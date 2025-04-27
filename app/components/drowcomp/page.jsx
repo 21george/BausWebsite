@@ -10,7 +10,7 @@ import {
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { getAboutme } from "../../../app/actions/aboutme/Getaboutme";
 import { motion } from "framer-motion";
-import meFoto from "../../../asset/images/IMG_0623.png";
+import meFoto from "../../../asset/images/IMG_7740.png";
 
 export default function DrawerButton() {
   const [open, setOpen] = useState(false);
