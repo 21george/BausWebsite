@@ -88,7 +88,7 @@ const HeilkundeSection = () => {
         {data.map((item, index) => (
           <p
             key={`heilkunde-para-${index}`}
-            className="text-gray-800 justify-between flex text-sm sm:text-base lg:text-sm leading-relaxed mb-4"
+            className="text-gray-800 justify-between flex text-sm sm:text-base lg:text-x leading-relaxed mb-4"
           >
             {item.paragraphs}
           </p>
