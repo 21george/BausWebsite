@@ -44,7 +44,7 @@ export default function ArticleSection() {
   }
 
   return (
-    <section className="w-full mx-auto px-4 sm:px-6 pb-12 md:pb-24 lg:px-8 py-8 md:py-16">
+    <section className="flex flex-col h-full w-full items-center mt-8 mb-12 px-4 sm:px-6 lg:px-8">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -54,7 +54,7 @@ export default function ArticleSection() {
         {articles.map((article, index) => (
           <p
             key={article.id || index}
-            className="flex  justify-center dark:text-gray-600 text-base sm:text-lg md:text-xl leading-relaxed sm:leading-relaxed md:leading-relaxed px-2 sm:px-4"
+            className="text-gray-800 justify-between flex text-sm sm:text-base lg:text-sm leading-relaxed mb-4"
           >
             {article.ADeatails}
           </p>
