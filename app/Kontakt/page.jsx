@@ -12,8 +12,7 @@ const contactInfo = {
       title: "Kontakt",
       description:
         "Sie möchten gerne einen Termin vereinbaren oder haben eine Frage an mich?",
-      details:
-        "Füllen Sie das Kontaktformular aus, und ich melde mich zum nächstmöglichen Zeitpunkt bei Ihnen.",
+      
       subtext: "Wir freuen uns über Ihre Nachricht",
     },
   ],
@@ -28,6 +27,11 @@ const contactInfo = {
       content: "info@baus-physiotherapie.de",
     },
   ],
+  kontaktSection1: [
+    {
+      description1:"Füllen Sie das Kontaktformular aus, und ich melde mich zum nächstmöglichen Zeitpunkt bei Ihnen",
+    }
+  ]
 };
 
 export default function Kontakt() {
@@ -161,7 +165,7 @@ export default function Kontakt() {
         itemType="https://schema.org/ContactPoint"
       >
         <p 
-          className="text-x mt-2 text-gray-800 w-auto flex justify-center"
+          className="text-x mt-2 text-gray-800 w-auto flex justify-items-start"
           itemProp="description"
         >
           {contact.description}

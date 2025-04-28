@@ -162,7 +162,7 @@ export default function DetailsList({ id }) {
                   type="button"
                   className="bg-amber-950 w-40 h-11 rounded-sm text-yellow-50 hover:bg-amber-900 transition-colors"
                 >
-                  {details.buttonText || "Read More"}
+                  {details.buttontext || "Erfahre Mehr"}
                 </button>
               </Link>
               {details.externalUrl && (

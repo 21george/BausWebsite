@@ -93,7 +93,7 @@ export default function DrawerButton() {
               type="button"
               className="bg-amber-950 w-full sm:w-40 h-10 sm:h-11 rounded-sm text-yellow-50 hover:bg-amber-900 transition-colors"
             >
-              Read More
+             {data?.buttontext || "Erhare Mehr"}
             </button>
           </div>
         </div>
