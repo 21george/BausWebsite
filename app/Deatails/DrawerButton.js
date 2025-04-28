@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { getAboutme } from "../../../app/actions/aboutme/Getaboutme";
 import meFoto from "../../../asset/images/IMG_0623.png";
+import Image from "next/image";
 
 export default function DrawerButton() {
   const [data, setData] = useState(null);
@@ -16,7 +17,7 @@ export default function DrawerButton() {
         if (result.success) {
           setData(result.data);
         } else {
-          throw new Error(result.error);
+          throw new Error(result.error || "Failed to fetch data");
         }
       } catch (err) {
         setError(err.message || "An error occurred while loading data");
@@ -29,8 +30,8 @@ export default function DrawerButton() {
 
   if (loading) {
     return (
-      <div className="p-6 flex justify-center">
-        <div className="animate-pulse flex space-x-4">
+      <div className="p-4 md:p-6 flex justify-center">
+        <div className="animate-pulse flex space-x-4 w-full">
           <div className="flex-1 space-y-6 py-1">
             <div className="h-8 bg-gray-200 rounded"></div>
             <div className="space-y-3">
@@ -45,7 +46,7 @@ export default function DrawerButton() {
 
   if (error) {
     return (
-      <div className="p-6">
+      <div className="p-4 md:p-6">
         <div className="bg-red-50 border-l-4 border-red-500 p-4">
           <div className="flex">
             <div className="flex-shrink-0">
@@ -71,26 +72,26 @@ export default function DrawerButton() {
   }
 
   return (
-    <div className="p-6 space-y-6">
-      <div className="flex flex-col overflow-hidden w-auto h-auto lg:h-96 lg:flex-row">
-        <div className="block h-full lg:w-1/2">
-          <img
+    <div className="p-4 md:p-6 space-y-4 md:space-y-6">
+      <div className="flex flex-col overflow-hidden w-auto h-auto lg:flex-row lg:h-96">
+        <div className="block h-full w-full lg:w-1/2">
+          <Image
             src={meFoto.src}
             alt="Personal"
-            className="inset-0 w-full md:w-[800px] h-auto max-h-[400px] object-cover hover:opacity-90 transition-opacity"
+            className="w-full h-auto max-h-[300px] md:max-h-[400px] object-cover hover:opacity-90 transition-opacity"
           />
         </div>
-        <div className="flex flex-col justify-center flex-1 p-12 dark:bg-gray-50 lg:w-1/2">
-          <h3 className="text-3xl font-bold">
-            {data[0]?.P_tittle || "Untitled"}
+        <div className="flex flex-col justify-center flex-1 p-6 md:p-12 dark:bg-gray-50 lg:w-1/2">
+          <h3 className="text-2xl md:text-3xl font-bold">
+            {data?.P_tittle || "Untitled"}
           </h3>
-          <p className="my-6 dark:text-gray-600 line-clamp-3">
-            {data[0]?.personal_deatails || "No details available"}
+          <p className="my-4 md:my-6 dark:text-gray-600 line-clamp-3">
+            {data?.personal_details || "No details available"}
           </p>
           <div className="flex space-x-4">
             <button
               type="button"
-              className="bg-amber-950 w-40 h-11 rounded-sm text-yellow-50 hover:bg-amber-900 transition-colors"
+              className="bg-amber-950 w-full sm:w-40 h-10 sm:h-11 rounded-sm text-yellow-50 hover:bg-amber-900 transition-colors"
             >
               Read More
             </button>

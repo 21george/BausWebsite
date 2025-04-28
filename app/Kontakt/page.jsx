@@ -147,17 +147,43 @@ export default function Kontakt() {
           transition={{ duration: 0.8 }}
           className="text-center space-y-4"
         >
-          <div className="space-y-8 pt-12 pb-36 flex flex-col">
-            {contacts.map((contact, index) => (
-              <div key={index}>
-                <p className="text-x mt-2 text-gray-800 w-auto flex justify-center">
-                  {contact.description}
-                </p>
-                <br />
-                <p className="text-3xl text-gray-900 mt-1">{contact.details}</p>
-              </div>
-            ))}
-          </div>
+          <div 
+  className="space-y-8 pt-12 pb-36 flex flex-col"
+  role="region" 
+  aria-label="Contact Information"
+>
+  {contacts.length > 0 ? (
+    contacts.map((contact, index) => (
+      <article 
+        key={`contact-${contact.details}-${index}`}
+        className="contact-item"
+        itemScope
+        itemType="https://schema.org/ContactPoint"
+      >
+        <p 
+          className="text-x mt-2 text-gray-800 w-auto flex justify-center"
+          itemProp="description"
+        >
+          {contact.description}
+        </p>
+        <br aria-hidden="true" />
+        <p 
+          className="text-3xl text-gray-900 mt-1" 
+          itemProp="telephone"
+        >
+          {contact.details}
+        </p>
+      </article>
+    ))
+  ) : (
+    <p 
+      className="text-gray-500 text-center py-8"
+      aria-live="polite"
+    >
+      No contact information available
+    </p>
+  )}
+</div>
           <div className="w-full max-w-7xl grid grid-cols-1 gap-6 p-8 shadow-lg border border-gray-200 pb-12 pt-12 rounded-lg md:grid-cols-2 bg-white">
             <div className="space-y-8 pt-12 pb-12">
               {contactInfo.details.map((item, index) => (

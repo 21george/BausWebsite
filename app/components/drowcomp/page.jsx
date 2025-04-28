@@ -16,29 +16,49 @@ export default function DrawerButton() {
   const [open, setOpen] = useState(false);
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const onPress = () => {
     setOpen(true);
   };
+
   useEffect(() => {
     async function fetchData() {
-      const result = await getAboutme();
-      if (result.success) {
-        setData(result.data);
-      } else {
-        setError(result.error);
+      try {
+        const result = await getAboutme();
+        if (result.success) {
+          setData(result.data);
+        } else {
+          setError(result.error);
+        throw new Error(result.error);
+        }
+      } catch (err) {
+        setError(err.message || "Failed to load data");
+      } finally {
+        setLoading(false);
       }
     }
     fetchData();
   }, []);
 
-  if (error) {
-    return <div>Error: {error}</div>;
+  if (loading) {
+    return (
+      <button className="btn btn-primary self-start bg-amber-950 w-40 h-11 rounded-sm text-yellow-50 hover:bg-amber-900 transition duration-300 animate-pulse">
+        Loading...
+      </button>
+    );
   }
 
-  if (!data) {
-    return <div>Loading...</div>;
+  if (error) {
+    return (
+      <div className="p-4 bg-red-50 border-l-4 border-red-500 text-red-700">
+        Error: {error}
+      </div>
+    );
   }
+
+  if (!data) return null;
+
   return (
     <>
       <button
@@ -61,10 +81,10 @@ export default function DrawerButton() {
             className="grid grid-cols-2 gap-4"
           >
             <div className="absolute inset-0 overflow-hidden">
-              <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
+              <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10 sm:pl-16">
                 <DialogPanel
                   transition
-                  className="pointer-events-auto relative w-screen max-w-xl transform transition duration-500 ease-in-out sm:duration-700"
+                  className="pointer-events-auto relative w-screen max-w-md sm:max-w-xl lg:max-w-2xl transform transition duration-500 ease-in-out sm:duration-700"
                 >
                   <TransitionChild>
                     <div className="absolute top-0 left-0 -ml-8 flex pt-4 pr-2 sm:-ml-10 sm:pr-4">
@@ -81,7 +101,7 @@ export default function DrawerButton() {
                   </TransitionChild>
                   <div className="flex h-full flex-col overflow-y-scroll bg-white py-6 shadow-xl">
                     <div className="px-4 sm:px-6">
-                      <DialogTitle className="text-lg font-semibold text-gray-900 text-center mb-4">
+                      <DialogTitle className="text-xl sm:text-2xl font-semibold text-gray-900 text-center mb-4">
                         {data[0].P_tittle}
                       </DialogTitle>
                     </div>
@@ -89,11 +109,13 @@ export default function DrawerButton() {
                       <img
                         src={meFoto.src}
                         alt="Personal"
-                        className="h-[400px] sm:h-[400px] w-full transition-transform object-center object-cover"
+                        className="h-[300px] sm:h-[400px] w-full transition-transform object-center object-cover"
                       />
                     </div>
-                    <div className="relative mt-6 flex-1 px-4 sm:px-6 text-gray-700 leading-relaxed sm:text-sm">
-                      {data[0].personal_deatails}
+                    <div className="relative mt-4 sm:mt-6 flex-1 px-4 sm:px-6">
+                      <p className="text-gray-700 text-base sm:text-lg leading-relaxed sm:leading-loose">
+                        {data[0].personal_deatails}
+                      </p>
                     </div>
                   </div>
                 </DialogPanel>

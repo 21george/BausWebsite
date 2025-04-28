@@ -14,7 +14,7 @@ export default function Heilkunde() {
     <main className="overflow-x-hidden">
       <HeroSection
         backgroundImage={UnivasHero.src}
-        className="h-64 sm:h-80 md:h-96 lg:h-[500px] flex items-center justify-center"
+        className="h-64 xs:h-72 sm:h-80 md:h-[30rem] lg:h-[38rem] xl:h-[40rem] flex items-center justify-center"
         title="Heilkunde für Frauen"
         description=""
         aria-label="Main hero section"
@@ -60,7 +60,7 @@ function DynamicSections() {
   if (error) {
     return (
       <div
-        className="text-red-500 p-4 text-center"
+        className="bg-red-50 text-red-600 p-4 text-center max-w-4xl mx-auto rounded-lg"
         role="alert"
         aria-live="assertive"
       >
@@ -74,108 +74,65 @@ function DynamicSections() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
-      className="text-center space-y-4"
+      className="w-full"
     >
-      <div className="flex flex-col justify-center items-center gap-6 md:gap-8 lg:gap-10 px-4 sm:px-6 lg:px-8 mt-12 md:mt-16 lg:mt-20 mb-12 md:mb-16 max-w-7xl mx-auto">
+      <div className="flex flex-col justify-center items-center gap-6 md:gap-8 lg:gap-10 px-4 xs:px-5 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 max-w-7xl mx-auto">
         {data[0]?.featursTittle && (
-          <section className="text-center">
-            <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900">
+          <section className="w-full text-center space-y-8 md:space-y-10">
+            <h2 className="text-2xl xs:text-2.5xl sm:text-3xl md:text-2xl text-gray-800 px-2">
               {data[0].featursTittle}
             </h2>
+            
             <HeilkundeSection />
-            <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10 mt-6">
-              {/* Image on the left */}
-              <div className="flex-shrink-0 w-full md:w-1/2 max-w-md">
-                <Image
-                  src={WomenWorld.src}
-                  alt="A woman practicing yoga"
-                  width={800}
-                  height={600}
-                  className="w-full h-auto max-h-[400px] object-cover mx-auto"
-                  priority
-                />
+            
+            <div className="flex flex-col lg:flex-row items-center justify-center gap-8 md:gap-10 w-full">
+              {/* Image */}
+              <div className="w-full lg:w-1/2 max-w-2xl">
+                <div className="relative aspect-[4/3] w-full h-auto  overflow-hidden shadow-md">
+                  <Image
+                    src={WomenWorld.src}
+                    alt="A woman practicing yoga"
+                    fill
+                    className="object-cover"
+                    priority
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                  />
+                </div>
               </div>
 
-              {/* List on the right */}
-              <ul className="w-full md:w-1/2 max-w-md space-y-2 text-gray-800 text-center md:text-left">
-                {data.map((item, index) =>
-                  item.features ? (
-                    <li
-                      key={`${index}-feature`}
-                      className="flex items-center justify-center md:justify-start gap-1"
+              {/* Features List */}
+              <ul className="w-full lg:w-1/2 max-w-2xl space-y-3 sm:space-y-4 text-gray-800">
+                {[
+                  data[0].features,
+                  data[0].features_1,
+                  data[0].features_2
+                ].filter(Boolean).map((feature, index) => (
+                  <motion.li
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    className="flex items-start gap-2 p-1  hover:bg-gray-100 transition-colors"
+                  >
+                    <svg
+                      className="w-4 h-4 sm:w-5 sm:h-5 text-green-500"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
                     >
-                      <svg
-                        className="w-5 h-5 text-green-500"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M5 13l4 4L19 7"
-                        />
-                      </svg>
-                      <span className="text-sm sm:text-base">
-                        {item.features}
-                      </span>
-                    </li>
-                  ) : null
-                )}
-                {data.map((item, index) =>
-                  item.features_1 ? (
-                    <li
-                      key={`${index}-feature1`}
-                      className="flex items-center justify-center md:justify-start gap-1"
-                    >
-                      <svg
-                        className="w-5 h-5 text-green-500"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M5 13l4 4L19 7"
-                        />
-                      </svg>
-                      <span className="text-sm sm:text-base">
-                        {item.features_1}
-                      </span>
-                    </li>
-                  ) : null
-                )}
-                {data.map((item, index) =>
-                  item.features_2 ? (
-                    <li
-                      key={`${index}-feature2`}
-                      className="flex items-center justify-center md:justify-start gap-1"
-                    >
-                      <svg
-                        className="w-5 h-5 text-green-500"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M5 13l4 4L19 7"
-                        />
-                      </svg>
-                      <span className="text-sm sm:text-base">
-                        {item.features_2}
-                      </span>
-                    </li>
-                  ) : null
-                )}
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                    <span className="text-xs sm:text-xs text-gray-800">
+                      {feature}
+                    </span>
+                  </motion.li>
+                ))}
               </ul>
             </div>
 
