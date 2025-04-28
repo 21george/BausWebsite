@@ -11,12 +11,18 @@ import { HeroSection } from "../../components/HeroComponent/HeroSection";
 import defaultImage1 from "../../../asset/images/Massag.png";
 import defaultImage2 from "../../../asset/images/IMG_3385.png";
 import defaultImage3 from "../../../asset/images/image0.jpeg";
+import defaultImage23 from "../../../asset/images/YogaClass.png";
 
 const defaultImages = {
   1: defaultImage1,
   2: defaultImage2,
   3: defaultImage3,
 };
+
+const secondaryImage = {
+  2: defaultImage23,
+  3: defaultImage3
+}
 
 export default function WorkDetailPage() {
   const { id } = useParams();
@@ -171,7 +177,7 @@ export default function WorkDetailPage() {
         <section className="w-full max-w-4xl mx-auto px-2 sm:px-4">
           <header className="mb-8">
             {detail.created_at && (
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-gray-800">
                 Published on {new Date(detail.created_at).toLocaleDateString()}
               </p>
             )}
@@ -257,7 +263,7 @@ export default function WorkDetailPage() {
         >
           <div className="w-full max-w-2xl overflow-hidden ">
             <Image
-              src={defaultImages[detail.id] || defaultImage1}
+              src={secondaryImage[detail.id] || defaultImage1}
               alt={detail.title || "Work detail"}
               width={800}
               height={600}
@@ -265,8 +271,8 @@ export default function WorkDetailPage() {
               priority
             />
           </div>
-          <div className="mb-8">
-            <p className="text-sm text-gray-500 md:text-4xl   mb-2">
+          <div className="flex flex-col justify-center w-full items-start text-left m-6">
+            <p className="text-sm text-gray-800 mb-2">
               {detail.cost}
             </p>
           </div>
