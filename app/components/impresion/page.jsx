@@ -11,16 +11,16 @@ export default function Impresionpage() {
         title={"Impressum"}
       />
 
-      <article className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 sm:pb-24 py-8 sm:py-16 bg-white">
-        <div className="space-y-10 md:space-y-12">
-          <section className="space-y-4" aria-labelledby="legal-details">
+      <article className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 sm:pb-16 py-6 sm:py-12 bg-white">
+        <div className="space-y-6 md:space-y-10">
+          <section className="space-y-3" aria-labelledby="legal-details">
             <h2
               id="legal-details"
-              className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-800"
+              className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold text-gray-800"
             >
               Angaben gemäß § 5 TMG
             </h2>
-            <address className="text-base md:text-lg not-italic text-gray-600">
+            <address className="text-sm sm:text-base md:text-lg not-italic text-gray-600">
               Nikolina Baus
               <br />
               Forstenrieder Allee 140F
@@ -29,14 +29,14 @@ export default function Impresionpage() {
             </address>
           </section>
 
-          <section className="space-y-4" aria-labelledby="contact-info">
+          <section className="space-y-3" aria-labelledby="contact-info">
             <h2
               id="contact-info"
-              className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-800"
+              className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold text-gray-800"
             >
               Kontakt
             </h2>
-            <p className="text-base md:text-lg text-gray-600">
+            <p className="text-sm sm:text-base md:text-lg text-gray-600">
               <a
                 href="mailto:info@baus-physiotherapie.de"
                 className="text-blue-600 hover:text-blue-800 underline transition-colors"
@@ -46,14 +46,14 @@ export default function Impresionpage() {
             </p>
           </section>
 
-          <section className="space-y-4" aria-labelledby="content-liability">
+          <section className="space-y-3" aria-labelledby="content-liability">
             <h2
               id="content-liability"
-              className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-800"
+              className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold text-gray-800"
             >
               Haftung für Inhalte
             </h2>
-            <div className="space-y-4 text-base md:text-lg text-gray-600 leading-relaxed">
+            <div className="space-y-3 text-sm sm:text-base md:text-lg text-gray-600 leading-relaxed">
               <p>
                 Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene
                 Inhalte auf diesen Seiten nach den allgemeinen Gesetzen
@@ -73,14 +73,14 @@ export default function Impresionpage() {
             </div>
           </section>
 
-          <section className="space-y-4" aria-labelledby="link-liability">
+          <section className="space-y-3" aria-labelledby="link-liability">
             <h2
               id="link-liability"
-              className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-800"
+              className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold text-gray-800"
             >
               Haftung für Links
             </h2>
-            <div className="space-y-4 text-base md:text-lg text-gray-600 leading-relaxed">
+            <div className="space-y-3 text-sm sm:text-base md:text-lg text-gray-600 leading-relaxed">
               <p>
                 Unser Angebot enthält Links zu externen Websites Dritter, auf
                 deren Inhalte wir keinen Einfluss haben. Deshalb können wir für
@@ -100,14 +100,14 @@ export default function Impresionpage() {
             </div>
           </section>
 
-          <section className="space-y-4" aria-labelledby="copyright">
+          <section className="space-y-3" aria-labelledby="copyright">
             <h2
               id="copyright"
-              className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-800"
+              className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold text-gray-800"
             >
               Urheberrecht
             </h2>
-            <div className="space-y-4 text-base md:text-lg text-gray-600 leading-relaxed">
+            <div className="space-y-3 text-sm sm:text-base md:text-lg text-gray-600 leading-relaxed">
               <p>
                 Die durch die Seitenbetreiber erstellten Inhalte und Werke auf
                 diesen Seiten unterliegen dem deutschen Urheberrecht. Die
@@ -129,14 +129,14 @@ export default function Impresionpage() {
             </div>
           </section>
 
-          <section className="space-y-4" aria-labelledby="eu-dispute">
+          <section className="space-y-3" aria-labelledby="eu-dispute">
             <h2
               id="eu-dispute"
-              className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-800"
+              className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold text-gray-800"
             >
               EU-Streitschlichtung
             </h2>
-            <div className="space-y-4 text-base md:text-lg text-gray-600">
+            <div className="space-y-3 text-sm sm:text-base md:text-lg text-gray-600">
               <p>
                 Die Europäische Kommission stellt eine Plattform zur
                 Online-Streitbeilegung (OS) bereit:
@@ -153,14 +153,14 @@ export default function Impresionpage() {
             </div>
           </section>
 
-          <section className="space-y-4" aria-labelledby="consumer-dispute">
+          <section className="space-y-3" aria-labelledby="consumer-dispute">
             <h2
               id="consumer-dispute"
-              className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-800"
+              className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold text-gray-800"
             >
               Verbraucherstreitbeilegung/Universalschlichtungsstelle
             </h2>
-            <div className="text-base md:text-lg text-gray-600">
+            <div className="text-sm sm:text-base md:text-lg text-gray-600">
               <p>
                 Wir sind nicht bereit oder verpflichtet, an
                 Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle
@@ -170,8 +170,8 @@ export default function Impresionpage() {
           </section>
         </div>
 
-        <footer className="mt-12 pt-6 border-t border-gray-200">
-          <p className="text-sm sm:text-base text-center text-gray-500">
+        <footer className="mt-8 pt-4 border-t border-gray-200">
+          <p className="text-xs sm:text-sm text-center text-gray-500">
             <strong>Quelle:</strong>{" "}
             <a
               href="https://www.e-recht24.de"
