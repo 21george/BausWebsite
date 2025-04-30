@@ -59,93 +59,94 @@ export default function HeilkundeGrid() {
       {/* Responsive Grid Layout - single column on mobile */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
         {/* Left Section */}
- <div className="bg-white w-full">
-    <div className="grid grid-cols-1 gap-x-4 w-full">
-      <div className="pt-2 lg:pt-4 w-full">
-        <div className="w-full">
-          <dl className="space-y-3 text-base leading-7 text-gray-600">
-           {[data[0]?.points, data[0]?.points_1, data[0]?.points_2].map(
-              (point, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="flex flex-row items-start gap-2"
-              >
-                <div className="flex-shrink-0 pt-0.5">
-                  <svg
-                    className="w-4 h-4 sm:w-5 sm:h-5 text-green-500"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-                </div>
-                <p className="text-xs sm:text-xs text-gray-800">
-                  {point}
-                </p>
-              </motion.div>
-            ))}
-          </dl>
+        <div className="bg-white w-full">
+          <div className="grid grid-cols-1 gap-x-4 w-full">
+            <div className="pt-2 lg:pt-4 w-full">
+              <div className="w-full">
+                <dl className="space-y-3 text-base leading-7 text-gray-600">
+                  {[data[0]?.points, data[0]?.points_1, data[0]?.points_2].map(
+                    (point, index) => (
+                      <motion.div
+                        key={index}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: index * 0.1 }}
+                        className="flex flex-row items-start gap-2"
+                      >
+                        <div className="flex-shrink-0 pt-0.5">
+                          <svg
+                            className="w-4 h-4 sm:w-5 sm:h-5 text-green-500"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              d="M5 13l4 4L19 7"
+                            />
+                          </svg>
+                        </div>
+                        <p className="text-xm sm:text-xm text-gray-800">
+                          {point}
+                        </p>
+                      </motion.div>
+                    )
+                  )}
+                </dl>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
 
-  {/* Right Section */}
-  <div className="bg-white w-full">
-    <div className="grid grid-cols-1 gap-x-4 w-full">
-      <div className="pt-2 lg:pt-4">
-        <div className="w-full">
-          <dl className="space-y-3 text-base leading-7 text-gray-600">
-            {[
-              data[0]?.points1,
-              data[0]?.points1_1,
-              data[0]?.points1_2,
-              data[0]?.points1_3,
-            ].map((point, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="flex flex-row items-start gap-2"
-              >
-                <div className="flex-shrink-0 pt-0.5">
-                  <svg
-                    className="w-4 h-4 sm:w-5 sm:h-5 text-green-500"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-                </div>
-                <p className="text-xs sm:text-xs text-gray-800">
-                  {point}
-                </p>
-              </motion.div>
-            ))}
-          </dl>
+        {/* Right Section */}
+        <div className="bg-white w-full">
+          <div className="grid grid-cols-1 gap-x-4 w-full">
+            <div className="pt-2 lg:pt-4">
+              <div className="w-full">
+                <dl className="space-y-3 text-base leading-7 text-gray-600">
+                  {[
+                    data[0]?.points1,
+                    data[0]?.points1_1,
+                    data[0]?.points1_2,
+                    data[0]?.points1_3,
+                  ].map((point, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                      className="flex flex-row items-start gap-2"
+                    >
+                      <div className="flex-shrink-0 pt-0.5">
+                        <svg
+                          className="w-4 h-4 sm:w-5 sm:h-5 text-green-500"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M5 13l4 4L19 7"
+                          />
+                        </svg>
+                      </div>
+                      <p className="text-xm sm:text-xm text-gray-800">
+                        {point}
+                      </p>
+                    </motion.div>
+                  ))}
+                </dl>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</div>
 
       {/* Bottom Section - full width */}
       <div className="bg-white w-full mt-6">
@@ -178,7 +179,7 @@ export default function HeilkundeGrid() {
                           />
                         </svg>
                       </div>
-                      <p className="text-xs sm:text-xs text-gray-800">
+                      <p className="text-xl sm:text-xm text-gray-800">
                         {points2}
                       </p>
                     </motion.div>

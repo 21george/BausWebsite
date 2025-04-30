@@ -23,7 +23,7 @@ export default function Home() {
           subtitle="Holistische Physiotherapie auf dem neusten Stand der Wissenschaft"
         />
       </div>
-      <div className="flex flex-col justify-center items-center">
+      <div className="flex flex-col justify-center items-center ">
         <Moltivation />
       </div>
       <ÜberMich />

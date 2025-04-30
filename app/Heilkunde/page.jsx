@@ -128,7 +128,7 @@ function DynamicSections() {
                         d="M5 13l4 4L19 7"
                       />
                     </svg>
-                    <span className="text-xs sm:text-xs text-gray-800">
+                    <span className="text-xm sm:text-xm text-gray-800">
                       {feature}
                     </span>
                   </motion.li>

@@ -13,7 +13,7 @@ export function HeroSection({
   return (
     <section className="relative w-full z-0 h-[600px] flex items-center justify-center overflow-hidden">
       {/* Background Image */}
-      <div className="absolute inset-0 w-full h-full">
+      <div className="absolute inset-0 w-full h-full z-0">
         <Image
           src={backgroundImage || "/placeholder.svg"}
           alt={imageAlt}

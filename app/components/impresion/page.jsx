@@ -132,7 +132,7 @@ export default function Impresionpage() {
           <section className="space-y-3" aria-labelledby="eu-dispute">
             <h2
               id="eu-dispute"
-              className="text-lg sm:text-x md:text-2xl lg:text-3xl font-semibold text-gray-800"
+              className=" sm:text-x md:text-2xl lg:text-3xl font-semibold text-gray-800"
             >
               EU-Streitschlichtung
             </h2>
@@ -156,7 +156,7 @@ export default function Impresionpage() {
           <section className="space-y-3" aria-labelledby="consumer-dispute">
             <h2
               id="consumer-dispute"
-              className="text-lg sm:text-x md:text-2xl lg:text-3xl font-semibold text-gray-800"
+              className="sm:text-x md:text-2xl lg:text-3xl font-semibold text-gray-800"
             >
               Verbraucherstreitbeilegung/Universalschlichtungsstelle
             </h2>
