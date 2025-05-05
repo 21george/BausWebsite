@@ -26,8 +26,9 @@ export default function Home() {
       <div className="flex flex-col justify-center items-center ">
         <Moltivation />
       </div>
-      <ÜberMich />
-
+      <div className="flex flex-col justify-center items-center ">
+        <ÜberMich />
+      </div>
       <div>
         <div className="flex flex-col items-center justify-center pb-24 mt-32 p-6 text-center ">
           <h3 className="text-3xl font-bold md:text-4xl lg:text-5xl">

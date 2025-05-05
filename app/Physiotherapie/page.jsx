@@ -55,6 +55,7 @@ export default function Physiotherapie() {
     <main className="overflow-x-hidden">
       <HeroSection
         backgroundImage={PhysiotherapieImage.src}
+        backgroundImageMobile={PhysiotherapieImage.src}
         title={articles[0]?.articles_tittle || "Physiotherapie"}
         titleStyles="text-2xl sm:text-3xl md:text-4xl font-bold"
         containerStyles="mb-8 md:mb-12"

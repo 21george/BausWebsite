@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import UnivasHero from "../../asset/images/image0.jpeg";
+import UnivasHero from "../../asset/images/walfoto.png";
 import HeilkundeGrid from "../components/HeilkundeComponents/HeilkundeGrid";
 import HeilkundeSection from "../components/HeilkundeComponents/HeilkundeSection";
 import { HeroSection } from "../components/HeroComponent/HeroSection";
