@@ -99,7 +99,7 @@ export default function DrawerButton() {
                       </button>
                     </div>
                   </TransitionChild>
-                  <div className="flex pt-20 h-auto flex-col overflow-y bg-white py-8 shadow-xl ">
+                  <div className="flex h-auto flex-col overflow-y-scroll bg-white py-8 shadow-xl z-10">
                     <div className="px-4 sm:px-6">
                       <DialogTitle className="text-xl sm:text-2xl font-semibold text-gray-900 text-center mb-4">
                         {data[0].P_tittle}
