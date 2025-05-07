@@ -64,8 +64,8 @@ export default function ÜberMich() {
             >
               <Image
                 src={image.url}
-                quality={100}
                 fill
+                quality={100}
                 alt={image.alt}
                 className="object-cover hover:scale-[1.02] transition-transform duration-500"
                 priority={index === 0}
