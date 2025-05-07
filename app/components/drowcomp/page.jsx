@@ -23,7 +23,7 @@ export default function DrawerButton() {
   };
 
   useEffect(() => {
-    async function fetchData() {
+    async function fetchData() {womenyoga.png
       try {
         const result = await getAboutme();
         if (result.success) {

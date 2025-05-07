@@ -10,7 +10,7 @@ import { HeroSection } from "../components/HeroComponent/HeroSection";
 
 import defaultImage1 from "../../asset/images/Massag.png";
 import defaultImage2 from "../../asset/images/IMG_3385.png";
-import defaultImage3 from "../../asset/images/womenyoga.png";
+import defaultImage3 from "../../asset/images/InerselfTuch.png";
 
 const defaultImages = {
   1: defaultImage1,
