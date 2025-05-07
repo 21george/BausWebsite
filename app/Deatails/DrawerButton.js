@@ -77,6 +77,7 @@ export default function DrawerButton() {
         <div className="block h-full w-full lg:w-1/2">
           <Image
             src={meFoto.src}
+             quality={100}
             alt="Personal"
             className="w-full h-auto max-h-[300px] md:max-h-[400px] object-cover hover:opacity-90 transition-opacity"
           />

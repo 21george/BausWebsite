@@ -101,7 +101,7 @@ export default function DrawerButton() {
                   </TransitionChild>
                   <div className="flex h-full flex-col overflow-y-scroll bg-white py-6 shadow-xl">
                     <div className="px-4 sm:px-6">
-                      <DialogTitle className="text-xl sm:text-2xl font-semibold text-gray-900 text-center mb-4">
+                      <DialogTitle className="text-xl  sm:text-2xl font-semibold text-gray-900 text-center mb-4">
                         {data[0].P_tittle}
                       </DialogTitle>
                     </div>
@@ -113,7 +113,7 @@ export default function DrawerButton() {
                       />
                     </div>
                     <div className="relative mt-4 sm:mt-6 flex-1 px-4 sm:px-6">
-                      <p className="text-gray-700 text-base sm:text-lg leading-relaxed sm:leading-loose">
+                      <p className="text-gray-700 text-xl sm:text-base leading-relaxed sm:leading-loose">
                         {data[0].personal_deatails}
                       </p>
                     </div>

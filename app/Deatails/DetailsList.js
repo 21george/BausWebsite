@@ -5,7 +5,7 @@ import Image from "next/image";
 import { getAllWorkdetails } from "../actions/worldetails/workdetails";
 import image1 from "../../asset/images/Massag.png";
 import image2 from "../../asset/images/IMG_3385.png";
-import image3 from "../../asset/images/womenyoga.png";
+import image3 from "../../asset/images/InerselfTuch.png";
 
 const workImages = {
   1: image1,
@@ -138,6 +138,7 @@ export default function DetailsList({ id }) {
             {workImages[details.id] ? (
               <Image
                 src={workImages[details.id]}
+                quality={100}
                 alt={details.title || "Work detail image"}
                 className="inset-0 w-full md:w-[800px] h-auto max-h-[400px]  object-cover hover:opacity-90 transition-opacity"
                 priority={index < 3}
