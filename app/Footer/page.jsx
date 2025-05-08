@@ -92,7 +92,7 @@ export default function Footer() {
           ))}
         </div>
       </div>
-
+      <hr className="h-px my-8 bg-neutral-200 border-0 dark:bg-neutral-300"></hr>
       {/* Copyright and Legal */}
       <div className="py-4 sm:py-6 text-center text-xs sm:text-sm text-gray-600">
         <p>© {currentYear} Nikolina Baus. All rights reserved.</p>
