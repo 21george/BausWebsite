@@ -19,7 +19,7 @@ const contactInfo = {
   details: [
     {
       heading: "Rufen Sie uns an",
-      content: "015-29107771",
+      content: "0151 29 10 77 71",
       additionalInfo: "",
     },
     {

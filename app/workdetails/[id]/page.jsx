@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 import { HeroSection } from "../../components/HeroComponent/HeroSection";
 
 import defaultImage1 from "../../../asset/images/Massag.png";
-import defaultImage2 from "../../../asset/images/IMG_3385.png";
+import defaultImage2 from "../../../asset/images/Bausyoga.png";
 import defaultImage3 from "../../../asset/images/walfoto.png";
 import defaultImage23 from "../../../asset/images/YogaClass.png";
 
@@ -272,7 +272,7 @@ export default function WorkDetailPage() {
             />
           </div>
           <div className="flex flex-col justify-center w-full items-start text-left m-6">
-            <p className="text-sm text-gray-800 md:text-2xl mb-2">
+            <p className="text-ml text-gray-800 md:text-2ml mb-2">
               {detail.cost}
             </p>
           </div>

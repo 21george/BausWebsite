@@ -65,7 +65,7 @@ export default function DrawerButton() {
         onClick={onPress}
         className="btn btn-primary self-start bg-amber-950 w-40 h-11 rounded-sm text-yellow-50 hover:bg-amber-900 transition duration-300"
       >
-        Erfahre Mehr
+        Erfahre mehr
       </button>
       <Dialog open={open} onClose={setOpen} className="fixed z-10">
         <DialogBackdrop
