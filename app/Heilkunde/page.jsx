@@ -112,7 +112,7 @@ function DynamicSections() {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
-                    className="flex items-start gap-3 p-2 hover:bg-gray-50 transition-colors rounded-lg"
+                    className="flex items-start gap-3  hover:bg-gray-50 transition-colors rounded-lg"
                   >
                     <svg
                       className="flex-shrink-0 w-5 h-5 sm:w-6 sm:h-6 text-green-500 mt-0.5"
