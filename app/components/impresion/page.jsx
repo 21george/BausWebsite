@@ -12,7 +12,7 @@ export default function Impresionpage() {
       />
 
       <article className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 sm:pb-16 py-6 sm:py-12 bg-white">
-        <div className="space-y-6 md:space-y-10">
+        <div className="prose max-w-none text-left text-gray-700 mb-1">
           <section className="space-y-3" aria-labelledby="legal-details">
             <h2
               id="legal-details"
@@ -154,12 +154,12 @@ export default function Impresionpage() {
           </section>
 
           <section className="space-y-3" aria-labelledby="consumer-dispute">
-            <h2
+            <p
               id="consumer-dispute"
-              className="sm:text-x md:text-2xl lg:text-3xl font-semibold text-gray-800"
+              className="sm:text-s md:text-2xl lg:text-3xl font-semibold text-gray-800"
             >
               Verbraucherstreitbeilegung/Universalschlichtungsstelle
-            </h2>
+            </p>
             <div className="text-sm sm:text-base md:text-lg text-gray-600">
               <p>
                 Wir sind nicht bereit oder verpflichtet, an
