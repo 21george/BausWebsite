@@ -165,14 +165,14 @@ export default function Kontakt() {
         itemType="https://schema.org/ContactPoint"
       >
         <p 
-          className="text-x mt-2 text-gray-800 w-auto flex justify-items-start"
+          className="prose max-w-none text-left text-gray-700 mb-1"
           itemProp="description"
         >
           {contact.description}
         </p>
         <br aria-hidden="true" />
         <p 
-          className="text-3xl text-gray-900 mt-1" 
+          className="prose max-w-none text-left text-gray-700 mb-1" 
           itemProp="telephone"
         >
           {contact.details}
@@ -196,23 +196,23 @@ export default function Kontakt() {
                   {item.heading.includes("Mail") ? (
                     <a
                       href={`mailto:${item.content}`}
-                      className="text-2xl font-bold text-yellow-900 hover:underline"
+                      className="lg:text-2xl font-bold text-yellow-900 hover:underline prose max-w-none text-left  mb-1"
                     >
                       {item.content}
                     </a>
                   ) : item.heading.includes("Rufen") ? (
                     <a
                       href={`tel:${item.content}`}
-                      className="text-2xl font-bold text-yellow-900 hover:underline"
+                      className="lg:text-2xl font-bold text-yellow-900 hover:underline"
                     >
                       {item.content}
                     </a>
                   ) : (
-                    <p className="text-2xl font-bold text-yellow-900">
+                    <p className="prose max-w-none text-left text-gray-700 mb-1">
                       {item.content}
                     </p>
                   )}
-                  <p className="text-sm mt-2 text-gray-600">
+                  <p className="prose max-w-none text-left text-gray-700 mb-1">
                     {item.additionalInfo}
                   </p>
                   {index < contactInfo.details.length - 1 && (
