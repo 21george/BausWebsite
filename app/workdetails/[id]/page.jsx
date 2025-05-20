@@ -272,6 +272,7 @@ export default function WorkDetailPage() {
             />
           </div>
           <div className="flex flex-col justify-center w-full items-start text-left m-6">
+            <h1>{detail.cost_header}</h1>
             <p className="text-ml text-gray-800 md:text-2ml mb-2">
               {detail.cost}
             </p>
