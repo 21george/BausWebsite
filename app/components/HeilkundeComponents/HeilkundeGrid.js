@@ -89,7 +89,7 @@ export default function HeilkundeGrid() {
                             />
                           </svg>
                         </div>
-                        <p className="text-xm sm:text-xm text-gray-800">
+                        <p className="prose max-w-none text-left text-gray-700 mb-1">
                           {point}
                         </p>
                       </motion.div>
@@ -136,7 +136,7 @@ export default function HeilkundeGrid() {
                           />
                         </svg>
                       </div>
-                      <p className="text-xm sm:text-xm text-gray-800">
+                      <p className="prose max-w-none text-left text-gray-700 mb-1">
                         {point}
                       </p>
                     </motion.div>
@@ -179,7 +179,7 @@ export default function HeilkundeGrid() {
                           />
                         </svg>
                       </div>
-                      <p className="text-xl sm:text-xm text-gray-800">
+                      <p className="text-xm sm:text-sm text-gray-800">
                         {points2}
                       </p>
                     </motion.div>

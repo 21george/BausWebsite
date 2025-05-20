@@ -14,7 +14,7 @@ export default function Heilkunde() {
     <main className="overflow-x-hidden">
       <HeroSection
         backgroundImage={UnivasHero.src}
-        className="h-64 xs:h-72 sm:h-80 md:h-[30rem] lg:h-[38rem] xl:h-[40rem] flex items-center justify-center"
+        className="h-64 xs:h-72 sm:h-80 md:h-[30rem] lg:h-[38rem] xl:h-[40rem] 2xl:h-[45rem] flex items-center justify-center"
         title="Heilkunde für Frauen"
         description=""
         aria-label="Main hero section"
@@ -79,7 +79,7 @@ function DynamicSections() {
       <div className="flex flex-col justify-center items-center gap-6 md:gap-8 lg:gap-10 px-4 xs:px-5 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 max-w-7xl mx-auto">
         {data[0]?.featursTittle && (
           <section className="w-full text-center space-y-8 md:space-y-10">
-            <h2 className="text-2xl xs:text-2.5xl sm:text-3xl md:text-2xl text-gray-800 px-2">
+            <h2 className="text-2xl xs:text-2.5xl sm:text-3xl md:text-4xl lg:text-4xl text-gray-800 px-2">
               {data[0].featursTittle}
             </h2>
             
@@ -88,20 +88,20 @@ function DynamicSections() {
             <div className="flex flex-col lg:flex-row items-center justify-center gap-8 md:gap-10 w-full">
               {/* Image */}
               <div className="w-full lg:w-1/2 max-w-2xl">
-                <div className="relative aspect-[4/3] w-full h-auto  overflow-hidden shadow-md">
+                <div className="relative aspect-[4/3] w-full h-auto overflow-hidden shadow-md rounded-lg">
                   <Image
                     src={WomenWorld.src}
                     alt="A woman practicing yoga"
                     fill
                     className="object-cover"
                     priority
-                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 50vw"
                   />
                 </div>
               </div>
 
               {/* Features List */}
-              <ul className="w-full lg:w-1/2 max-w-2xl space-y-3 sm:space-y-4 text-gray-800">
+              <ul className="w-full lg:w-1/2 max-w-2xl space-y-3 sm:space-y-2 md:space-y-1 text-gray-800">
                 {[
                   data[0].features,
                   data[0].features_1,
@@ -112,10 +112,10 @@ function DynamicSections() {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
-                    className="flex items-start gap-2 p-1  hover:bg-gray-100 transition-colors"
+                    className="flex items-start gap-3 p-2 hover:bg-gray-50 transition-colors rounded-lg"
                   >
                     <svg
-                      className="w-4 h-4 sm:w-5 sm:h-5 text-green-500"
+                      className="flex-shrink-0 w-5 h-5 sm:w-6 sm:h-6 text-green-500 mt-0.5"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -128,7 +128,7 @@ function DynamicSections() {
                         d="M5 13l4 4L19 7"
                       />
                     </svg>
-                    <span className="text-xm sm:text-xm text-gray-800">
+                    <span className="prose max-w-none text-left text-gray-700 mb-1">
                       {feature}
                     </span>
                   </motion.li>

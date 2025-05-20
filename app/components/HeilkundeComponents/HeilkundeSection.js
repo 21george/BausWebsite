@@ -79,7 +79,7 @@ const HeilkundeSection = () => {
 
   return (
     <section 
-      className="flex flex-col h-full w-full items-center mt-4 mb-12 px-4 sm:px-6 lg:px-8"
+      className="flex flex-col h-full w-full items-center mt-4 sm:justify-start mb-12 px-4 sm:px-6 lg:px-8"
       aria-labelledby="heilkunde-section-heading"
     >
       <h2 id="heilkunde-section-heading" className="sr-only">Heilkunde Information</h2>
@@ -88,7 +88,7 @@ const HeilkundeSection = () => {
         {data.map((item, index) => (
           <p
             key={`heilkunde-para-${index}`}
-            className="text-gray-800 justify-between flex text-xm sm:text-xm lg:text-x leading-relaxed mb-4"
+            className="prose max-w-none text-left text-gray-700 mb-8"
           >
             {item.paragraphs}
           </p>
