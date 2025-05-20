@@ -261,7 +261,7 @@ export default function WorkDetailPage() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
         >
-          <div className="w-full max-w-2xl overflow-hidden ">
+          <div className="w-full max-w-4xl overflow-hidden">
             <Image
               src={secondaryImage[detail.id] || defaultImage1}
               alt={detail.title || "Work detail"}
@@ -272,9 +272,14 @@ export default function WorkDetailPage() {
             />
           </div>
           <div className="flex flex-col justify-center w-full items-start text-left m-6">
-            <h1 className="text-gl">{detail.cost_header}</h1>
+            <h1 className="text-gl mb-2">{detail.cost_header}</h1>
+
             <p className="text-ml text-gray-800 md:text-2ml mb-2">
               {detail.cost}
+            </p>
+
+            <p className="text-ml text-gray-800 md:text-2ml mb-2">
+              {detail.coast_headerK}
             </p>
           </div>
         </motion.div>
