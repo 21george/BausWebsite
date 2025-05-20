@@ -12,7 +12,7 @@ export function HeroSection({
   imageAlt = "Hero background image",
 }) {
   return (
-    <section className="relative w-full z-0 h-[600px] flex items-center justify-center overflow-hidden">
+    <section className="relative w-full z-0 h-[50em] flex items-center justify-center overflow-hidden">
       {/* Optimized Picture Element */}
       <div className="absolute inset-0 w-full h-full z-0">
         <picture>

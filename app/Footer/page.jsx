@@ -37,9 +37,9 @@ export default function Footer() {
               priority={false}
               sizes="(max-width: 640px) 60px, 80px"
             />
-            <span className="text-xl sm:text-2xl font-semibold">Nikolina Baus</span>
+            <span className="text-xl sm:text-2xl font-semibold ">Nikolina Baus</span>
           </Link>
-          <p className="mt-3 sm:mt-4 text-gray-600 text-sm sm:text-base text-center lg:text-left">
+          <p className="prose max-w-none text-left text-gray-700 mb-8">
             {SOCIAL_DESCRIPTION}
           </p>
         </div>
@@ -78,9 +78,9 @@ export default function Footer() {
                       </>
                     )}
                     {section === "EMail" && (
-                      <>
+                      < >
                         <FaEnvelope className="mt-0.5 sm:mt-1 flex-shrink-0" aria-hidden="true" />
-                        <a href={`mailto:${link}`} className="hover:underline break-all">
+                        <a href={`mailto:${link}`} className="hover:underline break-all ">
                           {link}
                         </a>
                       </>
