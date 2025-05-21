@@ -79,7 +79,7 @@ function DynamicSections() {
       <div className="flex flex-col justify-center items-center gap-6 md:gap-8 lg:gap-10 px-4 xs:px-5 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 max-w-7xl mx-auto">
         {data[0]?.featursTittle && (
           <section className="w-full text-center space-y-8 md:space-y-10">
-            <h2 className="text-2xl xs:text-2.5xl sm:text-3xl md:text-4xl lg:text-4xl text-gray-800 px-2">
+            <h2 className="text-2xl xs:text-2.5xl sm:text-3xl md:text-2xl lg:text-3xl text-gray-800 px-2">
               {data[0].featursTittle}
             </h2>
             

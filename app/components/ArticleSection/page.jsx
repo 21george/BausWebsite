@@ -29,35 +29,71 @@ export default function ArticleSection() {
 
   if (loading) {
     return (
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 pb-24 lg:px-8 py-16 text-center">
-        <p>Loading...</p>
+      <section className="max-w-3xl mx-auto px-4 py-16 text-center">
+        <div className="animate-pulse space-y-4">
+          <div className="h-8 bg-gray-200 rounded w-3/4 mx-auto"></div>
+          <div className="space-y-2">
+            {[...Array(5)].map((_, i) => (
+              <div key={i} className="h-4 bg-gray-200 rounded w-full"></div>
+            ))}
+          </div>
+        </div>
       </section>
     );
   }
 
   if (error) {
     return (
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 pb-24 lg:px-8 py-16 text-center">
+      <section className="max-w-3xl mx-auto px-4 py-16 text-center">
         <p className="text-red-500">Error: {error}</p>
       </section>
     );
   }
 
   return (
-    <section className="flex flex-col h-full w-full items-center mt-8 mb-12 px-4 sm:px-6 lg:px-8">
+    <section className="max-w-7xl mx-auto px-4 py-8 sm:py-12">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="text-center space-y-4"
+        className="space-y-8"
       >
         {articles.map((article, index) => (
-          <p
+          <article 
             key={article.id || index}
-            className="text-gray-800 justify-between flex text-sm sm:text-base lg:text-sm leading-relaxed mb-4"
+            className="p-2 sm:p-8"
           >
-            {article.ADeatails}
-          </p>
+            <header className="mb-6">
+              {/*<h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
+                {article.title || "Physiotherapy Insights"}
+              </h2>}
+              {/*<div className="flex items-center text-sm text-gray-500">
+                <span className="mr-4">Published on {new Date(article.date || new Date()).toLocaleDateString()}</span>
+                <span>By Nikolina Baus</span>
+              </div>*/}
+            </header>
+            
+            <div className="prose prose-lg max-w-none text-gray-700">
+              {article.ADeatails.split('\n').map((paragraph, i) => (
+                <p key={i} className="mb-4 leading-relaxed">
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+            
+            <footer className="mt-8 pt-4 border-t ">
+              <div className="flex flex-wrap gap-2">
+                {article.tags?.map((tag, i) => (
+                 {/* <span 
+                    key={i} 
+                    className="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm"
+                  >
+                    {tag}
+                  </span>*/}
+                ))}
+              </div>
+            </footer>
+          </article>
         ))}
       </motion.div>
     </section>

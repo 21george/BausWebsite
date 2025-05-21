@@ -61,7 +61,7 @@ export default function Physiotherapie() {
         containerStyles="mb-8 md:mb-12"
       />
 
-      <div className="prose max-w-none text-left text-gray-700 mb-8">
+      <div className="prose max-w-none text-left text-gray-700 mb-1">
         <ArticleSection articles={articles} onReadMore={handleReadMore} />
       </div>
 

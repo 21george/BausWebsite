@@ -11,14 +11,21 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      animation: {
+        fadeIn: "fadeIn 0.5s ease-out forwards",
+      },
+      keyframes: {
+        fadeIn: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+      },
       fontFamily: {
         serif: ["Georgia", "serif"],
       },
-      extend: {
-        backgroundImage: {
-          blackOverlay:
-            "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%)",
-        },
+      backgroundImage: {
+        blackOverlay:
+          "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%)",
       },
     },
   },

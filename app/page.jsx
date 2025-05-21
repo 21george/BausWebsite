@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import UniversalFoto from "./../asset/images/R.jpg";
 import Moltivation from "./Motivation/page";
@@ -12,8 +13,10 @@ import Ratingpage from "./components/Rating/page";
 import ÜberMich from "./components/Ubermich/page";
 import DynamicSection from "./Deatails/page";
 import { HeroSection } from "./components/HeroComponent/HeroSection";
+import { useScrollAnimation } from "./components/Animationscroll/ScrollAnimation";
 
 export default function Home() {
+  useScrollAnimation();
   return (
     <main className="dark:bg-gray-100 font-[family-name:var(--font-geist-sans)]">
       <div>
