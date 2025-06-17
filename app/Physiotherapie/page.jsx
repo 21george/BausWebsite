@@ -60,27 +60,38 @@ export default function Physiotherapie() {
         titleStyles="text-2xl sm:text-3xl md:text-4xl font-bold"
         containerStyles="mb-8 md:mb-12"
       />
-
-      <div className="prose max-w-none text-left text-gray-700 mb-1">
-        <ArticleSection articles={articles} onReadMore={handleReadMore} />
-      </div>
-
-      <div
-        className="flex justify-center items-center w-full mx-auto p-4 sm:p-6 md:p-10 lg:p-12"
-        role="img"
-        aria-label="Motivational walk depiction"
-      >
-        <div className="flex flex-col w-full  mt-1 max-w-2xl md:max-w-3xl lg:max-w-4xl overflow-hidden rounded-lg">
-          <Image
-            src={WomenWorld.src}
-            alt="A woman practicing yoga"
-            width={800}
-            height={600}
-            className="w-full md:w-[400px] h-auto max-h-[400px] object-cover mx-auto"
-            priority
-          />
+   <div className="bg-white py-12 sm:py-16 lg:py-20">
+  <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
+      {/* Blog Content Section */}
+      <div className="w-full lg:w-2/3">
+        <div className="prose prose-lg max-w-none text-gray-700">
+          <ArticleSection articles={articles} onReadMore={handleReadMore} />
         </div>
       </div>
+
+      {/* Sidebar/Image Section */}
+      <div className="w-full lg:w-1/3">
+        <div className="sticky top-8">
+          <div 
+            className="rounded-lg overflow-hidden bg-gray-50 p-4"
+            role="img"
+            aria-label="Motivational walk depiction"
+          >
+            <Image
+              src={WomenWorld.src}
+              alt="A woman practicing yoga"
+              width={800}
+              height={600}
+              className="w-full h-auto rounded-lg object-cover"
+              priority
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
     </main>
   );
 }

@@ -131,16 +131,18 @@ export default function DetailsList({ id }) {
             index % 2 !== 0 ? "lg:flex-row-reverse" : "lg:flex-row"
           }`}
         >
-          <Link
-            href={`/detailslist/${details.id}`}
-            className="block h-full lg:w-1/2"
+          <div 
+            className="rounded-lg block h-full lg:w-1/2 bg-gray-60 "
+           
           >
             {workImages[details.id] ? (
               <Image
                 src={workImages[details.id]}
                 quality={100}
+                width={800}
+                height={600}
                 alt={details.title || "Work detail image"}
-                className="inset-0 w-full md:w-[800px] h-auto max-h-[400px]  object-cover hover:opacity-90 transition-opacity"
+                className="inset-0 w-full md:w-[647px] h-auto max-h-[400px] object-cover hover:opacity-90 transition-opacity"
                 priority={index < 3}
               />
             ) : (
@@ -148,7 +150,7 @@ export default function DetailsList({ id }) {
                 <span className="text-gray-500">No Image Available</span>
               </div>
             )}
-          </Link>
+        </div>
 
           <div className="flex flex-col justify-center flex-1 lg:p-12 sm:w-full lg:w-1/2">
             <h3 className="lg:text-3xl lg:font-bold  mt-5">

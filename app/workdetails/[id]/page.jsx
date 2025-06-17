@@ -256,31 +256,29 @@ export default function WorkDetailPage() {
 
         {/* Additional Image */}
         <motion.div
-          className="flex justify-center w-full mx-auto p-6"
+          className="flex flex-col md:flex-row justify-center items-center w-full mx-auto p-6 gap-6"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
         >
-          <div className="w-full max-w-4xl overflow-hidden">
+          <div className="flex flex-col justify-center w-full md:w-1/2 items-start text-left m-0 md:mr-6">
+            <h1 className="text-gl mb-2 sm:text-sm">{detail.cost_header}</h1>
+            <p className="text-ml text-gray-800 md:text-2ml mb-2 sm:text-2s">
+              {detail.cost}
+            </p>
+            <p className="text-ml text-gray-800 md:text-2ml mb-2">
+              {detail.coast_headerK}
+            </p>
+          </div>
+          <div className="w-full md:w-1/2 max-w-4xl overflow-hidden flex-shrink-0">
             <Image
               src={secondaryImage[detail.id] || defaultImage1}
               alt={detail.title || "Work detail"}
               width={800}
               height={600}
-              className="w-full md:w-[400px] h-auto max-h-[400px] object-cover mx-auto"
+              className="w-full h-auto max-h-[400px] object-cover mx-auto"
               priority
             />
-          </div>
-          <div className="flex flex-col justify-center w-full items-start text-left m-6">
-            <h1 className="text-gl mb-2 sm:text-sm">{detail.cost_header}</h1>
-
-            <p className="text-ml text-gray-800 md:text-2ml mb-2 sm:text-2s">
-              {detail.cost}
-            </p>
-
-            <p className="text-ml text-gray-800 md:text-2ml mb-2">
-              {detail.coast_headerK}
-            </p>
           </div>
         </motion.div>
       </div>
