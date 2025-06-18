@@ -1,9 +1,9 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
-export async function POST(request) {
+export async function POST(req) {
   try {
-    const formData = await request.json();
+    const formData = await req.json();
 
     // Validate required fields
     if (!formData.email || !formData.fullname || !formData.message) {
@@ -15,25 +15,26 @@ export async function POST(request) {
 
     // Create transporter
     const transporter = nodemailer.createTransport({
-      host: process.env.EMAIL_HOST,
-      port: parseInt(process.env.EMAIL_PORT),
-      secure: process.env.EMAIL_SECURE === 'true',
+      host: process.env.SMTP_HOST,
+      port: Number(process.env.SMTP_PORT),
+      secure: process.env.SMTP_PORT === '465',
+      to:process.env.EMAIL_TO,
       auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASSWORD,
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
       },
     });
 
     // Email to admin
-    await transporter.sendMail({
-      from: `"Website Contact" <${process.env.EMAIL_FROM}>`,
+   const Info = await transporter.sendMail({
+      //from: `"Website Contact" <${process.env.EMAIL_FROM}>`,//
       to: process.env.EMAIL_TO,
       subject: `New Contact from ${formData.fullname}`,
       text: `
         Name: ${formData.fullname}
         Email: ${formData.email}
         Phone: ${formData.telefone}
-        Date: ${formData.date}
+        Date of Birth: ${formData.date}
         Message: ${formData.message}
       `,
       html: `
@@ -41,7 +42,7 @@ export async function POST(request) {
         <p><strong>Name:</strong> ${formData.fullname}</p>
         <p><strong>Email:</strong> ${formData.email}</p>
         <p><strong>Phone:</strong> ${formData.telefone}</p>
-        <p><strong>Date:</strong> ${formData.date}</p>
+        <p><strong>Date of Birth:</strong> ${formData.date}</p>
         <p><strong>Message:</strong> ${formData.message}</p>
       `,
     });
