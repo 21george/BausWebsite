@@ -1,15 +1,21 @@
 import React from "react";
-import UniversalFoto from "../../../asset/images/R.jpg";
-import { HeroSection } from "../HeroComponent/HeroSection";
+import Image from "next/image"
+import BausLogo from "../../../asset/images/Baus.png";
 
 export default function Impresionpage() {
   return (
     <main className="w-full min-h-screen">
-      <HeroSection
-        backgroundImage={UniversalFoto.src}
-        aria-label="Impressum header image"
-        title={"Impressum"}
-      />
+      <div className="flex justify-center mb-15">
+          <div className="w-64 md:w-80 mt-14 p-12 sm:p-12"> {/* Increased size */}
+            <Image
+              src={BausLogo}
+              alt="Masquerade Logo"
+              className="w-full h-auto" /* Makes logo responsive */
+              priority
+              quality={100} /* Higher quality */
+            />
+          </div>
+        </div>
 
       <article className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 sm:pb-16 py-6 sm:py-12 bg-white">
         <div className="prose max-w-none text-left text-gray-700 mb-1">

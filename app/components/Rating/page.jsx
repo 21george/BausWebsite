@@ -55,11 +55,11 @@ export default function Ratingpage() {
         <h2 className="text-black text-center text-2xl leading-none max-w-2xl mx-auto mb-12">
           Bewertungen bei Google
         </h2>
-        <div className="flex flex-col space-y-4 md:space-y-0 md:flex-row md:space-x-4 relative">
+        <div className="flex flex-col space-y-4 md:space-y-0 md:flex-row md:space-x-4  relative">
           {reviewers.map((review, index) => (
             <div
               key={index}
-              className="rounded-sm bg-white p-8 shadow-two duration-300 hover:shadow-one dark:bg-dark dark:shadow-three dark:hover:shadow-gray-dark lg:px-5 xl:px-8"
+              className="rounded-sm bg-white border shadow-sm p-8 shadow-two duration-300 hover:shadow-one dark:bg-dark dark:shadow-three dark:hover:shadow-gray-dark lg:px-5 xl:px-8"
             >
               <p className="font-bold uppercase">{review.name}</p>
               <p className="text-xs text-muted-foreground">{review.date}</p>

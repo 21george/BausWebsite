@@ -9,13 +9,10 @@ const HeilkundeSection = () => {
 
   useEffect(() => {
     let isMounted = true;
-
     async function fetchData() {
       try {
         const result = await getHeilkundeInfo();
-        
         if (!isMounted) return;
-
         if (result.success) {
           setData(result.data);
         } else {
@@ -85,14 +82,17 @@ const HeilkundeSection = () => {
       <h2 id="heilkunde-section-heading" className="sr-only">Heilkunde Information</h2>
       
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="text-center space-y-6 max-w-4xl">
+        <div className="space-y-4 text-gray-600">
         {data.map((item, index) => (
+
           <p
             key={`heilkunde-para-${index}`}
-            className="prose max-w-none text-left text-gray-700 mb-8"
-          >
+            className="prose max-w-none text-left text-gray-700 mb-8 text-base lg:text-lg leading-relaxed"
+            >
             {item.paragraphs}
           </p>
         ))}
+            </div>
       </motion.div>
     </section>
   );

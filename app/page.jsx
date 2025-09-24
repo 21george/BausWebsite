@@ -18,7 +18,7 @@ import { useScrollAnimation } from "./components/Animationscroll/ScrollAnimation
 export default function Home() {
   useScrollAnimation();
   return (
-    <main className="dark:bg-gray-100 font-[family-name:var(--font-geist-sans)]">
+    <main className="font-[family-name:var(--font-geist-sans)]">
       <div>
         <HeroSection
           backgroundImage={UniversalFoto.src}
@@ -43,6 +43,8 @@ export default function Home() {
           <DynamicSection />
         </div>
       </div>
+      <div>
+     </div>
       <div className="pb-24">
         <Gallery
           title=""

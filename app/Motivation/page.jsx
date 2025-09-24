@@ -4,23 +4,33 @@ import WalkFoto from "../../asset/images/WayRoom.png";
 
 export default function Moltivation() {
   return (
-    <div className="px-4 py-8 md:px-8 lg:px-16 xl:px-20 dark:bg-gray-100">
-      <div className="flex flex-col max-w-4xl mx-auto overflow-hidden">
-        <img
-          src={WalkFoto.src}
-          alt="A motivational walk depiction"
-          className="w-full h-auto max-h-[500px] object-cover rounded-lg dark:bg-gray-500"
-        />
-        <div className="p-4 md:p-6 lg:p-8 pb-8 md:pb-12 mx-2 md:m-4 -mt-12 md:-mt-16 space-y-4 md:space-y-6 lg:max-w-3xl bg-white dark:bg-gray-50 rounded-md shadow-sm">
-          <div className="space-y-2">
-            <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold leading-snug md:leading-normal">
-              „Entweder du erkennst die Möglichkeit und zahlst den Preis oder du
-              verstehst es nicht, erlebst die Konsequenz und zahlst später einen
-              viel höheren Preis.“
-            </p>
-            <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold">
-              Der Alchemist
-            </h2>
+    <div className="relative w-full bg-white py-12 lg:py-16 dark:bg-white-100">
+      <div className="container mx-auto px-4 lg:px-6">
+        <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12 max-w-6xl mx-auto">
+          
+          {/* Left Column - Text */}
+          <div className="w-full lg:w-1/2">
+            <div className="space-y-6">
+              <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-medium leading-relaxed text-gray-800 italic">
+                „Entweder du erkennst die Möglichkeit und zahlst den Preis oder du
+                verstehst es nicht, erlebst die Konsequenz und zahlst später einen
+                viel höheren Preis."
+              </p>
+              <h2 className="text-right text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-bold text-gray-900">
+                — Der Alchemist
+              </h2>
+            </div>
+          </div>
+
+          {/* Right Column - Image */}
+          <div className="w-full lg:w-1/2">
+            <div className=" overflow-hidden shadow-lg">
+              <img
+                src={WalkFoto.src}
+                alt="A motivational walk depiction"
+                className="w-full h-auto max-h-[500px] responsive object-cover transition-transform duration-300"
+              />
+            </div>
           </div>
         </div>
       </div>

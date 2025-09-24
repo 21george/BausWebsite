@@ -1,5 +1,4 @@
 "use client";
-
 import { useEffect, useState } from "react";
 import { getHeilkundeInfo } from "../../actions/HeilkundeAction/GetHeilkunde";
 import { motion } from "framer-motion";

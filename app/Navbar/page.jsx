@@ -17,7 +17,7 @@ export default function Navigationber() {
   return (
     <main className="fixed inset-x-0 flex justify-between items-center w-full z-10  h-20 px-4 text-white bg-yellow-950 ">
       {/* Logo Section */}
-      <div className="flex">
+      <div className="flex ">
         <h1 className="text-5xl font-signature ml-2">
           <Link href="/" rel="noreferrer">
             <Image

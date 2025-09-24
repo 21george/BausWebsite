@@ -9,7 +9,7 @@ import { HeroSection } from "../components/HeroComponent/HeroSection";
 
 
 import defaultImage1 from "../../asset/images/Massag.png";
-import defaultImage2 from "../../asset/images/Bausyoga.png";
+import defaultImage2 from "../../asset/images/IMG_1195.jpg";
 import defaultImage3 from "../../asset/images/InerselfTuch.png";
 
 const defaultImages = {
@@ -103,5 +103,6 @@ export default function WorkDetailPage() {
         )}
       </div>
     </motion.div>
+    
   );
 }

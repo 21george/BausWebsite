@@ -1,72 +1,88 @@
-"use client";
+'use client'
 
-import { motion } from "framer-motion";
-import Image from "next/image";
+import Image from 'next/image'
 
 export function HeroSection({
-  backgroundImage,
-  backgroundImageMobile, // Optional mobile-optimized image
-  title,
-  subtitle,
-  overlayColor = "bg-black/30", // Reduced opacity for better visibility
-  imageAlt = "Hero background image",
+backgroundImage,
+backgroundImageMobile, // optional mobile image
+title,
+subtitle,
+buttonText = 'EXPLORE COLLECTION',
+overlayColor = 'bg-gradient-to-t from-black/70 to-transparent',
+imageAlt = 'Hero background image',
 }) {
-  return (
-    <section className="relative w-full z-0 h-[50em] flex items-center justify-center overflow-hidden">
-      {/* Optimized Picture Element */}
-      <div className="absolute inset-0 w-full h-full z-0">
+return (
+<section className="min-h-screen relative flex items-center z-0">
+    {/* Background Image */}
+    <div className="absolute inset-0">
         <picture>
-          {/* Mobile-optimized image (optional) */}
-          {backgroundImageMobile && (
-            <source
-              media="(max-width: 768px)"
-              srcSet={backgroundImageMobile}
+            {backgroundImageMobile && (
+            <source media="(max-width:768px)" srcSet={backgroundImageMobile} />
+            )}
+            <Image 
+                src={backgroundImage || '/placeholder.svg'} 
+                alt={imageAlt} 
+                fill
+                quality={100}
+                priority
+                sizes="100vw"
+                className="w-full h-full object-cover" 
+                style={{ objectFit: 'cover', objectPosition: 'center' }} 
             />
-          )}
-          {/* Fallback image */}
-          <Image
-            src={backgroundImage || "/placeholder.svg"}
-            alt={imageAlt}
-            fill
-            priority
-            quality={100}
-            blurDataURL={backgroundImage || "/placeholder.svg"}
-            className="object-cover w-full h-full"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
-            style={{
-              objectFit: "cover",
-              objectPosition: "center center",
-              width: "100%",
-              height: "100%",
-              // Subtle sharpening and contrast enhancement
-              filter: "brightness(1.05) contrast(1.05) saturate(1.1)",
-            }}
-          />
         </picture>
-      </div>
+        {/* Overlay Gradient */}
+        <div className={`absolute inset-0 ${overlayColor}`}></div>
+    </div>
 
-      {/* Subtle gradient overlay for better text contrast */}
-      <div className={`absolute inset-0 ${overlayColor} z-0`} />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent z-0" />
-
-      {/* Content with enhanced visibility */}
-      <div className="container px-4 md:px-6 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center space-y-6"
-        >
-          <h1 className="text-4xl font-bold tracking-tighter text-white sm:text-5xl md:text-6xl lg:text-7xl drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
-            {title}
-          </h1>
-          {subtitle && (
-            <p className="mt-4 max-w-[800px] mx-auto text-lg md:text-xl text-white/95 font-medium drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
-              {subtitle}
+    {/* Content */}
+    <div className="relative z-10 max-w-[2000px] mx-auto px-4 sm:px-8 pt-32">
+        <div className="max-w-4xl">
+            <h1 className="text-4xl font-bold text-white md:text-[7vw] font-light leading-[0.9] mb-8 opacity-0 animate-fadeIn" style={{
+                animationDelay: '0.8s' }}>
+                {title}
+                <br />
+                </h1>
+                 <p className="mt-4 font-bold text-lg text-white tracking-[0.1em] mb-8  animate-fadeIn" style={{ animationDelay: '0.5s' }}>
+                {subtitle}
             </p>
-          )}
-        </motion.div>
-      </div>
-    </section>
-  );
+            <div className="h-[1px] bg-white mb-12 opacity-0 animate-revealLine" style={{ animationDelay: '1.2s'
+                }}></div>
+        </div>
+    </div>
+
+    {/* Tailwind Animations */}
+    <style jsx>
+        {
+            ` @keyframes fadeIn {
+                to {
+                    opacity: 1;
+                }
+            }
+
+            .animate-fadeIn {
+                animation: fadeIn 1s forwards;
+            }
+
+            @keyframes revealLine {
+                0% {
+                    transform: scaleX(0);
+                    opacity: 0;
+                }
+
+                100% {
+                    transform: scaleX(1);
+                    opacity: 1;
+                }
+            }
+
+            .animate-revealLine {
+                transform-origin: left;
+                animation: revealLine 1s forwards;
+            }
+
+            `
+        }
+    </style>
+</section>
+)
 }
