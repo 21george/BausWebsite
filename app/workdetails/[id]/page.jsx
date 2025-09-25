@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { HeroSection } from "../../components/HeroComponent/HeroSection";
 
 import defaultImage1 from "../../../asset/images/Massag.png";
-import defaultImage2 from "../../../asset/images/Bausyoga.png";
+import defaultImage2 from "../../../asset/images/IMG_1572.jpg";
 import defaultImage3 from "../../../asset/images/walfoto.png";
 import defaultImage23 from "../../../asset/images/IMG_1195.jpg";
 

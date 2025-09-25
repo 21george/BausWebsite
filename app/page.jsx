@@ -19,6 +19,7 @@ export default function Home() {
   useScrollAnimation();
   return (
     <main className="font-[family-name:var(--font-geist-sans)]">
+
       <div>
         <HeroSection
           backgroundImage={UniversalFoto.src}

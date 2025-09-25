@@ -15,7 +15,6 @@ return (
 <section className="min-h-screen relative flex items-center z-0">
     {/* Background Image */}
     <div className="absolute inset-0">
-        <picture>
             {backgroundImageMobile && (
             <source media="(max-width:768px)" srcSet={backgroundImageMobile} />
             )}
@@ -26,10 +25,9 @@ return (
                 quality={100}
                 priority
                 sizes="100vw"
-                className="w-full h-full object-cover" 
+                className="w-full h-full object-cover lg:object-contain" 
                 style={{ objectFit: 'cover', objectPosition: 'center' }} 
             />
-        </picture>
         {/* Overlay Gradient */}
         <div className={`absolute inset-0 ${overlayColor}`}></div>
     </div>
