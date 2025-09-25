@@ -248,7 +248,7 @@ export default function Kontakt() {
             {/* Google Maps iframe for Forstenrieder Allee */}
             <div className="w-full mt-8">
               <h3 className="text-lg font-semibold mb-4">Unsere Location</h3>
-              <div className="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden shadow-lg">
+              <div className="aspect-w-16 aspect-h-9 overflow-hidden">
                 <iframe
                   title="Google Map"
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2662.175399359316!2d11.492711315803884!3d48.08966897921968!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479e1cc7d075a5a5%3A0x413893b1bddeddc8!2sForstenrieder%20Allee%20140f%2C%2081476%20M%C3%BCnchen!5e0!3m2!1sde!2sde!4v1718723456789!5m2!1sde!2sde"
@@ -264,7 +264,7 @@ export default function Kontakt() {
           </div>
 
           {/* Contact Form Column */}
-          <div className="card h-fit max-w-6xl p-5 md:p-12 bg-white shadow-lg rounded-lg">
+          <div className="card h-fit max-w-6xl p-5 md:p-12 bg-white ">
             <h2 className="mb-4 text-2xl font-bold">
               Schreiben Sie uns eine Nachricht
             </h2>
@@ -364,7 +364,7 @@ export default function Kontakt() {
               )}
               <button
                 type="submit"
-                className={`w-full text-white py-3 rounded-md font-semibold focus:outline-none focus:ring-2 ${
+                className={`w-full text-white py-3 font-semibold focus:outline-none focus:ring-2 ${
                   loading ? "bg-gray-400" : "bg-amber-950 hover:bg-amber-700"
                 }`}
                 disabled={loading}
