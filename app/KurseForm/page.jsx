@@ -37,9 +37,9 @@ export default function KurseForm() {
 
   return (
     <section className="pt-16 pb-12 px-4 bg-gray-100">
-  <div className="max-w-4xl mx-auto bg-white p-8 md:p-12 shadow-sm">
+  <div className="max-w-4xl mx-auto bg-white p-8 md:p-[7rem] shadow-sm">
     {/* Title */}
-    <div className="mb-8 mt-2">
+    <div className="mb-12">
       <p className="text-base text-center">
         Von Rückenschule über Entspannungstechniken bis hin zu speziellen Übungsprogrammen - wir bieten Ihnen ein breites Spektrum an präventiven und therapeutischen Kursen.
       </p>
@@ -159,16 +159,6 @@ export default function KurseForm() {
             <option value="Fitness">Fitness & Ausdauer</option>
             <option value="Ernährung">Ernährungs-Workshop</option>
           </select>
-        </div>
-        <div>
-          <label className="block mb-2 font-medium">Gewünschtes Startdatum</label>
-          <input
-            type="date"
-            name="startdatum"
-            value={formData.startdatum}
-            onChange={handleChange}
-            className="w-full px-4 py-2 border focus:ring-2 focus:ring-yellow-950 focus:outline-none"
-          />
         </div>
       </div>
 
