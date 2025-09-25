@@ -40,7 +40,7 @@ export default function Kurse() {
 
               <Link
                 href="/KurseForm"
-                className="px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-yellow-950 transition-all duration-300 font-medium text-lg rounded-lg transform hover:scale-105"
+                className="px-8 py-4 border border-white text-white hover:bg-white hover:text-yellow-950 transition-all duration-300 font-medium text-lg  transform hover:scale-105"
               >
                 Jetzt anmelden
               </Link>
@@ -136,11 +136,19 @@ export default function Kurse() {
                 <div className="mt-8">
                   <Link
                     href="/KurseForm"
-                    className="inline-block px-6 py-3 border-2 border-yellow-950 text-yellow-950 hover:bg-yellow-950 hover:text-white hover:border-yellow-950 transition-all duration-300 font-medium text-sm sm:text-base rounded-md transform hover:scale-105"
+                    className="inline-block px-6 py-3 border border-amber-950 text-yellow-950 hover:bg-armber-950 hover:text-white hover:border-yellow-950 transition-all duration-300 font-medium text-sm sm:text-base rounded-md transform hover:scale-105"
                   >
                     KURSANMELDUNG & INFORMATION
                   </Link>
                 </div>
+               {/* <div className="mt-8">
+                  <Link
+                    href="/OnlineKurse"
+                    className="inline-block px-6 py-3 border-2 border-yellow-950 text-yellow-950 hover:bg-yellow-950 hover:text-white hover:border-yellow-950 transition-all duration-300 font-medium text-sm sm:text-base rounded-md transform hover:scale-105"
+                  >
+                    ONLINEKURSE & INFORMATION
+                  </Link>
+                </div> */}
               </div>
             </div>
 

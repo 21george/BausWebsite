@@ -29,20 +29,25 @@ export async function POST(req) {
    const Info = await transporter.sendMail({
       //from: `"Website Contact" <${process.env.EMAIL_FROM}>`,//
       to: process.env.EMAIL_TO,
-      subject: `New Contact from ${formData.fullname}`,
+      subject: `New Contact from ${formData.vorname}, ${formData.nachname}`,
       text: `
-        Name: ${formData.fullname}
+        Name: ${formData.vorname} ${formData.nachname}
         Email: ${formData.email}
-        Phone: ${formData.telefone}
-        Date of Birth: ${formData.date}
+        Phone: ${formData.telefon}
+        Date of Birth: ${formData.geburtsdatum}
         Message: ${formData.message}
       `,
       html: `
         <h1>New Contact Form Submission</h1>
-        <p><strong>Name:</strong> ${formData.fullname}</p>
+        <p><strong>Name:</strong> ${formData.vorname}</p>
+        <p><strong>Name:</strong> ${formData.nachname}</p>
+        <p><strong>Name:</strong> ${formData.adresse}</p>
+        <p><strong>Name:</strong> ${formData.geburtsdatum}</p>
+        <p><strong>Name:</strong> ${formData.plz}</p>
+        <p><strong>Name:</strong> ${formData.stadt}</p>
+        <p><strong>Name:</strong> ${formData.kurs}</p>
         <p><strong>Email:</strong> ${formData.email}</p>
-        <p><strong>Phone:</strong> ${formData.telefone}</p>
-        <p><strong>Date of Birth:</strong> ${formData.date}</p>
+        <p><strong>Phone:</strong> ${formData.telefon}</p>
         <p><strong>Message:</strong> ${formData.message}</p>
       `,
     });
@@ -52,12 +57,12 @@ export async function POST(req) {
       from: `"${process.env.EMAIL_FROM_NAME}" <${process.env.EMAIL_FROM}>`,
       to: formData.email,
       subject: 'Thank you for contacting us',
-      text: `Dear ${formData.fullname},\n\nThank you for your message. We'll contact you soon.\n\nBest regards,\n${process.env.EMAIL_FROM_NAME}`,
+      text: `Dear ${formData.vorname} ${formData.nachname},\n\nThank you for your message. We'll contact you soon.\n\nBest regards,\n${process.env.EMAIL_FROM_NAME}`,
       html: `
         <div>
           <h1>Thank you for contacting us</h1>
-          <p>Dear ${formData.fullname},</p>
-          <p>Thank you for your message. We'll contact you soon.</p>
+          <p>Dear ${formData.vorname} ${formData.nachname},</p>
+          <p>Thank you for choosing our kurse. We'll contact you soon.</p>
           <p>Best regards,<br/>${process.env.EMAIL_FROM_NAME}</p>
         </div>
       `,

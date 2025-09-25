@@ -5,8 +5,14 @@ import { getContact } from "../actions/contactaction/GetContact";
 
 export default function KurseForm() {
   const [formData, setFormData] = useState({
-    name: "",
+    vorname: "",
+    nachname: "",
     email: "",
+    adresse:"",
+    telefon: "",
+    geburtsdatum: "",
+    plz: "",
+    stadt: "",
     kurs: "",
     nachricht: "",
   });
@@ -178,7 +184,7 @@ export default function KurseForm() {
       <div>
         <button
           type="submit"
-          className="w-full px-6 py-3 bg-yellow-950 text-white font-medium shadow hover:bg-yellow-800 transition-all duration-300"
+          className="px-6 py-3 bg-yellow-950 text-white font-medium shadow hover:bg-yellow-800 transition-all duration-300"
         >
           Anmeldung absenden
         </button>
