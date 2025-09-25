@@ -40,9 +40,8 @@ export default function KurseForm() {
   <div className="max-w-4xl mx-auto bg-white p-8 md:p-12 shadow-sm">
     {/* Title */}
     <div className="mb-8 mt-2">
-      <p className="text-base md:text-3xl  text-center">
-        Ausbildung als Elektroniker für Betriebstechnik (m/w/d) <br />
-        in Kundendienstregion München
+      <p className="text-base text-center">
+        Von Rückenschule über Entspannungstechniken bis hin zu speziellen Übungsprogrammen - wir bieten Ihnen ein breites Spektrum an präventiven und therapeutischen Kursen.
       </p>
     </div>
 
