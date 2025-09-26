@@ -12,7 +12,8 @@ overlayColor = 'bg-gradient-to-t from-black/70 to-transparent',
 imageAlt = 'Hero background image',
 }) {
 return (
-<section className="min-h-screen relative flex items-center z-0">
+       <section className="relative w-full z-0 h-[50vh] flex items-center sm:h-[60vh] md:h-[70vh] lg:h-[80vh] overflow-hidden">
+        
     {/* Background Image */}
     <div className="absolute inset-0">
             {backgroundImageMobile && (
@@ -33,9 +34,10 @@ return (
     </div>
 
     {/* Content */}
-    <div className="relative z-10 max-w-[2000px] mx-auto px-4 sm:px-8 pt-32">
+        <div className="relative z-10 max-w-[2000px] mx-auto px-4 sm:px-8 pt-32">
+            
         <div className="max-w-4xl">
-            <h1 className="text-4xl font-bold text-white md:text-[7vw] font-light leading-[0.9] mb-8 opacity-0 animate-fadeIn" style={{
+            <h1 className="text-2xl font-bold text-white md:text-[5vw] font-light leading-[0.9] mb-8 opacity-0 animate-fadeIn" style={{
                 animationDelay: '0.8s' }}>
                 {title}
                 <br />

@@ -1,173 +1,232 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
+import { useState, useEffect } from "react";
+import { HeroSection } from "../components/HeroComponent/HeroSection";
+import  HeroImage  from "../../public/Images/IMG_7712.jpg";
 
 export default function Kurse() {
+  const [courseData, setCourseData] = useState({
+    hero: {
+      title: "Kurse & Workshops",
+      image: "/Images/IMG_7712.jpg",
+      imageAlt: "Kurse und Workshops Hero"
+    },
+    mainCourse: {
+      title: "Next Me - Dein Kurs nach der Entbindung",
+      description: "Unser erstes Kennenlernen startet mit einem 1:1 Termin bei uns in der Praxis, zur Untersuchung und Aufnahme. Bei Bedarf auch einer Sonografie der Bauchmuskulatur und/oder der Bauchorgane. Danach starten deine 4 Module bei uns in der Praxis:",
+      modules: [
+        { name: "Modul 1", description: "Beckenboden & Rumpf" },
+        { name: "Modul 2", description: "Training" },
+        { name: "Modul 3", description: "Training & Hormone" },
+        { name: "Modul 4", description: "Beckenbodenentspannung" }
+      ],
+      content: [
+        "Wir starten den Kurs in der Gruppe mit dem Verständnis für den Beckenboden und den Rumpf, danach der Verbindung zu diesen Strukturen.",
+        "Die Rückbildung startet ab Tag 1 nach der Entbindung.\nWir müssen besonders in der 2. Wundheilungsphase Reize zur spezifischen Anpassung in die Struktur geben damit wir das Gewebe qualitativ aufbauen.",
+        "Weiter geht es mit der Edukation über hormonelle Prozesse und wie dich diese postpartal beeinflussen können. Außerdem besprechen wir deinen Trainingsplan für die nächsten Wochen.",
+        "Im letzten Modul geht es rund um Entspannungstechniken.\nWir werden gemeinsam atmen, den Beckenboden dehnen und mobilisieren.\nAn diesem Tag werden zusätzlich noch alle weiteren Fragen geklärt und damit ist der Kurs bei uns auch schon abgeschlossen."
+      ]
+    },
+    courseInfo: {
+      sectionTitle: "Alle Infos auf einen Blick:",
+      highlights: [
+        "5 wöchige Betreuung mit Trainingsplan",
+        "Kursteilnahme ab der 2. Woche nach Entbindung",
+        "1:1 Termin in der Woche vom {consultationWeek} nach Vereinbarung"
+      ],
+      startDate: "06.11.2024",
+      startDateLabel: "Kursstart am:",
+      schedule: [
+        { date: "01. November", name: "Modul 1" },
+        { date: "08. November", name: "Modul 2" },
+        { date: "15. November", name: "Modul 3" },
+        { date: "22. November", name: "Modul 4" }
+      ],
+      consultationWeek: "20.11-25.11"
+    },
+    yoga: {
+      title: "Yoga",
+      content: [
+        "Hier in der Praxis findest du am Mittwoch PhysioFlowYoga.\nDas physiotherapeutische Yoga Konzept ist Ashtanga geprägt.\nIn jeder ersten Woche des Monats finden Einsteigerkurse statt. In der restlichen Zeit findest du leichte bis mittelschwere Yogastunden.",
+        "Ich lade dich herzlich ein, in deinem Körper anzukommen, die Selbsterfahrung zu machen sich Zeit für sich zu nehmen & letztlich zu entschleunigen. Die Kursteilnahme ist ausschließlich durch eine Voranmeldung möglich.",
+        "Du kannst bei meinen Yogastunden auf Grund deines Einkommens und deiner Möglichkeiten selbst entscheiden, welchen finanziellen Ausgleich du für meine Arbeit geben kannst und möchtest."
+      ],
+      pricingTitle: "Preise nach Preisstaffel:",
+      pricing: {
+        einzelstunde: { label: "Einzelstunde", min: 15, max: 30 },
+        zehnerkarte: { label: "10er Karte", min: 170, max: 210 }
+      }
+    },
+    buttons: {
+      registration: {
+        text: "📅 KURSANMELDUNG",
+        href: "/KurseForm"
+      }
+    },
+    images: {
+      main: {
+        src: "/Images/IMG_7712.jpg",
+        alt: "Kurse und Workshops für Gesundheit und Wohlbefinden",
+        title: "Kurse & Workshops - Baus Praxis"
+      }
+    }
+  });
+
   return (
     <>
       {/* Hero Section */}
-       <section className="relative w-full h-[60vh] md:h-[70vh] lg:h-[80vh] overflow-hidden">
-        <div className="absolute inset-0">
-          <Image
-            src="/Images/IMG_6280.jpg"
-            alt="Kurse und Workshops Hero"
-            fill
-            className="object-cover"
-            priority
-            quality={100}
-            sizes="100vw"
-          />
-          <div className="absolute inset-0 bg-black/50"></div>
-        </div>
-
-        {/* Hero Content */}
-        <div className="relative h-full flex items-center justify-center">
-          <div className="text-center px-4 max-w-4xl mx-auto">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 leading-tight">
-              Kurse & Workshops
-            </h1>
-            <p className="text-lg sm:text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto leading-relaxed">
-              Stärken Sie Ihre Gesundheit durch professionell geleitete Kurse und
-              individuelle Betreuung
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="#kurse-info"
-                className="px-8 py-4 bg-yellow-950 text-white hover:bg-yellow-800 transition-all duration-300 font-medium text-lg rounded-lg shadow-lg hover:shadow-xl"
-              >
-                Mehr erfahren
-              </a>
-
-              <Link
-                href="/KurseForm"
-                className="px-8 py-4 border border-white text-white hover:bg-white hover:text-yellow-950 transition-all duration-300 font-medium text-lg  transform hover:scale-105"
-              >
-                Jetzt anmelden
-              </Link>
-            </div>
-          </div>
-        </div>
+       <section className="relative w-full h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[80vh] overflow-hidden">
+        <HeroSection
+          backgroundImage={HeroImage.src}
+          backgroundImageMobile={HeroImage.src}
+          title={courseData.hero.title}
+          subtitle={courseData.hero.subtitle}
+        />
       </section>
 
       {/* Main Content Section */}
-      <div id="kurse-info" className="relative w-full bg-white py-12 lg:py-16">
-        <div className="container mx-auto px-4 lg:px-6">
-          <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
-            {/* Left Column */}
-            <div className="w-full lg:w-3/5">
-              <div className="space-y-6">
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 leading-tight">
-                  Unser Kursangebot
+      <div id="kurse-info" className="relative flex items-center justify-center w-full bg-white py-8 sm:py-12 lg:py-16 min-h-screen">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+          <div className="flex flex-col items-center justify-center gap-8 lg:gap-12 xl:gap-16">
+            {/* Main Content Column */}
+            <div className="w-full max-w-4xl">
+              <div className="space-y-4 lg:space-y-6 text-center lg:text-left">
+                <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 leading-tight">
+                  {courseData.mainCourse.title}
                 </h2>
 
-                <div className="space-y-4 text-gray-600">
-                  <p className="text-base lg:text-lg leading-relaxed">
-                    Entdecken Sie unser vielfältiges Kursangebot für Gesundheit und
-                    Wohlbefinden. Unsere professionell geleiteten Kurse unterstützen
-                    Sie dabei, aktiv etwas für Ihre Gesundheit zu tun.
+                <div className="space-y-3 lg:space-y-4 text-gray-600">
+                  <p className="text-xs sm:text-sm md:text-base leading-relaxed">
+                    {courseData.mainCourse.description}
                   </p>
-                  <p className="text-base lg:text-lg leading-relaxed">
-                    Von Rückenschule über Entspannungstechniken bis hin zu speziellen
-                    Übungsprogrammen - wir bieten Ihnen ein breites Spektrum an
-                    präventiven und therapeutischen Kursen.
-                  </p>
-                  <p className="text-base lg:text-lg leading-relaxed">
-                    Alle Kurse werden von qualifizierten Therapeuten geleitet.
-                    Melden Sie sich{" "}
-                    <strong>online</strong> für Ihre gewünschten Kurse an oder
-                    kontaktieren Sie uns bei Fragen.
-                  </p>
+                  
+                  <div className="bg-gray-50 p-3 sm:p-4 ">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 text-xs sm:text-sm">
+                      {courseData.mainCourse.modules.map((module, index) => (
+                        <div key={index} className="flex items-center">
+                          <span className="w-1.5 h-1.5 bg-yellow-950 rounded-full mr-2 flex-shrink-0"></span>
+                          <span><strong>{module.name}:</strong> {module.description}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {courseData.mainCourse.content.map((paragraph, index) => (
+                    <p key={index} className="text-xs sm:text-sm md:text-base leading-relaxed">
+                      {paragraph.split('\n').map((line, lineIndex) => (
+                        <span key={lineIndex}>
+                          {line}
+                          {lineIndex < paragraph.split('\n').length - 1 && <br />}
+                        </span>
+                      ))}
+                    </p>
+                  ))}
                 </div>
 
                 {/* Course List */}
-                <div className="mt-8">
-                  <h3 className="text-xl font-semibold text-gray-800 mb-4">
-                    Unsere Kursangebote:
+                <div className="mt-6">
+                  <h3 className="text-base sm:text-lg font-semibold text-gray-800 mb-3 sm:mb-4">
+                    {courseData.courseInfo.sectionTitle}
                   </h3>
-                  <ul className="space-y-3 text-gray-600">
-                    <li className="flex items-start">
-                      <span className="w-3 h-3 bg-yellow-950 rounded-full mr-4 mt-2 flex-shrink-0"></span>
-                      <div>
-                        <strong>Rückenschule & Wirbelsäulengymnastik</strong>
-                        <p className="text-sm text-gray-500 mt-1">
-                          Stärkung der Rückenmuskulatur und Verbesserung der Haltung
-                        </p>
-                      </div>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="w-3 h-3 bg-yellow-950 rounded-full mr-4 mt-2 flex-shrink-0"></span>
-                      <div>
-                        <strong>Entspannungskurse & Stressmanagement</strong>
-                        <p className="text-sm text-gray-500 mt-1">
-                          Techniken zur Stressbewältigung und Entspannung
-                        </p>
-                      </div>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="w-3 h-3 bg-yellow-950 rounded-full mr-4 mt-2 flex-shrink-0"></span>
-                      <div>
-                        <strong>Schwangerschaftsgymnastik</strong>
-                        <p className="text-sm text-gray-500 mt-1">
-                          Sanfte Übungen für werdende Mütter
-                        </p>
-                      </div>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="w-3 h-3 bg-yellow-950 rounded-full mr-4 mt-2 flex-shrink-0"></span>
-                      <div>
-                        <strong>Rehabilitation nach Verletzungen</strong>
-                        <p className="text-sm text-gray-500 mt-1">
-                          Gezielte Übungen zur Wiederherstellung der Beweglichkeit
-                        </p>
-                      </div>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="w-3 h-3 bg-yellow-950 rounded-full mr-4 mt-2 flex-shrink-0"></span>
-                      <div>
-                        <strong>Präventive Bewegungskurse</strong>
-                        <p className="text-sm text-gray-500 mt-1">
-                          Vorbeugung von Beschwerden durch regelmäßige Bewegung
-                        </p>
-                      </div>
-                    </li>
-                  </ul>
+                  
+                  <div className="bg-gray-50 p-3 sm:p-4 mb-4">
+                    <ul className="space-y-2 sm:space-y-2 text-gray-700">
+                      {courseData.courseInfo.highlights.map((highlight, index) => (
+                        <li key={index} className="flex items-start">
+                          <span className="w-2 h-2 bg-yellow-950 rounded-full mr-2 sm:mr-3 mt-1 flex-shrink-0"></span>
+                          <div className="text-sm sm:text-sm">
+                            <strong>
+                              {highlight.replace('{consultationWeek}', courseData.courseInfo.consultationWeek)}
+                            </strong>
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="mb-4">
+                    <h4 className="text-base sm:text-lg font-semibold text-gray-800 mb-3">
+                      {courseData.courseInfo.startDateLabel} {courseData.courseInfo.startDate}
+                    </h4>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-1 sm:gap-1">
+                      {courseData.courseInfo.schedule.map((module, index) => (
+                        <div key={index} className="flex items-start bg-white p-2 sm:p-3">
+                          <span className="w-2 h-2  mr-2 mt-1 flex-shrink-0"></span>
+                          <div className="text-sm sm:text-sm">
+                            <strong>{module.date} - {module.name}</strong>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
 
-                <div className="mt-8">
-                  <Link
-                    href="/KurseForm"
-                    className="inline-block px-6 py-3 border border-amber-950 text-yellow-950 hover:bg-armber-950 hover:text-white hover:border-yellow-950 transition-all duration-300 font-medium text-sm sm:text-base rounded-md transform hover:scale-105"
-                  >
-                    KURSANMELDUNG & INFORMATION
-                  </Link>
+                {/** YOGA */}
+                <div className=" from-yellow-50 to-amber-50 p-3 sm:p-4 lg:p-6 rounded-xl mt-6">
+                  <h3 className="text-base sm:text-lg lg:text-xl font-semibold text-gray-800 mb-3 sm:mb-4">
+                    {courseData.yoga.title}
+                  </h3>
+                  
+                  <div className="space-y-3 lg:space-y-4 text-gray-600">
+                    {courseData.yoga.content.map((paragraph, index) => (
+                      <p key={index} className="text-xs sm:text-sm md:text-base leading-relaxed">
+                        {paragraph.split('\n').map((line, lineIndex) => (
+                          <span key={lineIndex}>
+                            {line}
+                            {lineIndex < paragraph.split('\n').length - 1 && <br />}
+                          </span>
+                        ))}
+                      </p>
+                    ))}
+
+                    <div className="mt-4">
+                      <h4 className="text-sm sm:text-base font-semibold text-gray-800 mb-3">
+                        {courseData.yoga.pricingTitle}
+                      </h4>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-1 sm:gap-1">
+                        <div className="bg-white p-3 rounded-lg border border-yellow-200">
+                          <div className="flex items-center">
+                            <span className="w-2 h-2 bg-yellow-950 rounded-full mr-2 flex-shrink-0"></span>
+                            <div className="text-xs sm:text-sm">
+                              <strong>{courseData.yoga.pricing.einzelstunde.label}:</strong> {courseData.yoga.pricing.einzelstunde.min}-{courseData.yoga.pricing.einzelstunde.max} Euro
+                            </div>
+                          </div>
+                        </div>
+                        <div className="bg-white p-3">
+                          <div className="flex items-center">
+                            <span className="w-2 h-2 bg-yellow-950 rounded-full mr-2 flex-shrink-0"></span>
+                            <div className="text-xs sm:text-sm">
+                              <strong>{courseData.yoga.pricing.zehnerkarte.label}:</strong> {courseData.yoga.pricing.zehnerkarte.min}-{courseData.yoga.pricing.zehnerkarte.max} Euro
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-               {/* <div className="mt-8">
+                <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
+                  <Link
+                    href={courseData.buttons.registration.href}
+                    className="inline-flex items-center justify-center px-4 py-2 border border-yellow-950 text-yellow-950 hover:bg-yellow-950 hover:text-white transition-all duration-300 font-medium text-xs sm:text-sm rounded-md transform hover:scale-105 text-center"
+                  >
+                    {courseData.buttons.registration.text}
+                  </Link>
+                  {/* Uncomment if needed
                   <Link
                     href="/OnlineKurse"
-                    className="inline-block px-6 py-3 border-2 border-yellow-950 text-yellow-950 hover:bg-yellow-950 hover:text-white hover:border-yellow-950 transition-all duration-300 font-medium text-sm sm:text-base rounded-md transform hover:scale-105"
+                    className="inline-flex items-center justify-center px-4 py-2 border-2 border-gray-400 text-gray-600 hover:bg-gray-400 hover:text-white transition-all duration-300 font-medium text-xs sm:text-sm rounded-md transform hover:scale-105 text-center"
                   >
                     ONLINEKURSE & INFORMATION
                   </Link>
-                </div> */}
-              </div>
-            </div>
-
-            {/* Right Column - Image */}
-            <div className="w-full lg:w-2/5">
-              <div className="relative">
-                <div className="rounded-lg overflow-hidden shadow-lg bg-white p-2 max-w-sm mx-auto">
-                  <Image
-                    src="/Images/IMG_6280.jpg"
-                    alt="Kurse und Workshops für Gesundheit und Wohlbefinden"
-                    title="Kurse & Workshops - Baus Praxis"
-                    width={400}
-                    height={300}
-                    className="w-full h-auto object-cover transition-transform duration-300 hover:scale-105"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 40vw, 320px"
-                  />
+                  */}
                 </div>
               </div>
             </div>
+          </div>
+          <div className="mt-12 text-center">
+            <h1 className="text-base text-gray-800 font-semibold"> Diatale  Online Kurse </h1> 
+            
           </div>
         </div>
       </div>
