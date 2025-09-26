@@ -192,10 +192,10 @@ export default function Kurse() {
                         {courseData.yoga.pricingTitle}
                       </h4>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-1 sm:gap-1">
-                        <div className="bg-white p-3 rounded-lg border border-yellow-200">
+                        <div className="bg-white p-3 ">
                           <div className="flex items-center">
                             <span className="w-2 h-2 bg-yellow-950 rounded-full mr-2 flex-shrink-0"></span>
-                            <div className="text-xs sm:text-sm">
+                            <div className="text-xs sm:text-sm">1
                               <strong>{courseData.yoga.pricing.einzelstunde.label}:</strong> {courseData.yoga.pricing.einzelstunde.min}-{courseData.yoga.pricing.einzelstunde.max} Euro
                             </div>
                           </div>
