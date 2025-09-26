@@ -219,14 +219,13 @@ export default function Kurse() {
                   >
                     {courseData.buttons.registration.text}
                   </Link>
-                  {/* Uncomment if needed
                   <Link
                     href="/OnlineKurse"
                     className="inline-flex items-center justify-center px-4 py-2 border-2 border-gray-400 text-gray-600 hover:bg-gray-400 hover:text-white transition-all duration-300 font-medium text-xs sm:text-sm rounded-md transform hover:scale-105 text-center"
                   >
-                    ONLINEKURSE & INFORMATION
+                    ONLINEKURSE
                   </Link>
-                  */}
+                
                 </div>
               </div>
             </div>
