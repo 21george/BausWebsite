@@ -68,14 +68,11 @@ export default function KurseForm() {
         console.error('Email API response not ok:', emailResponse.status, errorText);
         throw new Error(`Email service error: ${emailResponse.status}`);
       }
-
       const emailResult = await emailResponse.json();
-
       if (!emailResult.success) {
         console.error('Email send failed:', emailResult.error);
         throw new Error(emailResult.error || 'Fehler beim Senden der E-Mail');
       }
-
       // Success message
       setMessage({
         type: "success",
@@ -94,6 +91,7 @@ export default function KurseForm() {
         kurs: "",
         nachricht: "",
       });
+      Route.back('/app/Kurse');
 
     } catch (error) {
       console.error("Submission error:", error);
@@ -115,9 +113,6 @@ export default function KurseForm() {
   <div className="max-w-4xl mx-auto bg-white p-8 md:p-[7rem] shadow-sm">
     {/* Title */}
     <div className="mb-12">
-      <p className="text-base text-center">
-        Von Rückenschule über Entspannungstechniken bis hin zu speziellen Übungsprogrammen - wir bieten Ihnen ein breites Spektrum an präventiven und therapeutischen Kursen.
-      </p>
       <h1 className="text-4xl md:text-5xl font-bold text-center mb-8">Kursanmeldung</h1>
     </div>
 

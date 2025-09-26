@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { HeroSection } from "../components/HeroComponent/HeroSection";
@@ -70,6 +69,14 @@ export default function Kurse() {
         alt: "Kurse und Workshops für Gesundheit und Wohlbefinden",
         title: "Kurse & Workshops - Baus Praxis"
       }
+    },
+    OnlineProdukt: {
+      title: "Digitale Online Kurse",
+      content: [
+        "Coming Soon"
+      ],
+      pricingTitle: "",
+
     }
   });
 
@@ -224,12 +231,37 @@ export default function Kurse() {
               </div>
             </div>
           </div>
-          <div className="mt-12 text-center">
-            <h1 className="text-base text-gray-800 font-semibold"> Diatale  Online Kurse </h1> 
-            
+          {/** Online Produkt Section */}
+          <div className="w-full mt-12 text-center bg-gray-50">
+            <div className=" from-yellow-50 to-amber-50 p-3 sm:p-4 lg:p-6 rounded-xl mt-6">
+                  <h3 className="text-base sm:text-lg lg:text-xl font-semibold text-gray-800 mb-3 sm:mb-4">
+                    {courseData.OnlineProdukt.title}
+                  </h3>
+                  <div className="space-y-3 lg:space-y-4 text-gray-600">
+                    {courseData.OnlineProdukt.content.map((paragraph, index) => (
+                      <p key={index} className="text-xs sm:text-sm md:text-base leading-relaxed">
+                        {paragraph.split('\n').map((line, lineIndex) => (
+                          <span key={lineIndex}>
+                            {line}
+                            {lineIndex < paragraph.split('\n').length - 1 && <br />}
+                          </span>
+                        ))}
+                      </p>
+                    ))}
+
+                    <div className="mt-4">
+                      <h4 className="text-sm sm:text-base font-semibold text-gray-800 mb-3">
+                        {courseData.OnlineProdukt.pricingTitle}
+                      </h4>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-1 sm:gap-1">
+                      </div>
+                    </div>
+                  </div>
+            </div>
+            </div>
           </div>
         </div>
-      </div>
     </>
+    
   );
 }
