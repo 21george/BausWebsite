@@ -1,10 +1,22 @@
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+// Initialize Stripe only if the secret key is available
+let stripe = null;
+if (process.env.STRIPE_SECRET_KEY) {
+    stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+}
 
 export async function POST(request) {
     try {
+        // Check if Stripe is configured
+        if (!stripe) {
+            return NextResponse.json(
+                { success: false, error: "Stripe is not configured" },
+                { status: 500 }
+            );
+        }
+
         const { sessionId } = await request.json();
 
         if (!sessionId) {

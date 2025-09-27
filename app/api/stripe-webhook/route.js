@@ -1,12 +1,25 @@
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
-import { updatePurchaseStatus } from "../../actions/onlinecourses/CourseActions";
+import { updatePurchaseStatus } from "../../../utils/courseDatabase";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+// Initialize Stripe only if the secret key is available
+let stripe = null;
+if (process.env.STRIPE_SECRET_KEY) {
+    stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+}
+
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
 export async function POST(request) {
     try {
+        // Check if Stripe is configured
+        if (!stripe) {
+            return NextResponse.json(
+                { error: "Stripe is not configured" },
+                { status: 500 }
+            );
+        }
+
         const body = await request.text();
         const signature = request.headers.get('stripe-signature');
 

@@ -2,7 +2,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { getOnlineCourses } from "../actions/onlinecourses/CourseActions";
+import { getOnlineCourses } from "../actions/onlinecourses/GetCourses";
 import { HeroSection } from "../components/HeroComponent/HeroSection";
 import ServiceImage from "../../asset/images/IMG_2949.jpg";
 
@@ -24,14 +24,14 @@ export default function OnlineKurse() {
   const loadCourses = async () => {
     try {
       const result = await getOnlineCourses();
-      if (result.success) {
-        setCourses(result.data);
+      if (result && result.success) {
+        setCourses(result.data || []);
       } else {
-        setError(result.error);
+        setError(result?.error || "Fehler beim Laden der Kurse");
       }
     } catch (err) {
-      setError("Fehler beim Laden der Kurse");
-      console.error(err);
+      console.error('Error loading courses:', err);
+      setError("Fehler beim Laden der Kurse: " + err.message);
     } finally {
       setLoading(false);
     }
@@ -68,16 +68,24 @@ export default function OnlineKurse() {
           customerEmail: purchaseForm.customerEmail
         })
       });
+
+      // Check if the response is JSON
+      const contentType = response.headers.get('content-type');
+      if (!contentType || !contentType.includes('application/json')) {
+        throw new Error('Server returned non-JSON response');
+      }
+
       const result = await response.json();
+      
       if (result.success) {
         // Redirect to Stripe checkout
         window.location.href = result.url;
       } else {
-        alert("Fehler bei der Checkout-Erstellung: " + result.error);
+        alert("Fehler bei der Checkout-Erstellung: " + (result.error || 'Unbekannter Fehler'));
       }
     } catch (error) {
       console.error("Checkout error:", error);
-      alert("Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.");
+      alert("Ein Fehler ist aufgetreten: " + error.message);
     } finally {
       setIsCheckingOut(false);
     }
@@ -129,7 +137,7 @@ export default function OnlineKurse() {
             {/* Intro Section */}
             <div className="text-center mb-12">
               <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
-                🎓 Unsere Online-Kurse
+                Unsere Online-Kurse
               </h1>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 Entdecken Sie unser Angebot an hochwertigen Online-Kursen. Nach dem Kauf erhalten Sie 
@@ -145,7 +153,7 @@ export default function OnlineKurse() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
+                  className="bg-white overflow-hidden hover:shadow-xl transition-shadow"
                 >
                   {/* Course Image */}
                   {course.thumbnail_url && (

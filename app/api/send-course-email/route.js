@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
-import { getCourseById } from "../../actions/onlinecourses/CourseActions";
+import { getCourseById } from "../../../utils/courseDatabase";
 
 export async function POST(request) {
     try {

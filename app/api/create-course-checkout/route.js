@@ -1,11 +1,23 @@
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
-import { createCoursePurchase } from "../../actions/onlinecourses/CourseActions";
+import { createCoursePurchase, getCourseById } from "../../../utils/courseDatabase";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+// Initialize Stripe only if the secret key is available
+let stripe = null;
+if (process.env.STRIPE_SECRET_KEY) {
+    stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+}
 
 export async function POST(request) {
     try {
+        // Check if Stripe is configured
+        if (!stripe) {
+            return NextResponse.json(
+                { error: "Stripe is not configured. Please set STRIPE_SECRET_KEY in environment variables." },
+                { status: 500 }
+            );
+        }
+
         const { courseId, customerName, customerEmail } = await request.json();
 
         if (!courseId || !customerName || !customerEmail) {
@@ -16,7 +28,6 @@ export async function POST(request) {
         }
 
         // Get course details from your database
-        const { getCourseById } = await import("../../actions/onlinecourses/CourseActions");
         const courseResult = await getCourseById(courseId);
         
         if (!courseResult.success) {

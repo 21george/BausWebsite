@@ -30,6 +30,12 @@ export default function CourseSuccessPage() {
                 body: JSON.stringify({ sessionId })
             });
 
+            // Check if the response is JSON
+            const contentType = response.headers.get('content-type');
+            if (!contentType || !contentType.includes('application/json')) {
+                throw new Error('Server returned non-JSON response');
+            }
+
             const result = await response.json();
             
             if (result.success) {
@@ -38,14 +44,12 @@ export default function CourseSuccessPage() {
                 setError(result.error || "Zahlung konnte nicht verifiziert werden");
             }
         } catch (err) {
-            setError("Fehler bei der Zahlungsverifikation");
-            console.error(err);
+            console.error('Payment verification error:', err);
+            setError("Fehler bei der Zahlungsverifikation: " + err.message);
         } finally {
             setLoading(false);
         }
-    };
-
-    if (loading) {
+    };    if (loading) {
         return (
             <div className="min-h-screen bg-gray-50 flex items-center justify-center">
                 <div className="text-center">
@@ -59,18 +63,11 @@ export default function CourseSuccessPage() {
     if (error) {
         return (
             <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
-                <motion.div 
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="bg-white rounded-lg shadow-lg p-8 max-w-md w-full text-center"
-                >
+                <motion.div  initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="bg-white rounded-lg shadow-lg p-8 max-w-md w-full text-center" >
                     <div className="text-red-500 text-6xl mb-4">❌</div>
                     <h1 className="text-2xl font-bold text-gray-800 mb-4">Fehler</h1>
                     <p className="text-gray-600 mb-6">{error}</p>
-                    <Link 
-                        href="/OnlineKurse"
-                        className="bg-yellow-900 hover:bg-yellow-800 text-white px-6 py-3 rounded-lg font-medium inline-block"
-                    >
+                    <Link href="/OnlineKurse" className="bg-yellow-900 hover:bg-yellow-800 text-white px-6 py-3 rounded-lg font-medium inline-block">
                         Zurück zu den Kursen
                     </Link>
                 </motion.div>
