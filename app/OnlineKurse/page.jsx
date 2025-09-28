@@ -1,8 +1,7 @@
-
 "use client";
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { getOnlineCourses } from "../actions/onlinecourses/GetCourses";
+import { fetchCourses } from "../../utils/clientApi";
 import { HeroSection } from "../components/HeroComponent/HeroSection";
 import ServiceImage from "../../asset/images/IMG_2949.jpg";
 
@@ -23,7 +22,7 @@ export default function OnlineKurse() {
 
   const loadCourses = async () => {
     try {
-      const result = await getOnlineCourses();
+      const result = await fetchCourses();
       if (result && result.success) {
         setCourses(result.data || []);
       } else {

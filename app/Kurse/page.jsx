@@ -82,185 +82,221 @@ export default function Kurse() {
 
   return (
     <>
-      {/* Hero Section */}
-       <section className="relative w-full h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[80vh] overflow-hidden">
-        <HeroSection
-          backgroundImage={HeroImage.src}
-          backgroundImageMobile={HeroImage.src}
-          title={courseData.hero.title}
-          subtitle={courseData.hero.subtitle}
-        />
-      </section>
+  {/* Hero Section */}
+  <section className="relative w-full h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[80vh] overflow-hidden">
+    <HeroSection
+      backgroundImage={HeroImage.src}
+      backgroundImageMobile={HeroImage.src}
+      title={courseData.hero.title}
+      subtitle={courseData.hero.subtitle}
+    />
+  </section>
 
-      {/* Main Content Section */}
-      <div id="kurse-info" className="relative flex items-center  mt-12 justify-center w-full bg-white py-8 sm:py-12 lg:py-16 min-h-screen">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
-          <div className="flex flex-col items-center justify-center gap-8 lg:gap-12 xl:gap-16">
-            {/* Main Content Column */}
-            <div className="w-full max-w-4xl">
-              <div className="space-y-4 lg:space-y-6 text-center lg:text-left">
-                <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 leading-tight">
-                  {courseData.mainCourse.title}
-                </h2>
+  {/* Main Content Section */}
+  <div
+    id="kurse-info"
+    className="relative flex items-center mt-8 sm:mt-12 justify-center w-full bg-white py-6 sm:py-10 lg:py-16 min-h-screen"
+  >
+    <div className="container  mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+      <div className="flex flex-col items-center justify-center gap-8 lg:gap-12 xl:gap-16">
+        {/* Main Content Column */}
+        <div className="w-full max-w-4xl">
+          <div className="space-y-4 lg:space-y-6 text-center lg:text-left text-left">
+            {/* Title */}
+            <h2 className="text-xl sm:text-base md:text-3xl lg:text-4xl font-bold text-gray-900 leading-tight">
+              {courseData.mainCourse.title}
+            </h2>
 
-                <div className="space-y-3 lg:space-y-4 text-gray-600">
-                  <p className="text-xs sm:text-sm md:text-base leading-relaxed">
-                    {courseData.mainCourse.description}
-                  </p>
-                  
-                  <div className="bg-gray-50 p-3 sm:p-4 ">
-                    <div className="grid grid-cols-1  gap-2 sm:gap-3 text-xs sm:text-sm">
-                      {courseData.mainCourse.modules.map((module, index) => (
-                        <div key={index} className="flex items-center">
-                          <span className="w-1.5 h-1.5 bg-yellow-950 rounded-full mr-2 flex-shrink-0"></span>
-                          <span><strong>{module.name}:</strong> {module.description}</span>
-                        </div>
-                      ))}
+            {/* Description & Modules */}
+            <div className="space-y-3 lg:space-y-4 text-gray-600">
+              <p className="text-left sm:text-left text-sm sm:text-sm md:text-lg leading-relaxed">
+                {courseData.mainCourse.description}
+              </p>
+
+              {/* Modules List */}
+              <div className="bg-gray-50 p-3 sm:p-4 rounded-lg">
+                <div className="grid grid-cols-1 gap-2 sm:gap-3 text-sm sm:text-base">
+                  {courseData.mainCourse.modules.map((module, index) => (
+                    <div key={index} className="flex items-center">
+                      <span className="w-2 h-2 bg-yellow-950 rounded-full mr-2 flex-shrink-0"></span>
+                      <span>
+                        <strong>{module.name}:</strong> {module.description}
+                      </span>
                     </div>
-                  </div>
-
-                  {courseData.mainCourse.content.map((paragraph, index) => (
-                    <p key={index} className="text-xs sm:text-sm md:text-base leading-relaxed">
-                      {paragraph.split('\n').map((line, lineIndex) => (
-                        <span key={lineIndex}>
-                          {line}
-                          {lineIndex < paragraph.split('\n').length - 1 && <br />}
-                        </span>
-                      ))}
-                    </p>
                   ))}
                 </div>
+              </div>
 
-                {/* Course List */}
-                <div className="mt-6">
-                  <h3 className="text-base sm:text-lg font-semibold text-gray-800 mb-3 sm:mb-4">
-                    {courseData.courseInfo.sectionTitle}
-                  </h3>
-                  
-                  <div className="bg-gray-50 p-3 sm:p-4 mb-4">
-                    <ul className="space-y-2 sm:space-y-2 text-gray-700">
-                      {courseData.courseInfo.highlights.map((highlight, index) => (
-                        <li key={index} className="flex items-start">
-                          <span className="w-2 h-2 bg-yellow-950 rounded-full mr-2 sm:mr-3 mt-1 flex-shrink-0"></span>
-                          <div className="text-sm sm:text-sm">
-                            <strong>
-                              {highlight.replace('{consultationWeek}', courseData.courseInfo.consultationWeek)}
-                            </strong>
-                          </div>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+              {/* Content Paragraphs */}
+              {courseData.mainCourse.content.map((paragraph, index) => (
+                <p
+                  key={index}
+                  className="text-left sm:text-left text-sm sm:text-sm md:text-lg leading-relaxed"
+                >
+                  {paragraph.split("\n").map((line, lineIndex) => (
+                    <span key={lineIndex}>
+                      {line}
+                      {lineIndex < paragraph.split("\n").length - 1 && <br />}
+                    </span>
+                  ))}
+                </p>
+              ))}
+            </div>
 
-                  <div className="mb-4 mt-14">
-                    <h4 className="text-base sm:text-lg font-semibold text-gray-800 mb-3">
-                      {courseData.courseInfo.startDateLabel} {courseData.courseInfo.startDate}
-                    </h4>
-                    <div className="flex flex-col gap-1 sm:gap-1 ">
-                      {courseData.courseInfo.schedule.map((module, index) => (
-                        <div key={index} className="flex items-start bg-white p-1 ">
-                          <span className="w-2 h-2  mr-2 mt-1 flex-shrink-0"></span>
-                          <div className="text-sm sm:text-sm">
-                            <strong>{module.date} - {module.name}</strong>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
+            {/* Course Info */}
+            <div className="mt-6">
+              <h3 className="text-lg sm:text-xl sm:text-smfont-semibold text-gray-800 mb-3 sm:mb-4">
+                {courseData.courseInfo.sectionTitle}
+              </h3>
 
-                {/** YOGA */}
-                <div className=" from-yellow-50 to-amber-50 p-3 sm:p-4 lg:p-6 rounded-xl mt-12 sm:mt-12">
-                  <h3 className="text-base sm:text-lg lg:text-xl font-semibold text-gray-800 mb-3 sm:mb-4">
-                    {courseData.yoga.title}
-                  </h3>
-                  
-                  <div className="space-y-3 lg:space-y-4 text-gray-600">
-                    {courseData.yoga.content.map((paragraph, index) => (
-                      <p key={index} className="text-xs sm:text-sm md:text-base leading-relaxed">
-                        {paragraph.split('\n').map((line, lineIndex) => (
-                          <span key={lineIndex}>
-                            {line}
-                            {lineIndex < paragraph.split('\n').length - 1 && <br />}
-                          </span>
-                        ))}
-                      </p>
-                    ))}
-
-                    <div className="mt-4">
-                      <h4 className="text-sm sm:text-base font-semibold text-gray-800 mb-3">
-                        {courseData.yoga.pricingTitle}
-                      </h4>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-1 sm:gap-1">
-                        <div className="bg-white p-3 ">
-                          <div className="flex items-center">
-                            <span className="w-2 h-2 bg-yellow-950 rounded-full mr-2 flex-shrink-0"></span>
-                            <div className="text-xs sm:text-sm">
-                              <strong>{courseData.yoga.pricing.einzelstunde.label}:</strong> {courseData.yoga.pricing.einzelstunde.min}-{courseData.yoga.pricing.einzelstunde.max} Euro
-                            </div>
-                          </div>
-                        </div>
-                        <div className="bg-white p-3">
-                          <div className="flex items-center">
-                            <span className="w-2 h-2 bg-yellow-950 rounded-full mr-2 flex-shrink-0"></span>
-                            <div className="text-xs sm:text-sm">
-                              <strong>{courseData.yoga.pricing.zehnerkarte.label}:</strong> {courseData.yoga.pricing.zehnerkarte.min}-{courseData.yoga.pricing.zehnerkarte.max} Euro
-                            </div>
-                          </div>
-                        </div>
+              <div className="bg-gray-50 p-3 sm:p-4 mb-4 rounded-lg">
+                <ul className="space-y-2 sm:space-y-3 text-gray-700">
+                  {courseData.courseInfo.highlights.map((highlight, index) => (
+                    <li key={index} className="flex items-start">
+                      <span className="w-2 h-2 bg-yellow-950 rounded-full mr-2 sm:mr-3 mt-1 flex-shrink-0"></span>
+                      <div className="text-sm sm:text-sm">
+                        <strong>
+                          {highlight.replace(
+                            "{consultationWeek}",
+                            courseData.courseInfo.consultationWeek
+                          )}
+                        </strong>
                       </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Schedule */}
+              <div className="mb-6 mt-10">
+                <h4 className="text-lg sm:text-xl font-semibold text-gray-800 mb-3">
+                  {courseData.courseInfo.startDateLabel}{" "}
+                  {courseData.courseInfo.startDate}
+                </h4>
+                <div className="flex flex-col gap-2 bg-gray-50 rounded-lg p-2">
+                  {courseData.courseInfo.schedule.map((module, index) => (
+                    <div
+                      key={index}
+                      className="flex items-start text-sm sm:text-base p-1"
+                    >
+                      <span className="w-2 h-2 bg-yellow-950 rounded-full mr-2 mt-1 flex-shrink-0"></span>
+                      <span>
+                        <strong>
+                          {module.date} - {module.name}
+                        </strong>
+                      </span>
                     </div>
-                  </div>
-                </div>
-                <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
-                  <Link
-                    href={courseData.buttons.registration.href}
-                    className="inline-flex items-center justify-center px-4 py-2 border border-yellow-950 text-yellow-950 hover:bg-yellow-950 hover:text-white transition-all duration-300 font-medium text-xs sm:text-sm rounded-md transform hover:scale-105 text-center"
-                  >
-                    {courseData.buttons.registration.text}
-                  </Link>
-                  <Link
-                    href="/OnlineKurse"
-                    className="inline-flex items-center justify-center px-4 py-2 border-2 border-gray-400 text-gray-600 hover:bg-gray-400 hover:text-white transition-all duration-300 font-medium text-xs sm:text-sm rounded-md transform hover:scale-105 text-center"
-                  >
-                    ONLINEKURSE
-                  </Link>
-                
+                  ))}
                 </div>
               </div>
             </div>
-          </div>
-          {/** Online Produkt Section */}
-          <div className="w-full mt-12 text-center bg-gray-50">
-            <div className=" from-yellow-50 to-amber-50 p-3 sm:p-4 lg:p-6 rounded-xl mt-6">
-                  <h3 className="text-base sm:text-lg lg:text-xl font-semibold text-gray-800 mb-3 sm:mb-4">
-                    {courseData.OnlineProdukt.title}
-                  </h3>
-                  <div className="space-y-3 lg:space-y-4 text-gray-600">
-                    {courseData.OnlineProdukt.content.map((paragraph, index) => (
-                      <p key={index} className="text-xs sm:text-sm md:text-base leading-relaxed">
-                        {paragraph.split('\n').map((line, lineIndex) => (
-                          <span key={lineIndex}>
-                            {line}
-                            {lineIndex < paragraph.split('\n').length - 1 && <br />}
-                          </span>
-                        ))}
-                      </p>
-                    ))}
 
-                    <div className="mt-4">
-                      <h4 className="text-sm sm:text-base font-semibold text-gray-800 mb-3">
-                        {courseData.OnlineProdukt.pricingTitle}
-                      </h4>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-1 sm:gap-1">
+            {/* Yoga Section */}
+            <div className="from-yellow-50 to-amber-50 p-4 sm:p-6 rounded-xl mt-10 sm:mt-12">
+              <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold text-gray-800 mb-3 sm:mb-4">
+                {courseData.yoga.title}
+              </h3>
+
+              <div className="space-y-3 lg:space-y-4 text-gray-600">
+                {courseData.yoga.content.map((paragraph, index) => (
+                  <p
+                    key={index}
+                    className="text-left sm:text-left text-sm sm:text-sm md:text-lg leading-relaxed"
+                  >
+                    {paragraph.split("\n").map((line, lineIndex) => (
+                      <span key={lineIndex}>
+                        {line}
+                        {lineIndex < paragraph.split("\n").length - 1 && <br />}
+                      </span>
+                    ))}
+                  </p>
+                ))}
+
+                {/* Pricing */}
+                <div className="mt-4">
+                  <h4 className="text-base sm:text-lg font-semibold text-gray-800 mb-3">
+                    {courseData.yoga.pricingTitle}
+                  </h4>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div className="bg-white p-3 rounded-md shadow-sm">
+                      <div className="flex items-center">
+                        <span className="w-2 h-2 bg-yellow-950 rounded-full mr-2 flex-shrink-0"></span>
+                        <div className="text-sm sm:text-base">
+                          <strong>
+                            {courseData.yoga.pricing.einzelstunde.label}:
+                          </strong>{" "}
+                          {courseData.yoga.pricing.einzelstunde.min}-
+                          {courseData.yoga.pricing.einzelstunde.max} Euro
+                        </div>
+                      </div>
+                    </div>
+                    <div className="bg-white p-3 rounded-md shadow-sm">
+                      <div className="flex items-center">
+                        <span className="w-2 h-2 bg-yellow-950 rounded-full mr-2 flex-shrink-0"></span>
+                        <div className="text-sm sm:text-base">
+                          <strong>
+                            {courseData.yoga.pricing.zehnerkarte.label}:
+                          </strong>{" "}
+                          {courseData.yoga.pricing.zehnerkarte.min}-
+                          {courseData.yoga.pricing.zehnerkarte.max} Euro
+                        </div>
                       </div>
                     </div>
                   </div>
+                </div>
+              </div>
             </div>
+
+            {/* Buttons */}
+            <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center w-full">
+              <Link
+                href={courseData.buttons.registration.href}
+                className="w-full sm:w-auto inline-flex items-center justify-center px-5 py-3 border border-yellow-950 text-yellow-950 hover:bg-yellow-950 hover:text-white transition-all duration-300 font-medium text-sm rounded-md transform hover:scale-105 text-center"
+              >
+                {courseData.buttons.registration.text}
+              </Link>
+              <Link
+                href="/OnlineKurse"
+                className="w-full sm:w-auto inline-flex items-center justify-center px-5 py-3 border-2 border-gray-400 text-gray-600 hover:bg-gray-400 hover:text-white transition-all duration-300 font-medium text-sm rounded-md transform hover:scale-105 text-center"
+              >
+                ONLINEKURSE
+              </Link>
             </div>
           </div>
         </div>
-    </>
+
+        {/* Online Produkt Section */}
+        <div className="w-full mt-12 text-center bg-gray-50 p-4 sm:p-6 rounded-lg">
+          <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold text-gray-800 mb-3 sm:mb-4">
+            {courseData.OnlineProdukt.title}
+          </h3>
+          <div className="space-y-3 lg:space-y-4 text-gray-600">
+            {courseData.OnlineProdukt.content.map((paragraph, index) => (
+              <p
+                key={index}
+                className="text-sm sm:text-base md:text-lg leading-relaxed"
+              >
+                {paragraph.split("\n").map((line, lineIndex) => (
+                  <span key={lineIndex}>
+                    {line}
+                    {lineIndex < paragraph.split("\n").length - 1 && <br />}
+                  </span>
+                ))}
+              </p>
+            ))}
+
+            <div className="mt-4">
+              <h4 className="text-base sm:text-lg font-semibold text-gray-800 mb-3">
+                {courseData.OnlineProdukt.pricingTitle}
+              </h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</>
+
     
   );
 }

@@ -4,10 +4,10 @@ export async function GET() {
     try {
         const envStatus = {
             // Database
-            supabase_url: !!process.env.NEXT_PUBLIC_SUPABASE_URL,
-            supabase_anon_key: !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
-            supabase_service_role: !!process.env.SUPABASE_SERVICE_ROLE_KEY,
-            
+            supabase_url: !!process.env.NEXT_PUBLIC_SUPERBASE_URL,
+            supabase_anon_key: !!process.env.NEXT_PUBLIC_SUPERBASE_ANON_KEY,
+            supabase_service_role: !!process.env.SUPERBASE_SERVICE_ROLE_KEY,
+
             // Stripe
             stripe_secret_key: !!process.env.STRIPE_SECRET_KEY,
             stripe_publishable_key: !!process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,

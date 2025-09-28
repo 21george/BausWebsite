@@ -6,7 +6,7 @@ export default function Moltivation() {
   return (
     <div className="relative w-full bg-white py-12 lg:py-16 dark:bg-white-100">
       <div className="container mx-auto px-4 lg:px-6">
-        <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12 max-w-6xl mx-auto">
+        <div className="flex flex-col-reverse lg:flex-row items-center gap-8 lg:gap-12 max-w-6xl mx-auto">
           
           {/* Left Column - Text */}
           <div className="w-full lg:w-1/2">
@@ -14,11 +14,8 @@ export default function Moltivation() {
               <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-medium leading-relaxed text-gray-800 italic">
                 „Entweder du erkennst die Möglichkeit und zahlst den Preis oder du
                 verstehst es nicht, erlebst die Konsequenz und zahlst später einen
-                viel höheren Preis."
+                viel höheren Preis."    — Der Alchemist
               </p>
-              <h2 className="text-right text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-bold text-gray-900">
-                — Der Alchemist
-              </h2>
             </div>
           </div>
 
