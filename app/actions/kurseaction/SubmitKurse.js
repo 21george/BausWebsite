@@ -33,7 +33,6 @@ export async function submitKurse(formData) {
     },
   ]);
   
-  console.log(data, "submitKurse");
   if (error) {
     console.error(error, "error in submitting course registration");
     return { success: false, error: error.message };

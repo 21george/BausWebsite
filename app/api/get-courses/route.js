@@ -1,19 +1,13 @@
 import { NextResponse } from "next/server";
-import { getOnlineCourses } from "../../../utils/courseDatabase";
+import { getOnlineCourses } from "../../actions/onlinecourses/CourseActions";
+import { logger } from "../../../utils/logger";
 
 export async function GET() {
     try {
         const result = await getOnlineCourses();
-        return NextResponse.json(result);
+        return Response.json(result);
     } catch (error) {
-        console.error("Error in get-courses API:", error);
-        return NextResponse.json(
-            { 
-                success: false, 
-                error: "Failed to fetch courses",
-                data: []
-            },
-            { status: 500 }
-        );
+        logger.error("Error in get-courses API:", error);
+        return Response.json({ success: false, error: "Internal Server Error" }, { status: 500 });
     }
 }

@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
-import { createCoursePurchase, getCourseById } from "../../../utils/courseDatabase";
+import { createCoursePurchase, getCourseById } from "../../actions/onlinecourses/CourseActions";
 
 // Initialize Stripe only if the secret key is available
 let stripe = null;

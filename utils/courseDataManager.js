@@ -1,4 +1,5 @@
 import { createClient } from './superbase/client';
+import { logger } from './logger';
 
 /**
  * Course Data Management Utilities for Supabase
@@ -18,7 +19,7 @@ export class CourseDataManager {
       const { data, error } = await this.supabase.rpc('get_active_course_data');
       
       if (error) {
-        console.error('Error fetching course data:', error);
+        logger.error('Error fetching course data:', error);
         throw error;
       }
 
@@ -28,7 +29,7 @@ export class CourseDataManager {
 
       return this.formatCourseData(data[0]);
     } catch (error) {
-      console.error('Failed to get active course data:', error);
+      logger.error('Failed to get active course data:', error);
       throw error;
     }
   }
@@ -51,13 +52,13 @@ export class CourseDataManager {
       });
 
       if (error) {
-        console.error('Error updating course data:', error);
+        logger.error('Error updating course data:', error);
         throw error;
       }
 
       return data;
     } catch (error) {
-      console.error('Failed to update course data:', error);
+      logger.error('Failed to update course data:', error);
       throw error;
     }
   }
@@ -71,13 +72,13 @@ export class CourseDataManager {
       const { data, error } = await this.supabase.rpc('get_course_data_history');
       
       if (error) {
-        console.error('Error fetching course data history:', error);
+        logger.error('Error fetching course data history:', error);
         throw error;
       }
 
       return data || [];
     } catch (error) {
-      console.error('Failed to get course data history:', error);
+      logger.error('Failed to get course data history:', error);
       throw error;
     }
   }
@@ -94,13 +95,13 @@ export class CourseDataManager {
       });
 
       if (error) {
-        console.error('Error restoring course data version:', error);
+        logger.error('Error restoring course data version:', error);
         throw error;
       }
 
       return data;
     } catch (error) {
-      console.error('Failed to restore course data version:', error);
+      logger.error('Failed to restore course data version:', error);
       throw error;
     }
   }
@@ -159,7 +160,7 @@ export class CourseDataManager {
             const freshData = await this.getActiveCourseData();
             callback(freshData);
           } catch (error) {
-            console.error('Error handling course data change:', error);
+            logger.error('Error handling course data change:', error);
           }
         }
       )

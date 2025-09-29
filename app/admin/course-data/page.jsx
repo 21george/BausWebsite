@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useCourseData } from '../../../hooks/useCourseData';
+import { logger } from '../../../utils/logger';
 
 export default function CourseDataAdmin() {
   const { 
@@ -51,7 +52,7 @@ export default function CourseDataAdmin() {
         const historyData = await getCourseDataHistory();
         setHistory(historyData);
       } catch (err) {
-        console.error('Failed to load history:', err);
+        logger.error('Failed to load history:', err);
       }
     }
     setShowHistory(!showHistory);

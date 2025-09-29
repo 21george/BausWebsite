@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { courseDataManager } from '../utils/courseDataManager';
+import { logger } from '../utils/logger';
 
 /**
  * Custom React hook for managing course data
@@ -24,7 +25,7 @@ export function useCourseData(options = {}) {
       setCourseData(data);
     } catch (err) {
       setError(err);
-      console.error('Failed to load course data:', err);
+      logger.error('Failed to load course data:', err);
       
       // Fallback to default data structure if database fails
       setCourseData({
@@ -115,7 +116,7 @@ export function useCourseData(options = {}) {
       return true;
     } catch (err) {
       setError(err);
-      console.error('Failed to update course data:', err);
+      logger.error('Failed to update course data:', err);
       return false;
     } finally {
       setUpdating(false);
@@ -127,7 +128,7 @@ export function useCourseData(options = {}) {
     try {
       return await courseDataManager.getCourseDataHistory();
     } catch (err) {
-      console.error('Failed to get course data history:', err);
+      logger.error('Failed to get course data history:', err);
       throw err;
     }
   }, []);
@@ -142,7 +143,7 @@ export function useCourseData(options = {}) {
       return true;
     } catch (err) {
       setError(err);
-      console.error('Failed to restore course data version:', err);
+      logger.error('Failed to restore course data version:', err);
       return false;
     } finally {
       setUpdating(false);

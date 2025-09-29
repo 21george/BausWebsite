@@ -1,5 +1,6 @@
 "use server";
 import { createClient } from "../../../utils/superbase/server";
+import { logger } from "../../../utils/logger";
 
 export async function getOnlineCourses() {
     const supabase = await createClient();
@@ -25,7 +26,7 @@ export async function getOnlineCourses() {
         
         return { success: true, data: data };
     } catch (error) {
-        console.error("Error in getOnlineCourses:", error);
+        logger.error("Error in getOnlineCourses:", error);
         return { success: false, error: error.message };
     }
 }

@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getPurchaseByToken, incrementDownloadCount, logDownload } from "../../../utils/courseDatabase";
+import { getPurchaseByToken, incrementDownloadCount, logDownload } from "../../actions/onlinecourses/CourseActions";
 import { createClient } from "../../../utils/superbase/server";
 
 export async function GET(request) {
