@@ -4,13 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "build:analyze": "ANALYZE=true next build",
-    "build:production": "./scripts/build-production.sh",
-    "type-check": "tsc --noEmit",
-    "clean": "rm -rf .next out dist"
+    "lint": "next lint"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.0",
