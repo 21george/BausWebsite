@@ -111,7 +111,7 @@ export default function KurseForm() {
 
 
   return (
-    <section className="pt-16 pb-12 px-4 bg-gray-100">
+    <section className="pt-16 pb-12 px-4 bg-gray-100 sm:px-6">
       <div className="max-w-4xl mx-auto bg-white p-8 md:p-[7rem] shadow-sm">
         <div className="flex justify-center mb-4 ">
           <Image src={BausLogo}

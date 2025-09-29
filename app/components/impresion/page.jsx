@@ -1,194 +1,224 @@
+"use client";
 import React from "react";
-import Image from "next/image"
-import BausLogo from "../../../asset/images/Baus.png";
+import { useImpressumData } from "../../../hooks/useImpressumData";
 
 export default function Impresionpage() {
-  return (
-    <main className="w-full min-h-screen">
-      <div className="flex justify-center mb-15">
-          <div className="w-64 md:w-80 mt-14 p-12 sm:p-12"> {/* Increased size */}
-            <Image
-              src={BausLogo}
-              alt="Masquerade Logo"
-              className="w-full h-auto" /* Makes logo responsive */
-              priority
-              quality={100} /* Higher quality */
-            />
+  const { impressumData, loading, error } = useImpressumData();
+
+  // Fallback data in case database is not available
+  const fallbackData = {
+    company_info: {
+      title: "Angaben gemäß § 5 TMG",
+      content: "Nikolina Baus\nForstenrieder Allee 140F\n81476 München"
+    },
+    contact: {
+      title: "Kontakt",
+      content: "info@baus-physiotherapie.de",
+      additionalData: { type: "email", link: "mailto:info@baus-physiotherapie.de" }
+    }
+  };
+
+  const data = impressumData || fallbackData;
+
+  if (loading) {
+    return (
+      <main className="w-full min-h-screen">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex items-center justify-center">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900 mx-auto"></div>
+            <p className="mt-4 text-gray-600">Loading impressum...</p>
           </div>
         </div>
+      </main>
+    );
+  }
 
-      <article className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 sm:pb-16 py-6 sm:py-12 bg-white">
-        <div className="prose max-w-none text-left text-gray-700 mb-1">
-          <section className="space-y-3" aria-labelledby="legal-details">
-            <h2
-              id="legal-details"
-              className="text-lg sm:text-x md:text-2xl lg:text-3xl font-semibold text-gray-800"
-            >
-              Angaben gemäß § 5 TMG
-            </h2>
-            <address className="text-sm sm:text-base md:text-lg not-italic text-gray-600">
-              Nikolina Baus
-              <br />
-              Forstenrieder Allee 140F
-              <br />
-              81476 München
-            </address>
-          </section>
-
-          <section className="space-y-3" aria-labelledby="contact-info">
-            <h2
-              id="contact-info"
-              className="text-lg sm:text-x md:text-2xl lg:text-3xl font-semibold text-gray-800"
-            >
-              Kontakt
-            </h2>
-            <p className="text-sm sm:text-base md:text-lg text-gray-600">
-              <a
-                href="mailto:info@baus-physiotherapie.de"
-                className="text-blue-600 hover:text-blue-800 underline transition-colors"
-              >
-                info@baus-physiotherapie.de
-              </a>
-            </p>
-          </section>
-
-          <section className="space-y-3" aria-labelledby="content-liability">
-            <h2
-              id="content-liability"
-              className="text-lg sm:text-x md:text-2xl lg:text-3xl font-semibold text-gray-800"
-            >
-              Haftung für Inhalte
-            </h2>
-            <div className="space-y-3 text-sm sm:text-base md:text-lg text-gray-600 leading-relaxed">
-              <p>
-                Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene
-                Inhalte auf diesen Seiten nach den allgemeinen Gesetzen
-                verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter
-                jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde
-                Informationen zu überwachen oder nach Umständen zu forschen, die
-                auf eine rechtswidrige Tätigkeit hinweisen.
-              </p>
-              <p>
-                Verpflichtungen zur Entfernung oder Sperrung der Nutzung von
-                Informationen nach den allgemeinen Gesetzen bleiben hiervon
-                unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem
-                Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich.
-                Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir
-                diese Inhalte umgehend entfernen.
-              </p>
-            </div>
-          </section>
-
-          <section className="space-y-3" aria-labelledby="link-liability">
-            <h2
-              id="link-liability"
-              className="text-lg sm:text-x md:text-2xl lg:text-3xl font-semibold text-gray-800"
-            >
-              Haftung für Links
-            </h2>
-            <div className="space-y-3 text-sm sm:text-base md:text-lg text-gray-600 leading-relaxed">
-              <p>
-                Unser Angebot enthält Links zu externen Websites Dritter, auf
-                deren Inhalte wir keinen Einfluss haben. Deshalb können wir für
-                diese fremden Inhalte auch keine Gewähr übernehmen. Für die
-                Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter
-                oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten
-                wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße
-                überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der
-                Verlinkung nicht erkennbar.
-              </p>
-              <p>
-                Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist
-                jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht
-                zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir
-                derartige Links umgehend entfernen.
-              </p>
-            </div>
-          </section>
-
-          <section className="space-y-3" aria-labelledby="copyright">
-            <h2
-              id="copyright"
-              className="text-lg sm:text-x md:text-2xl lg:text-3xl font-semibold text-gray-800"
-            >
-              Urheberrecht
-            </h2>
-            <div className="space-y-3 text-sm sm:text-base md:text-lg text-gray-600 leading-relaxed">
-              <p>
-                Die durch die Seitenbetreiber erstellten Inhalte und Werke auf
-                diesen Seiten unterliegen dem deutschen Urheberrecht. Die
-                Vervielfältigung, Bearbeitung, Verbreitung und jede Art der
-                Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der
-                schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.
-                Downloads und Kopien dieser Seite sind nur für den privaten, nicht
-                kommerziellen Gebrauch gestattet. Soweit die Inhalte auf dieser
-                Seite nicht vom Betreiber erstellt wurden, werden die
-                Urheberrechte Dritter beachtet.
-              </p>
-              <p>
-                Insbesondere werden Inhalte Dritter als solche gekennzeichnet.
-                Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam
-                werden, bitten wir um einen entsprechenden Hinweis. Bei
-                Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte
-                umgehend entfernen.
-              </p>
-            </div>
-          </section>
-
-          <section className="space-y-3" aria-labelledby="eu-dispute">
-            <h2
-              id="eu-dispute"
-              className=" sm:text-x md:text-2xl lg:text-3xl font-semibold text-gray-800"
-            >
-              EU-Streitschlichtung
-            </h2>
-            <div className="space-y-3 text-sm sm:text-base md:text-lg text-gray-600">
-              <p>
-                Die Europäische Kommission stellt eine Plattform zur
-                Online-Streitbeilegung (OS) bereit:
-                <a
-                  href="https://ec.europa.eu/consumers/odr/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-600 hover:text-blue-800 underline transition-colors ml-1"
-                >
-                  https://ec.europa.eu/consumers/odr/
-                </a>
-                . Unsere E-Mail-Adresse finden Sie oben im Impressum.
-              </p>
-            </div>
-          </section>
-
-          <section className="space-y-3" aria-labelledby="consumer-dispute">
-            <p
-              id="consumer-dispute"
-              className="sm:text-s md:text-2xl lg:text-3xl font-semibold text-gray-800"
-            >
-              Verbraucherstreitbeilegung/Universalschlichtungsstelle
-            </p>
-            <div className="text-sm sm:text-base md:text-lg text-gray-600">
-              <p>
-                Wir sind nicht bereit oder verpflichtet, an
-                Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle
-                teilzunehmen.
-              </p>
-            </div>
-          </section>
+  const renderContent = (section) => {
+    if (!section) return null;
+    
+    const { content, additionalData } = section;
+    
+    if (additionalData?.type === "email") {
+      return (
+        <p className="text-sm sm:text-base md:text-lg text-gray-600">
+          <a
+            href={additionalData.link}
+            className="text-blue-600 hover:text-blue-800 underline transition-colors"
+          >
+            {content}
+          </a>
+        </p>
+      );
+    }
+    
+    if (additionalData?.type === "address" || section === data.company_info) {
+      return (
+        <address className="text-sm sm:text-base md:text-lg not-italic text-gray-600">
+          {content.split('\n').map((line, index) => (
+            <React.Fragment key={index}>
+              {line}
+              {index < content.split('\n').length - 1 && <br />}
+            </React.Fragment>
+          ))}
+        </address>
+      );
+    }
+    
+    if (additionalData?.paragraphs > 1) {
+      return (
+        <div className="space-y-3 text-sm sm:text-base md:text-lg text-gray-600 leading-relaxed">
+          {content.split('\n\n').map((paragraph, index) => (
+            <p key={index}>{paragraph}</p>
+          ))}
         </div>
-
-        <footer className="mt-8 pt-4 border-t border-gray-200">
-          <p className="text-xs sm:text-sm text-center text-gray-500">
-            <strong>Quelle:</strong>{" "}
+      );
+    }
+    
+    if (additionalData?.type === "text_with_link") {
+      const linkText = additionalData.link_text;
+      const linkUrl = additionalData.link_url;
+      const parts = content.split(linkText);
+      
+      return (
+        <div className="space-y-3 text-sm sm:text-base md:text-lg text-gray-600">
+          <p>
+            {parts[0]}
             <a
-              href="https://www.e-recht24.de"
+              href={linkUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-600 hover:text-blue-800 underline transition-colors"
+              className="text-blue-600 hover:text-blue-800 underline transition-colors ml-1"
             >
-              e-recht24.de
+              {linkText}
             </a>
+            {parts[1]}
+          </p>
+        </div>
+      );
+    }
+    
+    return (
+      <div className="text-sm sm:text-base md:text-lg text-gray-600">
+        <p>{content}</p>
+      </div>
+    );
+  };
+
+  return (
+    <main className="w-full min-h-screen">
+      <article className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 sm:pb-16 py-6 sm:py-12 bg-white">
+        <div className="py-12 mt-12 prose max-w-none text-left text-gray-700 mb-1">
+          
+          {/* Company Info Section */}
+          {data.company_info && (
+            <section className="space-y-3" aria-labelledby="company-info">
+              <h2 className="sm:text-sm text-sm md:text-base lg:text-base font-semibold text-gray-800">
+                {data.company_info.title}
+              </h2>
+              {renderContent(data.company_info)}
+            </section>
+          )}
+
+          {/* Contact Section */}
+          {data.contact && (
+            <section className="space-y-3 mt-4" aria-labelledby="contact-info">
+              <h2 className="sm:text-sm text-sm md:text-base lg:text-base font-semibold text-gray-800">
+                {data.contact.title}
+              </h2>
+              {renderContent(data.contact)}
+            </section>
+          )}
+
+          {/* Content Liability Section */}
+          {data.content_liability && (
+            <section className="space-y-3 mt-4" aria-labelledby="content-liability">
+              <h2 className="sm:text-sm text-sm md:text-base lg:text-base font-semibold text-gray-800">
+                {data.content_liability.title}
+              </h2>
+              {renderContent(data.content_liability)}
+            </section>
+          )}
+
+          {/* Link Liability Section */}
+          {data.link_liability && (
+            <section className="space-y-3 mt-4" aria-labelledby="link-liability">
+              <h2 className="sm:text-sm text-sm md:text-base lg:text-base font-semibold text-gray-800">
+                {data.link_liability.title}
+              </h2>
+              {renderContent(data.link_liability)}
+            </section>
+          )}
+
+          {/* Copyright Section */}
+          {data.copyright && (
+            <section className="space-y-3 mt-4" aria-labelledby="copyright">
+              <h2 className="sm:text-sm text-sm md:text-base lg:text-base font-semibold text-gray-800">
+                {data.copyright.title}
+              </h2>
+              {renderContent(data.copyright)}
+            </section>
+          )}
+
+          {/* EU Dispute Section */}
+          {data.eu_dispute && (
+            <section className="space-y-3 mt-4" aria-labelledby="eu-dispute">
+              <h2 className="sm:text-sm text-sm md:text-base lg:text-base font-semibold text-gray-800">
+                {data.eu_dispute.title}
+              </h2>
+              {renderContent(data.eu_dispute)}
+            </section>
+          )}
+
+          {/* Consumer Dispute Section */}
+          {data.consumer_dispute && (
+            <section className="space-y-3 mt-4" aria-labelledby="consumer-dispute">
+              <h2 className="sm:text-sm text-sm md:text-base lg:text-base font-semibold text-gray-800">
+                {data.consumer_dispute.title}
+              </h2>
+              {renderContent(data.consumer_dispute)}
+            </section>
+          )}
+        </div>
+
+        {/* Footer with Source */}
+        <footer className="mt-8 pt-4 border-t border-gray-200">
+          <p className="text-xs sm:text-sm text-center text-gray-500">
+            {data.footer_source ? (
+              <>
+                <strong>{data.footer_source.additionalData?.prefix || "Quelle:"}</strong>{" "}
+                <a
+                  href={data.footer_source.additionalData?.link_url || "https://www.e-recht24.de"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:text-blue-800 underline transition-colors"
+                >
+                  {data.footer_source.content}
+                </a>
+              </>
+            ) : (
+              <>
+                <strong>Quelle:</strong>{" "}
+                <a
+                  href="https://www.e-recht24.de"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:text-blue-800 underline transition-colors"
+                >
+                  e-recht24.de
+                </a>
+              </>
+            )}
           </p>
         </footer>
+
+        {/* Error State */}
+        {error && (
+          <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-md">
+            <p className="text-red-600 text-sm">
+              {error} - Using fallback content.
+            </p>
+          </div>
+        )}
       </article>
     </main>
   );
