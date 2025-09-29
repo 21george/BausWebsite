@@ -1,5 +1,7 @@
 "use client";
+import Image from "next/image";
 import React, { useState } from "react";
+import BausLogo from "../../asset/images/Baus.png"
 
 export default function KurseForm() {
   const [formData, setFormData] = useState({
@@ -110,7 +112,13 @@ export default function KurseForm() {
 
   return (
     <section className="pt-16 pb-12 px-4 bg-gray-100">
-  <div className="max-w-4xl mx-auto bg-white p-8 md:p-[7rem] shadow-sm">
+      <div className="max-w-4xl mx-auto bg-white p-8 md:p-[7rem] shadow-sm">
+        <div className="flex justify-center mb-4 ">
+          <Image src={BausLogo}
+            alt="baus-logo"
+            className="h-20 w-auto pl-6"
+          />
+        </div>
     {/* Title */}
     <div className="mb-12">
       <h1 className="text-4xl md:text-5xl font-bold text-center mb-8">Kursanmeldung</h1>
@@ -250,9 +258,6 @@ export default function KurseForm() {
             <option value="">Bitte wählen</option>
             <option value="Next Me - Dein Kurs nach der Entbindung">Next Me - Dein Kurs nach der Entbindung</option>
             <option value="PhysioFlowYoga">PhysioFlowYoga</option>
-            <option value="Yoga & Entspannung">Yoga & Entspannung</option>
-            <option value="Fitness & Ausdauer">Fitness & Ausdauer</option>
-            <option value="Ernährungs-Workshop">Ernährungs-Workshop</option>
           </select>
           {errors.kurs && <p className="text-red-500 text-sm mt-1">{errors.kurs}</p>}
         </div>
