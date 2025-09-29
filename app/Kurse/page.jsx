@@ -157,7 +157,7 @@ export default function Kurse() {
                     <div key={index} className="flex items-center">
                       <span className="w-2 h-2 bg-yellow-950 rounded-full mr-2 flex-shrink-0"></span>
                       <span>
-                        <strong>{module.name}:</strong> {module.description}
+                        <strong className="sm:text-sm">{module.name}:</strong> {module.description}
                       </span>
                     </div>
                   ))}
@@ -181,7 +181,7 @@ export default function Kurse() {
             </div>
 
             {/* Course Info */}
-            <div className="mt-6">
+            <div className="mt-6 text-left">
               <h3 className="text-lg sm:text-xl sm:text-smfont-semibold text-gray-800 mb-3 sm:mb-4">
                 {displayData.courseInfo.sectionTitle}
               </h3>
@@ -189,10 +189,10 @@ export default function Kurse() {
               <div className="bg-gray-50 p-3 sm:p-4 mb-4 rounded-lg">
                 <ul className="space-y-2 sm:space-y-3 text-gray-700">
                   {displayData.courseInfo.highlights.map((highlight, index) => (
-                    <li key={index} className="flex items-start">
+                    <li key={index} className="flex items-start text-sm">
                       <span className="w-2 h-2 bg-yellow-950 rounded-full mr-2 sm:mr-3 mt-1 flex-shrink-0"></span>
                       <div className="text-sm sm:text-sm">
-                        <strong>
+                        <strong className="sm:text-sm text-sm lg:text-sm">
                           {highlight.replace(
                             "{consultationWeek}",
                             displayData.courseInfo.consultationWeek
@@ -206,19 +206,19 @@ export default function Kurse() {
 
               {/* Schedule */}
               <div className="mb-6 mt-10">
-                <h4 className="text-lg sm:text-xl font-semibold text-gray-800 mb-3">
+              <h3 className="text-lg sm:text-xl sm:text-smfont-semibold text-gray-800 mb-3 sm:mb-4">
                   {displayData.courseInfo.startDateLabel}{" "}
                   {displayData.courseInfo.startDate}
-                </h4>
-                <div className="flex flex-col gap-2 bg-gray-50 rounded-lg p-2">
+                </h3>
+              <div className="bg-gray-50 p-3 sm:p-4 mb-4 rounded-lg text-smfont-semibold">
                   {displayData.courseInfo.schedule.map((module, index) => (
                     <div
                       key={index}
-                      className="flex items-start text-sm sm:text-base p-1"
+                      className="flex items-start text-sm sm:text-base p-1 "
                     >
                       <span className="w-2 h-2 bg-yellow-950 rounded-full mr-2 mt-1 flex-shrink-0"></span>
                       <span>
-                        <strong>
+                        <strong className="text-sm lg:text-sm sm:text-smfont-semibold">
                           {module.date} - {module.name}
                         </strong>
                       </span>
@@ -229,17 +229,13 @@ export default function Kurse() {
             </div>
 
             {/* Yoga Section */}
-            <div className="from-yellow-50 to-amber-50 p-4 sm:p-6 rounded-xl mt-10 sm:mt-12">
-              <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold text-gray-800 mb-3 sm:mb-4">
+                <div className="from-yellow-50 to-amber-50 p-4 sm:p-6 rounded-xl mt-10 sm:mt-12">
+              <h3 className="text-lg sm:text-xl sm:text-smfont-semibold text-gray-800 mb-3 sm:mb-4">
                 {displayData.yoga.title}
               </h3>
-
               <div className="space-y-3 lg:space-y-4 text-gray-600">
                 {displayData.yoga.content.map((paragraph, index) => (
-                  <p
-                    key={index}
-                    className="text-left sm:text-left text-sm sm:text-sm md:text-lg leading-relaxed"
-                  >
+                  <p key={index} className="text-left sm:text-left text-sm sm:text-sm md:text-lg leading-relaxed">
                     {paragraph.split("\n").map((line, lineIndex) => (
                       <span key={lineIndex}>
                         {line}
@@ -259,9 +255,7 @@ export default function Kurse() {
                       <div className="flex items-center">
                         <span className="w-2 h-2 bg-yellow-950 rounded-full mr-2 flex-shrink-0"></span>
                         <div className="text-sm sm:text-base">
-                          <strong>
-                            {displayData.yoga.pricing.einzelstunde.label}:
-                          </strong>{" "}
+                          <strong>{displayData.yoga.pricing.einzelstunde.label}:</strong>{" "}
                           {displayData.yoga.pricing.einzelstunde.min}-
                           {displayData.yoga.pricing.einzelstunde.max} Euro
                         </div>
@@ -292,12 +286,12 @@ export default function Kurse() {
               >
                 {displayData.buttons.registration.text}
               </Link>
-              <Link
+              {/*<Link
                 href="/OnlineKurse"
                 className="w-full sm:w-auto inline-flex items-center justify-center px-5 py-3 border-2 border-gray-400 text-gray-600 hover:bg-gray-400 hover:text-white transition-all duration-300 font-medium text-sm rounded-md transform hover:scale-105 text-center"
               >
                 ONLINEKURSE
-              </Link>
+              </Link> */}
             </div>
           </div>
         </div>
