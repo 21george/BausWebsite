@@ -142,7 +142,7 @@ export default function Kurse() {
         <div className="space-y-6 lg:space-y-8 text-center lg:text-left">
           
           {/* Title */}
-          <h2 className="text-xl sm:text-base lg:text-3xl font-bold text-gray-900 leading-tight">
+          <h2 className="text-base sm:text-sm lg:text-4xl font-bold text-gray-900 leading-tight">
             {displayData.mainCourse.title}
           </h2>
 
@@ -184,7 +184,7 @@ export default function Kurse() {
 
           {/* Course Info */}
           <div className="mt-6 text-left">
-            <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-4">
+            <h3 className="text-base sm:text-xl font-semibold text-gray-800 mb-4">
               {displayData.courseInfo.sectionTitle}
             </h3>
 
@@ -208,7 +208,7 @@ export default function Kurse() {
 
             {/* Schedule */}
             <div className="mt-8">
-              <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-4">
+              <h3 className="text-base sm:text-xl font-semibold text-gray-800 mb-4">
                 {displayData.courseInfo.startDateLabel}{" "}
                 {displayData.courseInfo.startDate}
               </h3>
@@ -230,7 +230,7 @@ export default function Kurse() {
 
           {/* Yoga Section */}
           <div className="from-yellow-50 to-amber-50 p-5 sm:p-6 rounded-xl mt-10">
-            <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-4">
+            <h3 className=" text-lefttext-base sm:text-xl font-semibold text-gray-800 mb-4">
               {displayData.yoga.title}
             </h3>
             <div className="space-y-4 lg:space-y-6 text-gray-600">
@@ -284,12 +284,7 @@ export default function Kurse() {
             >
               {displayData.buttons.registration.text}
             </Link>
-            <Link
-              href="/OnlineKurse"
-              className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 border-2 border-gray-400 text-gray-600 hover:bg-gray-400 hover:text-white transition-all duration-300 font-medium text-sm rounded-md transform hover:scale-105 text-center"
-            >
-              ONLINEKURSE
-            </Link>
+            
           </div>
         </div>
       </div>
