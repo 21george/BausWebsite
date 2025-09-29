@@ -1,8 +1,8 @@
 "use server";
-import { createClient } from "../../../utils/superbase/server";
+import { createClient } from "../../../utils/superbase/serverAction";
 
 export async function getContact() {
-    const supabase = await createClient();
+    const supabase = createClient();
     try {
         const { data, error } = await supabase.from("InformationContact").select("*");
         if (error) {

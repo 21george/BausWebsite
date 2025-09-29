@@ -1,8 +1,8 @@
 "use server";
-import { createClient } from "../../../utils/superbase/server";
+import { createClient } from "../../../utils/superbase/serverAction";
 
 export async function submitcontact(formData) {
-  const supabase = await createClient();
+  const supabase = createClient();
 
   const fullname = formData.fullname;
   const email = formData.email;

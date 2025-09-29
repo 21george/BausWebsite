@@ -1,10 +1,10 @@
-import path from 'path';
+/** @type {import('next').NextConfig} */
 import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const __dirname = dirname(__filename);
 
-/** @type {import('next').NextConfig} */
 const nextConfig = {
   // Fix workspace root detection
   outputFileTracingRoot: __dirname,

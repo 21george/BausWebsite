@@ -1,10 +1,23 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
-export default function CourseSuccessPage() {
+// Loading component for Suspense fallback
+function LoadingComponent() {
+    return (
+        <div className="min-h-screen bg-gradient-to-br from-yellow-50 to-amber-50 flex items-center justify-center">
+            <div className="text-center">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-yellow-900 mx-auto"></div>
+                <p className="mt-4 text-gray-600">Laden...</p>
+            </div>
+        </div>
+    );
+}
+
+// Main component that uses useSearchParams
+function CourseSuccessContent() {
     const searchParams = useSearchParams();
     const sessionId = searchParams.get('session_id');
     const [loading, setLoading] = useState(true);
@@ -44,8 +57,11 @@ export default function CourseSuccessPage() {
                 setError(result.error || "Zahlung konnte nicht verifiziert werden");
             }
         } catch (err) {
-            console.error('Payment verification error:', err);
-            setError("Fehler bei der Zahlungsverifikation: " + err.message);
+            // Don't log sensitive payment details in production
+            if (process.env.NODE_ENV === 'development') {
+                console.error('Payment verification error:', err);
+            }
+            setError("Fehler bei der Zahlungsverifikation. Bitte kontaktieren Sie den Support.");
         } finally {
             setLoading(false);
         }
@@ -173,5 +189,14 @@ export default function CourseSuccessPage() {
                 </motion.div>
             </div>
         </div>
+    );
+}
+
+// Main page component with Suspense boundary
+export default function CourseSuccessPage() {
+    return (
+        <Suspense fallback={<LoadingComponent />}>
+            <CourseSuccessContent />
+        </Suspense>
     );
 }
