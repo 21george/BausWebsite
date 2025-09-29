@@ -131,181 +131,46 @@ export default function Kurse() {
 
   {/* Main Content Section */}
   <div
-    id="kurse-info"
-    className="relative flex items-center mt-8 sm:mt-12 justify-center w-full bg-white py-6 sm:py-10 lg:py-16 min-h-screen"
-  >
-    <div className="container  mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
-      <div className="flex flex-col items-center justify-center gap-8 lg:gap-12 xl:gap-16">
-        {/* Main Content Column */}
-        <div className="w-full max-w-4xl">
-          <div className="space-y-4 lg:space-y-6 text-center lg:text-left text-left">
-            {/* Title */}
-            <h2 className="text-xl sm:text-base md:text-3xl lg:text-4xl font-bold text-gray-900 leading-tight">
-              {displayData.mainCourse.title}
-            </h2>
+  id="kurse-info"
+  className="relative flex items-center justify-center w-full bg-white mt-8 sm:mt-12 py-8 sm:py-12 lg:py-16 min-h-screen"
+>
+  <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+    <div className="flex flex-col items-center justify-center gap-8 lg:gap-12 xl:gap-16">
+      
+      {/* Main Content Column */}
+      <div className="w-full max-w-4xl">
+        <div className="space-y-6 lg:space-y-8 text-center lg:text-left">
+          
+          {/* Title */}
+          <h2 className="text-xl sm:text-base lg:text-3xl font-bold text-gray-900 leading-tight">
+            {displayData.mainCourse.title}
+          </h2>
 
-            {/* Description & Modules */}
-            <div className="space-y-3 lg:space-y-4 text-gray-600">
-              <p className="text-left sm:text-left text-sm sm:text-sm md:text-lg leading-relaxed">
-                {displayData.mainCourse.description}
-              </p>
+          {/* Description & Modules */}
+          <div className="space-y-4 lg:space-y-6 text-gray-600">
+            <p className="text-sm sm:text-base md:text-lg leading-relaxed text-left">
+              {displayData.mainCourse.description}
+            </p>
 
-              {/* Modules List */}
-              <div className="bg-gray-50 p-3 sm:p-4 rounded-lg">
-                <div className="grid grid-cols-1 gap-2 sm:gap-3 text-sm sm:text-base">
-                  {displayData.mainCourse.modules.map((module, index) => (
-                    <div key={index} className="flex items-center">
-                      <span className="w-2 h-2 bg-yellow-950 rounded-full mr-2 flex-shrink-0"></span>
-                      <span>
-                        <strong className="sm:text-sm">{module.name}:</strong> {module.description}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Content Paragraphs */}
-              {displayData.mainCourse.content.map((paragraph, index) => (
-                <p
-                  key={index}
-                  className="text-left sm:text-left text-sm sm:text-sm md:text-lg leading-relaxed"
-                >
-                  {paragraph.split("\n").map((line, lineIndex) => (
-                    <span key={lineIndex}>
-                      {line}
-                      {lineIndex < paragraph.split("\n").length - 1 && <br />}
+            {/* Modules List */}
+            <div className="bg-gray-50 p-4 sm:p-5 rounded-lg">
+              <div className="grid grid-cols-1 gap-3 sm:gap-4 text-sm sm:text-base">
+                {displayData.mainCourse.modules.map((module, index) => (
+                  <div key={index} className="flex items-start">
+                    <span className="w-2 h-2 bg-yellow-950 rounded-full mr-2 mt-2 flex-shrink-0"></span>
+                    <span>
+                      <strong>{module.name}:</strong> {module.description}
                     </span>
-                  ))}
-                </p>
-              ))}
-            </div>
-
-            {/* Course Info */}
-            <div className="mt-6 text-left">
-              <h3 className="text-lg sm:text-xl sm:text-smfont-semibold text-gray-800 mb-3 sm:mb-4">
-                {displayData.courseInfo.sectionTitle}
-              </h3>
-
-              <div className="bg-gray-50 p-3 sm:p-4 mb-4 rounded-lg">
-                <ul className="space-y-2 sm:space-y-3 text-gray-700">
-                  {displayData.courseInfo.highlights.map((highlight, index) => (
-                    <li key={index} className="flex items-start text-sm">
-                      <span className="w-2 h-2 bg-yellow-950 rounded-full mr-2 sm:mr-3 mt-1 flex-shrink-0"></span>
-                      <div className="text-sm sm:text-sm">
-                        <strong className="sm:text-sm text-sm lg:text-sm">
-                          {highlight.replace(
-                            "{consultationWeek}",
-                            displayData.courseInfo.consultationWeek
-                          )}
-                        </strong>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Schedule */}
-              <div className="mb-6 mt-10">
-              <h3 className="text-lg sm:text-xl sm:text-smfont-semibold text-gray-800 mb-3 sm:mb-4">
-                  {displayData.courseInfo.startDateLabel}{" "}
-                  {displayData.courseInfo.startDate}
-                </h3>
-              <div className="bg-gray-50 p-3 sm:p-4 mb-4 rounded-lg text-smfont-semibold">
-                  {displayData.courseInfo.schedule.map((module, index) => (
-                    <div
-                      key={index}
-                      className="flex items-start text-sm sm:text-base p-1 "
-                    >
-                      <span className="w-2 h-2 bg-yellow-950 rounded-full mr-2 mt-1 flex-shrink-0"></span>
-                      <span>
-                        <strong className="text-sm lg:text-sm sm:text-smfont-semibold">
-                          {module.date} - {module.name}
-                        </strong>
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Yoga Section */}
-                <div className="from-yellow-50 to-amber-50 p-4 sm:p-6 rounded-xl mt-10 sm:mt-12">
-              <h3 className="text-lg sm:text-xl sm:text-smfont-semibold text-gray-800 mb-3 sm:mb-4">
-                {displayData.yoga.title}
-              </h3>
-              <div className="space-y-3 lg:space-y-4 text-gray-600">
-                {displayData.yoga.content.map((paragraph, index) => (
-                  <p key={index} className="text-left sm:text-left text-sm sm:text-sm md:text-lg leading-relaxed">
-                    {paragraph.split("\n").map((line, lineIndex) => (
-                      <span key={lineIndex}>
-                        {line}
-                        {lineIndex < paragraph.split("\n").length - 1 && <br />}
-                      </span>
-                    ))}
-                  </p>
-                ))}
-
-                {/* Pricing */}
-                <div className="mt-4">
-                  <h4 className="text-base sm:text-lg font-semibold text-gray-800 mb-3">
-                    {displayData.yoga.pricingTitle}
-                  </h4>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div className="bg-white p-3 rounded-md shadow-sm">
-                      <div className="flex items-center">
-                        <span className="w-2 h-2 bg-yellow-950 rounded-full mr-2 flex-shrink-0"></span>
-                        <div className="text-sm sm:text-base">
-                          <strong>{displayData.yoga.pricing.einzelstunde.label}:</strong>{" "}
-                          {displayData.yoga.pricing.einzelstunde.min}-
-                          {displayData.yoga.pricing.einzelstunde.max} Euro
-                        </div>
-                      </div>
-                    </div>
-                    <div className="bg-white p-3 rounded-md shadow-sm">
-                      <div className="flex items-center">
-                        <span className="w-2 h-2 bg-yellow-950 rounded-full mr-2 flex-shrink-0"></span>
-                        <div className="text-sm sm:text-base">
-                          <strong>
-                            {displayData.yoga.pricing.zehnerkarte.label}:
-                          </strong>{" "}
-                          {displayData.yoga.pricing.zehnerkarte.min}-
-                          {displayData.yoga.pricing.zehnerkarte.max} Euro
-                        </div>
-                      </div>
-                    </div>
                   </div>
-                </div>
+                ))}
               </div>
             </div>
 
-            {/* Buttons */}
-            <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center w-full">
-              <Link
-                href={displayData.buttons.registration.href}
-                className="w-full sm:w-auto inline-flex items-center justify-center px-5 py-3 border border-yellow-950 text-yellow-950 hover:bg-yellow-950 hover:text-white transition-all duration-300 font-medium text-sm rounded-md transform hover:scale-105 text-center"
-              >
-                {displayData.buttons.registration.text}
-              </Link>
-              {/*<Link
-                href="/OnlineKurse"
-                className="w-full sm:w-auto inline-flex items-center justify-center px-5 py-3 border-2 border-gray-400 text-gray-600 hover:bg-gray-400 hover:text-white transition-all duration-300 font-medium text-sm rounded-md transform hover:scale-105 text-center"
-              >
-                ONLINEKURSE
-              </Link> */}
-            </div>
-          </div>
-        </div>
-
-        {/* Online Produkt Section */}
-        <div className="w-full mt-12 text-center bg-gray-50 p-4 sm:p-6 rounded-lg">
-          <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold text-gray-800 mb-3 sm:mb-4">
-            {displayData.OnlineProdukt.title}
-          </h3>
-          <div className="space-y-3 lg:space-y-4 text-gray-600">
-            {displayData.OnlineProdukt.content.map((paragraph, index) => (
+            {/* Content Paragraphs */}
+            {displayData.mainCourse.content.map((paragraph, index) => (
               <p
                 key={index}
-                className="text-sm sm:text-base md:text-lg leading-relaxed"
+                className="text-sm sm:text-base md:text-lg leading-relaxed text-left"
               >
                 {paragraph.split("\n").map((line, lineIndex) => (
                   <span key={lineIndex}>
@@ -315,17 +180,151 @@ export default function Kurse() {
                 ))}
               </p>
             ))}
+          </div>
 
-            <div className="mt-4">
-              <h4 className="text-base sm:text-lg font-semibold text-gray-800 mb-3">
-                {displayData.OnlineProdukt.pricingTitle}
-              </h4>
+          {/* Course Info */}
+          <div className="mt-6 text-left">
+            <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-4">
+              {displayData.courseInfo.sectionTitle}
+            </h3>
+
+            <div className="bg-gray-50 p-4 rounded-lg mb-6">
+              <ul className="space-y-3 text-gray-700">
+                {displayData.courseInfo.highlights.map((highlight, index) => (
+                  <li key={index} className="flex items-start text-sm sm:text-base">
+                    <span className="w-2 h-2 bg-yellow-950 rounded-full mr-2 sm:mr-3 mt-2 flex-shrink-0"></span>
+                    <span>
+                      <strong>
+                        {highlight.replace(
+                          "{consultationWeek}",
+                          displayData.courseInfo.consultationWeek
+                        )}
+                      </strong>
+                    </span>
+                  </li>
+                ))}
+              </ul>
             </div>
+
+            {/* Schedule */}
+            <div className="mt-8">
+              <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-4">
+                {displayData.courseInfo.startDateLabel}{" "}
+                {displayData.courseInfo.startDate}
+              </h3>
+              <div className="bg-gray-50 p-4 rounded-lg">
+                {displayData.courseInfo.schedule.map((module, index) => (
+                  <div
+                    key={index}
+                    className="flex items-start text-sm sm:text-base p-1"
+                  >
+                    <span className="w-2 h-2 bg-yellow-950 rounded-full mr-2 mt-2 flex-shrink-0"></span>
+                    <strong>
+                      {module.date} - {module.name}
+                    </strong>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Yoga Section */}
+          <div className="from-yellow-50 to-amber-50 p-5 sm:p-6 rounded-xl mt-10">
+            <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-4">
+              {displayData.yoga.title}
+            </h3>
+            <div className="space-y-4 lg:space-y-6 text-gray-600">
+              {displayData.yoga.content.map((paragraph, index) => (
+                <p
+                  key={index}
+                  className="text-sm sm:text-base md:text-lg leading-relaxed text-left"
+                >
+                  {paragraph.split("\n").map((line, lineIndex) => (
+                    <span key={lineIndex}>
+                      {line}
+                      {lineIndex < paragraph.split("\n").length - 1 && <br />}
+                    </span>
+                  ))}
+                </p>
+              ))}
+
+              {/* Pricing */}
+              <div className="mt-10 sm:mt-12">
+                <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-6">
+                  {displayData.yoga.pricingTitle}
+                </h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-gray-50 rounded-lg p-4">
+                  {/* Einzelstunde */}
+                  <div className="flex items-start gap-2">
+                    <span className="w-2 h-2 bg-yellow-950 rounded-full mt-2 flex-shrink-0"></span>
+                    <p className="text-sm sm:text-base text-gray-700">
+                      <strong>{displayData.yoga.pricing.einzelstunde.label}:</strong>{" "}
+                      {displayData.yoga.pricing.einzelstunde.min}–{displayData.yoga.pricing.einzelstunde.max} Euro
+                    </p>
+                  </div>
+
+                  {/* Zehnerkarte */}
+                  <div className="flex items-start gap-2">
+                    <span className="w-2 h-2 bg-yellow-950 rounded-full mt-2 flex-shrink-0"></span>
+                    <p className="text-sm sm:text-base text-gray-700">
+                      <strong>{displayData.yoga.pricing.zehnerkarte.label}:</strong>{" "}
+                      {displayData.yoga.pricing.zehnerkarte.min}–{displayData.yoga.pricing.zehnerkarte.max} Euro
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Buttons */}
+          <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center w-full">
+            <Link
+              href={displayData.buttons.registration.href}
+              className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 border border-yellow-950 text-yellow-950 hover:bg-yellow-950 hover:text-white transition-all duration-300 font-medium text-sm rounded-md transform hover:scale-105 text-center"
+            >
+              {displayData.buttons.registration.text}
+            </Link>
+            <Link
+              href="/OnlineKurse"
+              className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 border-2 border-gray-400 text-gray-600 hover:bg-gray-400 hover:text-white transition-all duration-300 font-medium text-sm rounded-md transform hover:scale-105 text-center"
+            >
+              ONLINEKURSE
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* Online Produkt Section */}
+      <div className="w-full mt-12 text-center bg-gray-50 p-5 sm:p-6 rounded-lg">
+        <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold text-gray-800 mb-4">
+          {displayData.OnlineProdukt.title}
+        </h3>
+        <div className="space-y-4 lg:space-y-6 text-gray-600">
+          {displayData.OnlineProdukt.content.map((paragraph, index) => (
+            <p
+              key={index}
+              className="text-sm sm:text-base md:text-lg leading-relaxed"
+            >
+              {paragraph.split("\n").map((line, lineIndex) => (
+                <span key={lineIndex}>
+                  {line}
+                  {lineIndex < paragraph.split("\n").length - 1 && <br />}
+                </span>
+              ))}
+            </p>
+          ))}
+
+          <div className="mt-6">
+            <h4 className="text-base sm:text-lg font-semibold text-gray-800">
+              {displayData.OnlineProdukt.pricingTitle}
+            </h4>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
+
 </>
 
     
