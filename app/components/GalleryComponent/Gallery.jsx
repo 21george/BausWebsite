@@ -20,7 +20,7 @@ const Gallery = ({ title, description = '', images = [] }) => {
           </div>
         </div>
 
-        <div className="grid grid-cols-4 gap-2 sm:grid-cols-3 md:gap-6 xl:gap-2">
+        <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:gap-6 xl:gap-2">
           {images.map((image) => (
             <Link
               key={image.id || image.src}
