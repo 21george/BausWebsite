@@ -25,7 +25,7 @@ const config = {
         },
       },
       fontFamily: {
-        serif: ["Georgia", "serif"],
+        serif: ["Georgia", "serif", "Open Sans"],
       },
       backgroundImage: {
         blackOverlay:

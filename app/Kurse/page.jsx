@@ -2,9 +2,13 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { HeroSection } from "../components/HeroComponent/HeroSection";
-import  HeroImage  from "../../public/Images/IMG_7712.jpg";
+import HeroImage from "../../public/Images/IMG_7712.jpg";
+import { useCourseData } from "../../hooks/useCourseData";
 
 export default function Kurse() {
+  const { courseData: dbCourseData, loading, error } = useCourseData({ realtime: true });
+  
+  // Fallback to local state if needed
   const [courseData, setCourseData] = useState({
     hero: {
       title: "Kurse & Workshops",
@@ -80,6 +84,39 @@ export default function Kurse() {
     }
   });
 
+  // Use database data when available, otherwise fall back to local state
+  const displayData = dbCourseData || courseData;
+
+  // Show loading state
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-yellow-950 mx-auto"></div>
+          <p className="mt-4 text-gray-600">Loading course data...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Show error state but still render with fallback data
+  if (error && !courseData) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center text-red-600">
+          <h2 className="text-2xl font-bold mb-4">Error Loading Course Data</h2>
+          <p>{error.message}</p>
+          <button 
+            onClick={() => window.location.reload()} 
+            className="mt-4 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+          >
+            Retry
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <>
   {/* Hero Section */}
@@ -87,8 +124,8 @@ export default function Kurse() {
     <HeroSection
       backgroundImage={HeroImage.src}
       backgroundImageMobile={HeroImage.src}
-      title={courseData.hero.title}
-      subtitle={courseData.hero.subtitle}
+      title={displayData.hero.title}
+      subtitle={displayData.hero.subtitle}
     />
   </section>
 
@@ -104,19 +141,19 @@ export default function Kurse() {
           <div className="space-y-4 lg:space-y-6 text-center lg:text-left text-left">
             {/* Title */}
             <h2 className="text-xl sm:text-base md:text-3xl lg:text-4xl font-bold text-gray-900 leading-tight">
-              {courseData.mainCourse.title}
+              {displayData.mainCourse.title}
             </h2>
 
             {/* Description & Modules */}
             <div className="space-y-3 lg:space-y-4 text-gray-600">
               <p className="text-left sm:text-left text-sm sm:text-sm md:text-lg leading-relaxed">
-                {courseData.mainCourse.description}
+                {displayData.mainCourse.description}
               </p>
 
               {/* Modules List */}
               <div className="bg-gray-50 p-3 sm:p-4 rounded-lg">
                 <div className="grid grid-cols-1 gap-2 sm:gap-3 text-sm sm:text-base">
-                  {courseData.mainCourse.modules.map((module, index) => (
+                  {displayData.mainCourse.modules.map((module, index) => (
                     <div key={index} className="flex items-center">
                       <span className="w-2 h-2 bg-yellow-950 rounded-full mr-2 flex-shrink-0"></span>
                       <span>
@@ -128,7 +165,7 @@ export default function Kurse() {
               </div>
 
               {/* Content Paragraphs */}
-              {courseData.mainCourse.content.map((paragraph, index) => (
+              {displayData.mainCourse.content.map((paragraph, index) => (
                 <p
                   key={index}
                   className="text-left sm:text-left text-sm sm:text-sm md:text-lg leading-relaxed"
@@ -146,19 +183,19 @@ export default function Kurse() {
             {/* Course Info */}
             <div className="mt-6">
               <h3 className="text-lg sm:text-xl sm:text-smfont-semibold text-gray-800 mb-3 sm:mb-4">
-                {courseData.courseInfo.sectionTitle}
+                {displayData.courseInfo.sectionTitle}
               </h3>
 
               <div className="bg-gray-50 p-3 sm:p-4 mb-4 rounded-lg">
                 <ul className="space-y-2 sm:space-y-3 text-gray-700">
-                  {courseData.courseInfo.highlights.map((highlight, index) => (
+                  {displayData.courseInfo.highlights.map((highlight, index) => (
                     <li key={index} className="flex items-start">
                       <span className="w-2 h-2 bg-yellow-950 rounded-full mr-2 sm:mr-3 mt-1 flex-shrink-0"></span>
                       <div className="text-sm sm:text-sm">
                         <strong>
                           {highlight.replace(
                             "{consultationWeek}",
-                            courseData.courseInfo.consultationWeek
+                            displayData.courseInfo.consultationWeek
                           )}
                         </strong>
                       </div>
@@ -170,11 +207,11 @@ export default function Kurse() {
               {/* Schedule */}
               <div className="mb-6 mt-10">
                 <h4 className="text-lg sm:text-xl font-semibold text-gray-800 mb-3">
-                  {courseData.courseInfo.startDateLabel}{" "}
-                  {courseData.courseInfo.startDate}
+                  {displayData.courseInfo.startDateLabel}{" "}
+                  {displayData.courseInfo.startDate}
                 </h4>
                 <div className="flex flex-col gap-2 bg-gray-50 rounded-lg p-2">
-                  {courseData.courseInfo.schedule.map((module, index) => (
+                  {displayData.courseInfo.schedule.map((module, index) => (
                     <div
                       key={index}
                       className="flex items-start text-sm sm:text-base p-1"
@@ -194,11 +231,11 @@ export default function Kurse() {
             {/* Yoga Section */}
             <div className="from-yellow-50 to-amber-50 p-4 sm:p-6 rounded-xl mt-10 sm:mt-12">
               <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold text-gray-800 mb-3 sm:mb-4">
-                {courseData.yoga.title}
+                {displayData.yoga.title}
               </h3>
 
               <div className="space-y-3 lg:space-y-4 text-gray-600">
-                {courseData.yoga.content.map((paragraph, index) => (
+                {displayData.yoga.content.map((paragraph, index) => (
                   <p
                     key={index}
                     className="text-left sm:text-left text-sm sm:text-sm md:text-lg leading-relaxed"
@@ -215,7 +252,7 @@ export default function Kurse() {
                 {/* Pricing */}
                 <div className="mt-4">
                   <h4 className="text-base sm:text-lg font-semibold text-gray-800 mb-3">
-                    {courseData.yoga.pricingTitle}
+                    {displayData.yoga.pricingTitle}
                   </h4>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div className="bg-white p-3 rounded-md shadow-sm">
@@ -223,10 +260,10 @@ export default function Kurse() {
                         <span className="w-2 h-2 bg-yellow-950 rounded-full mr-2 flex-shrink-0"></span>
                         <div className="text-sm sm:text-base">
                           <strong>
-                            {courseData.yoga.pricing.einzelstunde.label}:
+                            {displayData.yoga.pricing.einzelstunde.label}:
                           </strong>{" "}
-                          {courseData.yoga.pricing.einzelstunde.min}-
-                          {courseData.yoga.pricing.einzelstunde.max} Euro
+                          {displayData.yoga.pricing.einzelstunde.min}-
+                          {displayData.yoga.pricing.einzelstunde.max} Euro
                         </div>
                       </div>
                     </div>
@@ -235,10 +272,10 @@ export default function Kurse() {
                         <span className="w-2 h-2 bg-yellow-950 rounded-full mr-2 flex-shrink-0"></span>
                         <div className="text-sm sm:text-base">
                           <strong>
-                            {courseData.yoga.pricing.zehnerkarte.label}:
+                            {displayData.yoga.pricing.zehnerkarte.label}:
                           </strong>{" "}
-                          {courseData.yoga.pricing.zehnerkarte.min}-
-                          {courseData.yoga.pricing.zehnerkarte.max} Euro
+                          {displayData.yoga.pricing.zehnerkarte.min}-
+                          {displayData.yoga.pricing.zehnerkarte.max} Euro
                         </div>
                       </div>
                     </div>
@@ -250,10 +287,10 @@ export default function Kurse() {
             {/* Buttons */}
             <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center w-full">
               <Link
-                href={courseData.buttons.registration.href}
+                href={displayData.buttons.registration.href}
                 className="w-full sm:w-auto inline-flex items-center justify-center px-5 py-3 border border-yellow-950 text-yellow-950 hover:bg-yellow-950 hover:text-white transition-all duration-300 font-medium text-sm rounded-md transform hover:scale-105 text-center"
               >
-                {courseData.buttons.registration.text}
+                {displayData.buttons.registration.text}
               </Link>
               <Link
                 href="/OnlineKurse"
@@ -268,10 +305,10 @@ export default function Kurse() {
         {/* Online Produkt Section */}
         <div className="w-full mt-12 text-center bg-gray-50 p-4 sm:p-6 rounded-lg">
           <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold text-gray-800 mb-3 sm:mb-4">
-            {courseData.OnlineProdukt.title}
+            {displayData.OnlineProdukt.title}
           </h3>
           <div className="space-y-3 lg:space-y-4 text-gray-600">
-            {courseData.OnlineProdukt.content.map((paragraph, index) => (
+            {displayData.OnlineProdukt.content.map((paragraph, index) => (
               <p
                 key={index}
                 className="text-sm sm:text-base md:text-lg leading-relaxed"
@@ -287,7 +324,7 @@ export default function Kurse() {
 
             <div className="mt-4">
               <h4 className="text-base sm:text-lg font-semibold text-gray-800 mb-3">
-                {courseData.OnlineProdukt.pricingTitle}
+                {displayData.OnlineProdukt.pricingTitle}
               </h4>
             </div>
           </div>
