@@ -89,7 +89,7 @@ export async function POST(req) {
             <p>Liebe/r ${formData.vorname} ${formData.nachname},</p>
             <p>vielen Dank für Ihre Anmeldung zum Kurs <strong>"${formData.kurs || 'nicht spezifiziert'}"</strong>.</p>
             <p>Wir haben Ihre Anmeldung erhalten und werden uns in Kürze bei Ihnen melden, um weitere Details zu besprechen.</p>
-            <p>Mit freundlichen Grüßen,<br/>${process.env.EMAIL_FROM_NAME || 'Das Team'}</p>
+            <p>Mit freundlichen Grüßen,<br/>${process.env.EMAIL_FROM_NAME || 'Nikolina Baus Praxis'}</p>
           </div>
         `,
       });
