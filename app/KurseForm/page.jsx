@@ -101,7 +101,7 @@ export default function KurseForm() {
       });
 
       // ✅ Navigate correctly
-      router.push("/app/Kurse");
+      router.back();
 
     } catch (error) {
       console.error("Submission error:", error);
